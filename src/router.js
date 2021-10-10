@@ -19,6 +19,7 @@ const routeInfos = [{
 ]
 
 const router = createRouter({
+    mode: 'history',
     history: createWebHistory(),
     routes: routeInfos
 })
