@@ -3,14 +3,14 @@
       class="flex h-screen bg-gray-50 dark:bg-gray-900">
       <!-- Desktop sidebar -->
       <aside
-        class="z-20 hidden w-60 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
+        class="z-20 hidden w-60 overflow-y-auto shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
       >
         <div class="py-6 text-gray-500 dark:text-gray-400">
           <a
             class="ml-6 text-2xl font-bold text-gray-800 dark:text-gray-200"
             href="#"
           >
-            Sayap Kiri Web
+            Logo
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -68,7 +68,7 @@
         </div>
       </aside>
       <div class="flex flex-col flex-1 w-full">
-        <header class="z-10 py-12 bg-white shadow-md dark:bg-gray-800">
+        <header class="z-10 py-12 shadow-md dark:bg-gray-800" style="background-color: #4680FE">
           <div
             class="container flex items-center h-full px-6 mx-auto dark:text-purple-300"
           >

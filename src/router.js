@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Dashboard from '@/components/Dashboard'
 import News from '@/components/News'
+import Login from '@/components/_auth/Login'
 
-const routeInfos = [{
+const routes = [{
         path: '/',
         redirect: { name: 'dashboard' }
     },
@@ -15,13 +16,18 @@ const routeInfos = [{
         path: '/news',
         name: 'news',
         component: News
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
     }
 ]
 
 const router = createRouter({
     mode: 'history',
     history: createWebHistory(),
-    routes: routeInfos
+    routes: routes
 })
 
 
