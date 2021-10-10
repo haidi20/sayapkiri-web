@@ -1,27 +1,27 @@
 <template lang="">
     <div
-      class="flex h-screen bg-gray-50 dark:bg-gray-900"
-      :class="{ 'overflow-hidden': isSideMenuOpen }">
+      class="flex h-screen bg-gray-50 dark:bg-gray-900">
       <!-- Desktop sidebar -->
       <aside
-        class="z-20 hidden w-80 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
+        class="z-20 hidden w-60 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"
       >
         <div class="py-6 text-gray-500 dark:text-gray-400">
           <a
             class="ml-6 text-2xl font-bold text-gray-800 dark:text-gray-200"
             href="#"
           >
-            Name Project
+            Sayap Kiri Web
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
+              <!-- selected menu : bg-purple-600 -->
               <span
-                class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg"
                 aria-hidden="true"
               ></span>
-              <a
+              <router-link
                 class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href="index.html"
+                to="/dashboard"
               >
                 <svg
                   class="w-6 h-6"
@@ -38,14 +38,14 @@
                   ></path>
                 </svg>
                 <span class="ml-4 text-2xl ">Dashboard</span>
-              </a>
+              </router-link>
             </li>
           </ul>
           <ul>
             <li class="relative px-6 py-3">
-              <a
+              <router-link
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="#"
+                to="/news"
               >
                 <svg
                     class="w-6 h-6"
@@ -61,8 +61,8 @@
                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                     ></path>
                 </svg>
-                <span class="ml-4 text-2xl">Profile</span>
-              </a>
+                <span class="ml-4 text-2xl">News</span>
+              </router-link>
             </li>
           </ul>
           
@@ -73,24 +73,21 @@
           <div
             class="container flex items-center h-full px-6 mx-auto dark:text-purple-300"
           >
-            <div class="items-end"> kanan</div>
           </div>
         </header>
+        <div class="container">
+          <div class="m-10 grid-cols-2">
+            <slot /> 
+          </div>
+        </div>
       </div>
     </div>
 </template>
 <script>
-export default {
-    data() {
-        return {
-            namePage: "Main Layout",
-        }
-    },
-    methods: {
+    export default {
 
     }
-}
 </script>
-<style lang="">
-    
+<style>
+
 </style>
