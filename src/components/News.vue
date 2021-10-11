@@ -1,15 +1,9 @@
 <template>
     <main-layout>
-        <div class="grid grid-cols-2">
-            <div class="w-full max-w-xs">
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-4">
+            <div class="col-span-1">
                 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form News</p>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                            Token
-                        </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.token" id="token" type="text" >
-                    </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Pair
@@ -56,21 +50,44 @@
                     </div>
                 </form>
             </div>
-            <div class="">
-                table
+            <div class="w-full col-span-3">
+                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <p class="mb-5 text-3xl">Data News</p>
+                    <table class="shadow-lg bg-white w-full">
+                        <tr>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Company</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Contact</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Country</th>
+                        </tr>
+                        <tr>
+                            <td class="border px-8 py-4">Alfreds Futterkiste</td>
+                            <td class="border px-8 py-4">Dante Sparks</td>
+                            <td class="border px-8 py-4">Italy</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </main-layout>
 </template>
 
 <script>
-import MainLayout from '@/components/_default/MainLayout'
+import axios from 'axios';
+import {baseUrl} from '@/helpers';
+import MainLayout from '@/components/_default/MainLayout';
 export default {
     data(){
         return {
             loading: false,
+            defaultData: {
+                pair: "",
+                date_news: "",
+                date_start: "",
+                date_stop: "",
+                impact: "",
+                desc: "",
+            },
             data: {
-                token: "",
                 pair: "",
                 date_news: "",
                 date_start: "",
@@ -84,35 +101,19 @@ export default {
         MainLayout
     },
     methods: {
-         async handleSubmit() {
+        async handleSubmit() {
             this.loading = true;
+            const token = localStorage.getItem('token');
 
-            try {
-                const response = await fetch("https://api.sayapkiri.net/api/news/store", {
-                                    method: 'POST',
-                                    body: JSON.stringify(data),
-                                    headers: { 
-                                        'Content-type': 'application/json; charset=UTF-8',
-                                        'Authorization': 'Bearer ' + this.data.token,
-                                    },
-                                });
+            await axios.post(baseUrl + "api/news/store", this.data, {headers: { Authorization: `Bearer ${token}` }})
+                .then(function ({data}) {
 
-                const data = await response.json();
-
-                console.log(data);
-
-                // this.employees = data;
-
-                alert(data.remark);
-                this.loading = false;
-            } catch (error) {
-                console.error(error);
-
-                alert('gagal input data');
-
-                this.loading = false;
-            }
-         }
+                    alert(data.remark);                    
+                }).finally(() => {
+                    this.data = this.defaultData;
+                    this.loading = false;
+                });
+        }
     }
 }
 </script>

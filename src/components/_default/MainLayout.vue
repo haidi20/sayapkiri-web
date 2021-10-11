@@ -74,10 +74,8 @@
           >
           </div>
         </header>
-        <div class="container">
-          <div class="m-10 grid-cols-2">
-            <slot /> 
-          </div>
+        <div class="container p-5">
+          <slot />
         </div>
       </div>
     </div>
