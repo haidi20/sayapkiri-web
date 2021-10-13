@@ -31,8 +31,10 @@ export default {
         }
     },
     methods: {
-      async handleSubmit() {   
-            
+      async getData() {
+        
+      },
+      async handleSubmit() {               
         try {
           const response = await fetch( baseUrl + "login", {
                               method: 'POST',

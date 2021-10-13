@@ -1,6 +1,6 @@
 <template>
     <main-layout>
-        <div class="grid grid-cols-1 gap-5 lg:grid-cols-4">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-4">
             <div class="col-span-1">
                 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form News</p>
@@ -55,14 +55,20 @@
                     <p class="mb-5 text-3xl">Data News</p>
                     <table class="shadow-lg bg-white w-full">
                         <tr>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Company</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Contact</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Country</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Pair</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date News</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date Start</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date Stop</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Impact</th>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Description</th>
                         </tr>
                         <tr>
-                            <td class="border px-8 py-4">Alfreds Futterkiste</td>
-                            <td class="border px-8 py-4">Dante Sparks</td>
-                            <td class="border px-8 py-4">Italy</td>
+                            <td class="border px-5 py-4">1</td>
+                            <td class="border px-5 py-4">2</td>
+                            <td class="border px-5 py-4">3</td>
+                            <td class="border px-5 py-4">4</td>
+                            <td class="border px-5 py-4">5</td>
+                            <td class="border px-5 py-4">6</td>
                         </tr>
                     </table>
                 </div>

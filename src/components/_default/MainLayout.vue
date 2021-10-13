@@ -74,7 +74,7 @@
           >
           </div>
         </header>
-        <div class="container p-5">
+        <div class="container p-10">
           <slot />
         </div>
       </div>
