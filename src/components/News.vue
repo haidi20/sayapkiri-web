@@ -100,7 +100,8 @@ export default {
                 date_stop: "",
                 impact: "",
                 desc: "",
-            }            
+            },
+            toast: () => {},            
         };
     },
     components: {
@@ -108,18 +109,49 @@ export default {
     },
     methods: {
         async handleSubmit() {
+            let that = this;
             this.loading = true;
             const token = localStorage.getItem('token');
 
-            await axios.post(baseUrl + "api/news/store", this.data, {headers: { Authorization: `Bearer ${token}` }})
-                .then(function ({data}) {
-
-                    alert(data.remark);                    
-                }).finally(() => {
-                    this.data = this.defaultData;
-                    this.loading = false;
-                });
+            await axios.post(baseUrl + "api/news/store", 
+                            this.data, 
+                            {headers: { Authorization: `Bearer ${token}`}})
+                        .then(function ({data}) {
+                            if(data.status != undefined && data.status) {
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "success",
+                                    title: data.remark
+                                });
+                            }else if(data.status != undefined && !data.status) {
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "warning",
+                                    title: data.remark
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                        .finally(() => {
+                            this.data = this.defaultData;
+                            this.loading = false;
+                        });
         }
     }
+    
 }
 </script>
