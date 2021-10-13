@@ -5,7 +5,7 @@ import Login from '@/components/_auth/Login'
 
 const routes = [{
         path: '/',
-        redirect: { name: 'dashboard' }
+        redirect: { name: 'login' }
     },
     {
         path: '/dashboard',
