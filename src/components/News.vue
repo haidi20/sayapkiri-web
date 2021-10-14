@@ -62,13 +62,13 @@
                             <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Impact</th>
                             <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Description</th>
                         </tr>
-                        <tr>
-                            <td class="border px-5 py-4">1</td>
-                            <td class="border px-5 py-4">2</td>
-                            <td class="border px-5 py-4">3</td>
-                            <td class="border px-5 py-4">4</td>
-                            <td class="border px-5 py-4">5</td>
-                            <td class="border px-5 py-4">6</td>
+                        <tr v-for="(item, index) in table"  :key="index">
+                            <td class="border px-5 py-4 text-xs">{{item.pair}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.date_news}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.date_start}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.date_stop}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.impact}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.desc}}</td>
                         </tr>
                     </table>
                 </div>
@@ -101,13 +101,33 @@ export default {
                 impact: "",
                 desc: "",
             },
+            table: [],
             toast: () => {},            
         };
     },
     components: {
         MainLayout
     },
+    mounted() {
+        this.getData();
+    },
     methods: {
+        async getData() {
+            let that = this;
+            const token = localStorage.getItem('token');
+
+            await axios.post(baseUrl + "api/news/getData",
+                            null,
+                            {headers: { Authorization: `Bearer ${token}`}})
+                        .then(function ({data}) {
+                            // console.table(data);
+
+                            that.table = data;
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+        },
         async handleSubmit() {
             let that = this;
             this.loading = true;
@@ -141,6 +161,8 @@ export default {
                                     icon: "warning",
                                     title: data.remark
                                 });
+
+                                console.log(data.remark);
                             }
                         })
                         .catch(error => {
