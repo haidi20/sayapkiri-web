@@ -79,7 +79,7 @@
 
 <script>
 import axios from 'axios';
-import {baseUrl} from '@/helpers';
+// import {baseUrl} from '@/helpers';
 import MainLayout from '@/components/_default/MainLayout';
 export default {
     data(){
@@ -116,7 +116,10 @@ export default {
             let that = this;
             const token = localStorage.getItem('token');
 
-            await axios.post(baseUrl + "api/news/getData",
+            console.log('get data');
+            console.log(process.env.VUE_APP_URL);
+
+            await axios.post(process.env.VUE_APP_URL + "api/news/getData",
                             null,
                             {headers: { Authorization: `Bearer ${token}`}})
                         .then(function ({data}) {
@@ -133,7 +136,7 @@ export default {
             this.loading = true;
             const token = localStorage.getItem('token');
 
-            await axios.post(baseUrl + "api/news/store", 
+            await axios.post(process.env.VUE_APP_URL + "api/news/store", 
                             this.data, 
                             {headers: { Authorization: `Bearer ${token}`}})
                         .then(function ({data}) {
