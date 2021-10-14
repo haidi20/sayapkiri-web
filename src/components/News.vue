@@ -122,7 +122,7 @@ export default {
                             null,
                             {headers: { Authorization: `Bearer ${token}`}})
                         .then(function ({data}) {
-                            // console.table(data);
+                            console.table(data);
 
                             that.table = data;
                         })
