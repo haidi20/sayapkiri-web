@@ -117,9 +117,8 @@ export default {
             const token = localStorage.getItem('token');
 
             console.log('get data');
-            console.log(process.env.VUE_APP_URL);
 
-            await axios.post(process.env.VUE_APP_URL + "api/news/getData",
+            await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData",
                             null,
                             {headers: { Authorization: `Bearer ${token}`}})
                         .then(function ({data}) {
@@ -136,7 +135,7 @@ export default {
             this.loading = true;
             const token = localStorage.getItem('token');
 
-            await axios.post(process.env.VUE_APP_URL + "api/news/store", 
+            await axios.post(process.env.VUE_APP_BASE_URL + "api/news/store", 
                             this.data, 
                             {headers: { Authorization: `Bearer ${token}`}})
                         .then(function ({data}) {
