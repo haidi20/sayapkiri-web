@@ -124,7 +124,9 @@ export default {
                         .then(function ({data}) {
                             console.table(data);
 
-                            that.table = data;
+                            if(data.status) {
+                                that.table = data;
+                            }
                         })
                         .catch(error => {
                             console.log(error);
