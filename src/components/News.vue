@@ -117,6 +117,7 @@ export default {
             const token = localStorage.getItem('token');
 
             console.log('get data');
+            console.log(token);
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData",
                             {},
