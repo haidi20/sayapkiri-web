@@ -119,13 +119,13 @@ export default {
             console.log('get data');
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData",
-                            null,
+                            {},
                             {headers: { Authorization: `Bearer ${token}`}})
                         .then(function ({data}) {
                             console.table(data);
 
                             if(data.status) {
-                                that.table = data;
+                                that.table = data.data;
                             }
                         })
                         .catch(error => {
