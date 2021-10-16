@@ -33,11 +33,12 @@ export default {
     methods: {
       async handleSubmit() {    
         let that = this;
-        await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData", that.data)
+        await axios.post(process.env.VUE_APP_BASE_URL + "login", that.data)
                   .then(function ({data}) {
                       console.table(data);
 
                       if(data.status) {
+                        console.log('token masuk');
                           localStorage.setItem("token", data.token);
 
                           // this.$router.push({name: "dashboard"});
