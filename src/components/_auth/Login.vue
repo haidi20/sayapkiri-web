@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import {baseUrl} from '@/helpers';
+import axios from 'axios';
 
 export default {
     data() {
@@ -31,30 +31,21 @@ export default {
         }
     },
     methods: {
-      async handleSubmit() {               
-        try {
-          const response = await fetch( baseUrl + "login", {
-                              method: 'POST',
-                              body: JSON.stringify(this.data),
-                              headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'  
-                              },
-                          });
+      async handleSubmit() {    
+        let that = this;
+        await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData", that.data)
+                  .then(function ({data}) {
+                      console.table(data);
 
-          const dataResponse = await response.json();
+                      if(data.status) {
+                          localStorage.setItem("token", data.token);
 
-          if(dataResponse.status) {
-            localStorage.setItem("token", dataResponse.data.token);
-
-            this.$router.push({name: "dashboard"});
-          }
-
-        } catch (error) {
-          console.error(error);
-
-          alert('gagal input data');
-        }
+                          // this.$router.push({name: "dashboard"});
+                      }
+                  })
+                  .catch(error => {
+                      console.log(error);
+                  });
       }
     }
 }
