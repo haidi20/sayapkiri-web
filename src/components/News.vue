@@ -121,7 +121,7 @@ export default {
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData",
                             {},
-                            {headers: { Authorization: `Bearer ${token}`}})
+                            {headers: { Authorization: `Bearer ` + token}})
                         .then(function ({data}) {
                             console.table(data);
 
