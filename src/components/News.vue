@@ -1,3 +1,11 @@
+// ketika set date_news
+// maka date_start = date_news - 5
+// date_stop = date_news + 2
+
+// impact => low, medium, high
+// description type = "textarea"
+
+
 <template>
     <main-layout>
         <div class="grid grid-cols-1 gap-10 lg:grid-cols-4">
@@ -14,19 +22,19 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Date News
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_news" id="date_news" type="text" >
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_news" id="date_news" type="datetime-local" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Date Start
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_start" id="date_start" type="text" >
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_start" id="date_start" type="datetime-local" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Date Stop
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_stop" id="date_stop" type="text" >
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_stop" id="date_stop" type="datetime-local" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -81,26 +89,23 @@
 import axios from 'axios';
 // import {baseUrl} from '@/helpers';
 import MainLayout from '@/components/_default/MainLayout';
+
+const initialState = () => {
+    return {
+        pair: "",
+        date_news: "",
+        date_start: "",
+        date_stop: "",
+        impact: "",
+        desc: "",
+    };
+}
+
 export default {
     data(){
         return {
             loading: false,
-            defaultData: {
-                pair: "",
-                date_news: "",
-                date_start: "",
-                date_stop: "",
-                impact: "",
-                desc: "",
-            },
-            data: {
-                pair: "",
-                date_news: "",
-                date_start: "",
-                date_stop: "",
-                impact: "",
-                desc: "",
-            },
+            data: initialState(),
             table: [],
             toast: () => {},            
         };
@@ -171,8 +176,9 @@ export default {
                             console.log(error);
                         })
                         .finally(() => {
-                            this.data = this.defaultData;
+                            this.data = initialState();
                             this.loading = false;
+                            this.getData();
                         });
         }
     }
