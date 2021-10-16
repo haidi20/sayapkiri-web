@@ -34,11 +34,13 @@ export default {
       async handleSubmit() {    
         let that = this;
         await axios.post(process.env.VUE_APP_BASE_URL + "login", that.data)
-                  .then(function ({responses}) {
-                      if(responses.status) {
-                          let data = responses.data;
+                  .then(({data}) => {
+                    console.log(data);
 
-                          localStorage.setItem("token", data.token);
+                      if(data.status) {
+                          let token = data.data.token;
+
+                          localStorage.setItem("token", token);
                           this.$router.push({name: "dashboard"});
                       }
                   })
