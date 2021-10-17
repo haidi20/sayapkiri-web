@@ -9,8 +9,9 @@ import './index.css'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-createApp(App)
-    .use(router)
+const vueApp = createApp(App);
+vueApp.config.devtools = true;
+vueApp.use(router)
     .use(VueAxios, axios)
     .use(VueSweetalert2)
     .use(moment)

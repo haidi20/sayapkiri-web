@@ -31,16 +31,20 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Date Stop
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.date_stop" id="date_stop" type="datetime-local" >
+                        <input 
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                            v-model="form.date_stop" 
+                            id="date_stop" 
+                            type="datetime-local" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Impact
                         </label>
-                        <div class="inline-block relative w-64">
+                        <div class="inline-block relative w-full">
                             <select 
                                 v-model="form.impact"
-                                class="block appearance-none w-full bg-white border  px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                class="block appearance-none w-full bg-white border py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="low">Low</option>
                                 <option value="medium">Medium</option>
                                 <option value="high">High</option>
@@ -57,16 +61,15 @@
                         <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.desc" id="desc" type="text" > </textarea>
                     </div>
                     <div class="flex items-center">
-                        <button type="submit" 
-                            class="bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
-                            >
+                        <button 
+                            type="submit" 
+                            class="bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                             Kirim
                         </button>
                         <button 
                             @click="resetForm"
                             type="button" 
-                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3"
-                            >
+                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3">
                             cancel
                         </button>
                         <span >{{loading ? "loading" : ""}}</span>
@@ -110,10 +113,10 @@
 </template>
 
 <script>
-import moment from 'moment';
 import axios from 'axios';
+import moment from 'moment';
 // import {baseUrl} from '@/helpers';
-import MainLayout from '@/components/_default/MainLayout';
+import MainLayout from '@/components/MainLayout';
 
 const initialState = () => {
     return {
@@ -133,8 +136,7 @@ export default {
             token: localStorage.getItem('token'),
             loading: false,
             form: initialState(),
-            table: [],
-            toast: () => {},            
+            table: [],           
         };
     },
     components: {
@@ -162,6 +164,24 @@ export default {
         async handleSubmit() {
             let that = this;
             this.loading = true;
+
+            if(this.form.pair == null || this.form.impact == null){
+                console.log('form kosong');
+
+                this.loading = false;
+                this.$swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    timer: 2000,
+                })
+                .fire({
+                    icon: "warning",
+                    title: "Maaf, form todak boleh kosong",
+                });
+                return false;
+            }
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/news/store", 
                             this.form, 

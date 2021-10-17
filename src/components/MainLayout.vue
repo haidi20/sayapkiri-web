@@ -55,6 +55,43 @@
               </router-link>
             </li>
           </ul>
+          <ul>
+            <li class="relative px-6 py-3">
+              <router-link
+                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                to="/user"
+              >
+                <img 
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA/0lEQVRIie3UMUpDQRAG4C8KmlIINppX5xAeQHu9gAew9FCRgJUGb5DeiBZaaGGlQoIIihCLN+JzkTzCvs788Bf7z8w/uzvLskRDKDDANHiKXpPmz5glfIlYNgZheIZu8Dy0kyYaTMOsW9GK0CZ1xSuZzWeZ9SgHOlNeSxEchtZvokFPOdB0yE9+X1sWCuVAJ8F+k+b/HKs1sR0c4gpvSXwTx/jEowWebBtHePDzYm6xj43gAe4q8fuoadeZb2OcGFfXKceR872+xNa8BheReI1dtLAeuxvhNTgKbS1y9nATtcN5DT4iqVN31D/Qidr3qthKkhr5W6q+uZ/dEvn4Av2LT4WzLPNnAAAAAElFTkSuQmCC"/>
+                <span class="ml-4 text-2xl">User</span>
+              </router-link>
+            </li>
+          </ul>
+          <ul>
+            <li class="relative px-6 py-3">
+              <router-link
+                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                to="/user"
+              >
+               <img 
+                class="w-6"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAABCUlEQVRoge2Zyw3CMBBEH4gi+JQUSqAMPgVAW6EBqIZwgBMc7ABB5hfAWcw8ybLkzWFGu3GkCQghhBAiyBDIgS1wMLYKry17ZGJhQOyza37LxNA/sAPGQO+R6wboAROcxgM3OrP0xXE8XbWZ4rTmoWLhi92YimrSxWndhIrl7P0KFb3tBoV8lE7g7Je6ciKZjsiINZIxEnrZW9FV1KNyKSXTkWSMhEYrxLvflq+P6991xPwFkExHZMQaMmINGbGGjFjj0kjhd4vB3DUDv5/ioEsjK7+PosmpT6lxHSpmnCPTKdCPJOoV+sAM2HMnMgUXDDcdTr8dYpdkuEy1jFAtrad/KwghhBB/yRH6l8S2lNNyLQAAAABJRU5ErkJggg=="/>
+               <span class="ml-4 text-2xl">Account</span>
+              </router-link>
+            </li>
+          </ul>
+          <ul>
+            <li class="relative px-6 py-3">
+              <router-link
+                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                to="/news"
+              >
+                <img 
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA70lEQVRIie3UP04CQRTH8c8KMR7AE1AaO29gwwU8Ar2lPZi4NJacgNgbjoDQWtuaLKEkxNZg4RI2O8ufZdfC6C/Z5s2b3/ftezPDv0poglVN33htGmUAq5oLjvKBNb1bwbSb8Qm0dQGn6GOGBHEaK+WzCxAL+xxXBUxshpUUAJKCvMDnZEsVOys5Mq90ix7K+uwbcuy7LZWHXOWY9vKAH79o2SG/1Gg+3p/ym9VCB0+YC4/nGwa4wXlmX9PmQl4cCotwiVs8Y5GDfeIVj3hPYzMFL+mhauAKdxhhKfzD4bHmRTrDNe4xxQfadQL+gL4ASwtvvtpZqD4AAAAASUVORK5CYII="/>
+                <span class="ml-4 text-2xl">Ultra Profit</span>
+              </router-link>
+            </li>
+          </ul>
           
         </div>
       </aside>

@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router"
+
+import User from '@/components/User'
 import News from '@/components/News'
-import Login from '@/components/_auth/Login'
-import Dashboard from '@/components/Dashboard'
+import Login from '@/components/Login'
 import NotFound from '@/components/NotFound'
+import Dashboard from '@/components/Dashboard'
 
 const routes = [{
         path: '/',
@@ -22,6 +24,11 @@ const routes = [{
         path: '/login',
         name: 'login',
         component: Login,
+    },
+    {
+        path: '/user',
+        name: 'user',
+        component: User,
     },
     {
         path: "/:pathMatch(.*)*",
