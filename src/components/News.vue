@@ -226,7 +226,7 @@ export default {
         },
         async remove(pid_news) {    
             let that = this;        
-            let foundNews = this.table.filter(item => item.pid_news == pid_news)[0];
+            let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
 
             return await this.$swal.fire({
                 icon: 'question',
@@ -238,7 +238,7 @@ export default {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     axios.post(process.env.VUE_APP_BASE_URL + "api/news/delete", 
-                            foundNews, 
+                            foundData, 
                             {headers: { Authorization: `Bearer ${that.token}`}})
                         .then(function ({data}) {
                             if(data.status != undefined && data.status) {
@@ -281,15 +281,15 @@ export default {
         },
         edit(pid_news) {   
             // let that = this;        
-            let foundNews = this.table.filter(item => item.pid_news == pid_news)[0];
+            let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
 
-            this.form.pid_news = foundNews.pid_news;
-            this.form.pair = foundNews.pair;
-            this.form.impact = foundNews.impact;
-            this.form.desc = foundNews.desc;
-            this.form.date_news =  moment(foundNews.date_news).format('YYYY-MM-DDThh:mm:ss');
-            this.form.date_start =  moment(foundNews.date_start).format('YYYY-MM-DDThh:mm:ss');
-            this.form.date_stop =  moment(foundNews.date_stop).format('YYYY-MM-DDThh:mm:ss');
+            this.form.pid_news = foundData.pid_news;
+            this.form.pair = foundData.pair;
+            this.form.impact = foundData.impact;
+            this.form.desc = foundData.desc;
+            this.form.date_news =  moment(foundData.date_news).format('YYYY-MM-DDThh:mm:ss');
+            this.form.date_start =  moment(foundData.date_start).format('YYYY-MM-DDThh:mm:ss');
+            this.form.date_stop =  moment(foundData.date_stop).format('YYYY-MM-DDThh:mm:ss');
         },
         eventDateNews() {            
             if(this.form.pid_news == null) {
