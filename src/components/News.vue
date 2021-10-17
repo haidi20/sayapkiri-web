@@ -1,11 +1,3 @@
-// ketika set date_news
-// maka date_start = date_news - 5
-// date_stop = date_news + 2
-
-// impact => low, medium, high
-// description type = "textarea"
-
-
 <template>
     <main-layout>
         <div class="grid grid-cols-1 gap-10 lg:grid-cols-4">
@@ -22,7 +14,12 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Date News
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_news" id="date_news" type="datetime-local" >
+                        <input 
+                            @input="eventDateNews($event.target.value)"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                            v-model="data.date_news" 
+                            id="date_news" 
+                            type="datetime-local" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -48,11 +45,18 @@
                         </label>
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.desc" id="desc" type="text" >
                     </div>
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center">
                         <button type="submit" 
                             class="bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
                             >
                             Kirim
+                        </button>
+                        <button 
+                            @click="resetForm"
+                            type="button" 
+                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3"
+                            >
+                            cancel
                         </button>
                         <span >{{loading ? "loading" : ""}}</span>
                     </div>
@@ -73,7 +77,7 @@
                         </tr>
                         <tr v-for="(item, index) in table"  :key="index">
                             <td class="border px-5 py-4 text-xs">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
+                                <button @click="edit(item.pid_news)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
                                     Edit
                                 </button>
                                 <button @click="remove(item.pid_news)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
@@ -95,18 +99,20 @@
 </template>
 
 <script>
+import moment from 'moment';
 import axios from 'axios';
 // import {baseUrl} from '@/helpers';
 import MainLayout from '@/components/_default/MainLayout';
 
 const initialState = () => {
     return {
-        pair: "",
-        date_news: "",
-        date_start: "",
-        date_stop: "",
-        impact: "",
-        desc: "",
+        pid_news: null,
+        pair: null,
+        date_news: null,
+        date_start: null,
+        date_stop: null,
+        impact: null,
+        desc: null,
     };
 }
 
@@ -241,8 +247,40 @@ export default {
                     this.$swal.fire('Changes are not saved', '', 'info')
                 }
             })
+        },
+        edit(pid_news) {   
+            // let that = this;        
+            let foundNews = this.table.filter(item => item.pid_news == pid_news)[0];
+
+            this.data.pid_news = foundNews.pid_news;
+            this.data.pair = foundNews.pair;
+            this.data.impact = foundNews.impact;
+            this.data.desc = foundNews.desc;
+            this.data.date_news =  moment(foundNews.date_news).format('YYYY-MM-DDThh:mm:ss');
+            this.data.date_start =  moment(foundNews.date_start).format('YYYY-MM-DDThh:mm:ss');
+            this.data.date_stop =  moment(foundNews.date_stop).format('YYYY-MM-DDThh:mm:ss');
+        },
+        eventDateNews(value) {
+            let valueDate = moment(value).format("YYYY-MM-DD hh:mm:ss");
+            
+            if(this.data.pid_news == null) {
+                this.data.date_start = moment(this.data.date_news).subtract({ hours: 5}).format('YYYY-MM-DDThh:mm:ss');
+                this.data.date_stop = moment(this.data.date_news).add({ hours: 2}).format('YYYY-MM-DDThh:mm:ss');
+            }
+
+            console.log(valueDate);
+        },
+        resetForm() {
+            this.data = initialState();
         }
     }
     
 }
 </script>
+
+// ketika set date_news
+// maka date_start = date_news - 5
+// date_stop = date_news + 2
+
+// impact => low, medium, high
+// description type = "textarea"
