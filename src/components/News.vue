@@ -8,7 +8,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Pair
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.pair" id="pair" type="text" >
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.pair" id="pair" type="text" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -17,7 +17,7 @@
                         <input 
                             @input="eventDateNews($event.target.value)"
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                            v-model="data.date_news" 
+                            v-model="form.date_news" 
                             id="date_news" 
                             type="datetime-local" >
                     </div>
@@ -25,25 +25,36 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Date Start
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_start" id="date_start" type="datetime-local" >
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.date_start" id="date_start" type="datetime-local" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Date Stop
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.date_stop" id="date_stop" type="datetime-local" >
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.date_stop" id="date_stop" type="datetime-local" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Impact
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.impact" id="impact" type="text" >
+                        <div class="inline-block relative w-64">
+                            <select 
+                                v-model="form.impact"
+                                class="block appearance-none w-full bg-white border  px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Description
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="data.desc" id="desc" type="text" >
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.desc" id="desc" type="text" >
                     </div>
                     <div class="flex items-center">
                         <button type="submit" 
@@ -121,7 +132,7 @@ export default {
         return {
             token: localStorage.getItem('token'),
             loading: false,
-            data: initialState(),
+            form: initialState(),
             table: [],
             toast: () => {},            
         };
@@ -153,7 +164,7 @@ export default {
             this.loading = true;
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/news/store", 
-                            this.data, 
+                            this.form, 
                             {headers: { Authorization: `Bearer ${that.token}`}})
                         .then(function ({data}) {
                             if(data.status != undefined && data.status) {
@@ -188,7 +199,7 @@ export default {
                             console.log(error);
                         })
                         .finally(() => {
-                            this.data = initialState();
+                            this.form = initialState();
                             this.loading = false;
                             this.getData();
                         });
@@ -252,26 +263,26 @@ export default {
             // let that = this;        
             let foundNews = this.table.filter(item => item.pid_news == pid_news)[0];
 
-            this.data.pid_news = foundNews.pid_news;
-            this.data.pair = foundNews.pair;
-            this.data.impact = foundNews.impact;
-            this.data.desc = foundNews.desc;
-            this.data.date_news =  moment(foundNews.date_news).format('YYYY-MM-DDThh:mm:ss');
-            this.data.date_start =  moment(foundNews.date_start).format('YYYY-MM-DDThh:mm:ss');
-            this.data.date_stop =  moment(foundNews.date_stop).format('YYYY-MM-DDThh:mm:ss');
+            this.form.pid_news = foundNews.pid_news;
+            this.form.pair = foundNews.pair;
+            this.form.impact = foundNews.impact;
+            this.form.desc = foundNews.desc;
+            this.form.date_news =  moment(foundNews.date_news).format('YYYY-MM-DDThh:mm:ss');
+            this.form.date_start =  moment(foundNews.date_start).format('YYYY-MM-DDThh:mm:ss');
+            this.form.date_stop =  moment(foundNews.date_stop).format('YYYY-MM-DDThh:mm:ss');
         },
         eventDateNews(value) {
             let valueDate = moment(value).format("YYYY-MM-DD hh:mm:ss");
             
-            if(this.data.pid_news == null) {
-                this.data.date_start = moment(this.data.date_news).subtract({ hours: 5}).format('YYYY-MM-DDThh:mm:ss');
-                this.data.date_stop = moment(this.data.date_news).add({ hours: 2}).format('YYYY-MM-DDThh:mm:ss');
+            if(this.form.pid_news == null) {
+                this.form.date_start = moment(this.form.date_news).subtract({ hours: 5}).format('YYYY-MM-DDThh:mm:ss');
+                this.form.date_stop = moment(this.form.date_news).add({ hours: 2}).format('YYYY-MM-DDThh:mm:ss');
             }
 
             console.log(valueDate);
         },
         resetForm() {
-            this.data = initialState();
+            this.form = initialState();
         }
     }
     
