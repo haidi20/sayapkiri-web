@@ -54,7 +54,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Description
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.desc" id="desc" type="text" >
+                        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.desc" id="desc" type="text" > </textarea>
                     </div>
                     <div class="flex items-center">
                         <button type="submit" 
@@ -271,15 +271,11 @@ export default {
             this.form.date_start =  moment(foundNews.date_start).format('YYYY-MM-DDThh:mm:ss');
             this.form.date_stop =  moment(foundNews.date_stop).format('YYYY-MM-DDThh:mm:ss');
         },
-        eventDateNews(value) {
-            let valueDate = moment(value).format("YYYY-MM-DD hh:mm:ss");
-            
+        eventDateNews() {            
             if(this.form.pid_news == null) {
                 this.form.date_start = moment(this.form.date_news).subtract({ hours: 5}).format('YYYY-MM-DDThh:mm:ss');
                 this.form.date_stop = moment(this.form.date_news).add({ hours: 2}).format('YYYY-MM-DDThh:mm:ss');
             }
-
-            console.log(valueDate);
         },
         resetForm() {
             this.form = initialState();
