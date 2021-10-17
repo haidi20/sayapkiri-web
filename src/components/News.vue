@@ -77,7 +77,7 @@
                 </form>
             </div>
             <div class="w-full col-span-3">
-                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-x-auto">
                     <p class="mb-5 text-3xl">Data News</p>
                     <table class="shadow-lg bg-white w-full">
                         <tr>
