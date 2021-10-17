@@ -63,6 +63,7 @@
                     <p class="mb-5 text-3xl">Data News</p>
                     <table class="shadow-lg bg-white w-full">
                         <tr>
+                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Action</th>
                             <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Pair</th>
                             <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date News</th>
                             <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date Start</th>
@@ -71,6 +72,14 @@
                             <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Description</th>
                         </tr>
                         <tr v-for="(item, index) in table"  :key="index">
+                            <td class="border px-5 py-4 text-xs">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
+                                    Edit
+                                </button>
+                                <button @click="remove(item.pid_news)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                                    Delete
+                                </button>
+                            </td>
                             <td class="border px-5 py-4 text-xs">{{item.pair}}</td>
                             <td class="border px-5 py-4 text-xs">{{item.date_news}}</td>
                             <td class="border px-5 py-4 text-xs">{{item.date_start}}</td>
@@ -104,6 +113,7 @@ const initialState = () => {
 export default {
     data(){
         return {
+            token: localStorage.getItem('token'),
             loading: false,
             data: initialState(),
             table: [],
@@ -119,14 +129,11 @@ export default {
     methods: {
         async getData() {
             let that = this;
-            const token = localStorage.getItem('token');
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData",
                             {},
-                            {headers: { Authorization: `Bearer `+ token}})
+                            {headers: { Authorization: `Bearer `+ that.token}})
                         .then(function ({data}) {
-                            console.table(data);
-
                             if(data.status) {
                                 that.table = data.data;
                             }
@@ -138,11 +145,10 @@ export default {
         async handleSubmit() {
             let that = this;
             this.loading = true;
-            const token = localStorage.getItem('token');
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/news/store", 
                             this.data, 
-                            {headers: { Authorization: `Bearer ${token}`}})
+                            {headers: { Authorization: `Bearer ${that.token}`}})
                         .then(function ({data}) {
                             if(data.status != undefined && data.status) {
                                 that.$swal.mixin({
@@ -180,6 +186,61 @@ export default {
                             this.loading = false;
                             this.getData();
                         });
+        },
+        async remove(pid_news) {    
+            let that = this;        
+            let foundNews = this.table.filter(item => item.pid_news == pid_news)[0];
+
+            return await this.$swal.fire({
+                icon: 'question',
+                title: 'Do you want to delete this data ?',
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    axios.post(process.env.VUE_APP_BASE_URL + "api/news/delete", 
+                            foundNews, 
+                            {headers: { Authorization: `Bearer ${that.token}`}})
+                        .then(function ({data}) {
+                            if(data.status != undefined && data.status) {
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "success",
+                                    title: data.remark
+                                });
+
+                                that.getData();
+                            }else if(data.status != undefined && !data.status) {
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "warning",
+                                    title: data.remark
+                                });
+
+                                console.log(data.remark);
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                } else if (result.isDenied) {
+                    this.$swal.fire('Changes are not saved', '', 'info')
+                }
+            })
         }
     }
     

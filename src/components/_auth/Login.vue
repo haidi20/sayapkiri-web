@@ -26,7 +26,7 @@ export default {
         return {
            data: {
              email: "cybersmd96@gmail.com",
-             password: "Ranger0010!",
+             password: "",
            }
         }
     },

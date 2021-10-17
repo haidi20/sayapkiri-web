@@ -19,7 +19,8 @@
                 aria-hidden="true"
               ></span>
               <router-link
-                class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
+                :class="menuActive"
                 to="/dashboard"
               >
                 <svg
@@ -43,7 +44,7 @@
           <ul>
             <li class="relative px-6 py-3">
               <router-link
-                class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
                 to="/news"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -72,7 +73,18 @@
 </template>
 <script>
     export default {
-
+      data() {
+        return {
+          isActive: true,
+        }
+      },
+      computed: {
+        menuActive() {
+          return {
+            'text-gray-800': this.isActive,
+          }
+        }
+      }
     }
 </script>
 <style>
