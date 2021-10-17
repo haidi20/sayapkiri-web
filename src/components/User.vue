@@ -248,6 +248,9 @@ export default {
             this.form.no_telp = foundData.no_telp;
             this.form.register_date =  moment(foundData.register_date).format('YYYY-MM-DD');
         },
+        resetForm() {
+            this.form = initialState();
+        }
     }
 }
 </script>
