@@ -1,48 +1,48 @@
 <template>
     <main-layout>
-        <div class="grid grid-cols-3">
+        <div class="grid md:grid-cols-3 ">
             <div v-for="(item, index) in table.data" class="max-w-sm overflow-hidden my-2 shadow-lg hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
-                <div class="mx-6 border-b border-gray-light grid">
+                <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
                         <div class="flex-1">
                             <div class="grid">
-                                <div class="row">
+                                <div class=" text-lg font-bold ">
                                     {{item.account}}
                                 </div>
-                                <div class="row">
+                                <div class=" text-green-600 ">
                                     {{item.account_name}}
                                 </div>
                             </div>
                         </div>
                         <div class="flex-1">
                             <div class="grid">
-                                <div class="row">
-                                    {{item.ea_enable ? "active" : "not active"}}
+                                <div class=" text-right ">
+                                    <strong>{{item.ea_enable ? "Active" : "not active"}} </strong>
                                 </div>
-                                <div class="row">
+                                <div class=" text-xs text-right ">
                                     <!-- Aync: 17 Oct 21 15:09 -->
-                                    Async: {{item.broker_time}}
+                                    Sync: {{formatDate(item.broker_time)}}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row flex my-4">
+                    <div class="flex my-4">
                         <div class="flex-1">
                             <div class="grid">
-                                <div class="row">
-                                    Floating
+                                <div class="">
+                                    <strong> Floating </strong>
                                 </div>
-                                <div class="row">
+                                <div class=" text-red-500 font-bold text-2xl ">
                                     {{item.floating}}
                                 </div>
                             </div>
                         </div>
                         <div class="flex-1">
-                            <div class="grid">
-                                <div class="row">
+                            <div class="grid text-right">
+                                <div class=" font-bold  ">
                                     Profit/Day
                                 </div>
-                                <div class="row">
+                                <div class="text-green-500 font-bold text-2xl ">
                                     {{item.profit}}
                                 </div>
                             </div>
@@ -52,30 +52,30 @@
                 <div class=" flex text-center bg-green-500 text-white py-2 ">
                     <div class="flex-1">
                         <div class="grid">
-                            <div class="row text-lg">
+                            <div class="text-lg font-bold ">
                                 {{item.trade}}
                             </div>
-                            <div class="row text-sm">
+                            <div class="text-sm">
                                 Open
                             </div>
                         </div>                     
                     </div>
                     <div class="flex-1">
                         <div class="grid">
-                            <div class="row text-lg ">
+                            <div class="text-lg font-bold ">
                                 {{item.equity}}
                             </div>
-                            <div class="row text-sm ">
+                            <div class="text-sm ">
                                 Equity USC
                             </div>
                         </div>                      
                     </div>
                     <div class="flex-1">
                         <div class="grid">
-                            <div class="row text-lg">
+                            <div class="text-lg font-bold ">
                                 {{item.free_margin}}
                             </div>
-                            <div class="row text-sm">
+                            <div class="text-sm">
                                 Free Margin
                             </div>
                         </div>  
@@ -92,6 +92,7 @@
 </template>
 
 <script>
+    import moment from 'moment';
     import axios from 'axios';
     import MainLayout from '@/components/MainLayout'
     export default {
@@ -128,6 +129,9 @@
             },
             refresh() {
                 this.getLast();
+            },
+            formatDate(date) {
+                return moment(date).format('YYYY MMM DD hh:mm');
             }
         }
     }

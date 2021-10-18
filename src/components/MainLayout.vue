@@ -3,7 +3,8 @@
       class="flex h-screen bg-gray-50 dark:bg-gray-900">
       <!-- Desktop sidebar -->
       <aside
-        class="z-20 hidden w-60 overflow-y-auto shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
+        class="z-10 transition-all duration-300 overflow-y-auto overflow-hidden shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
+        :class="actionLeftBar"
       >
         <div class="py-6 text-gray-500 dark:text-gray-400">
           <a
@@ -100,6 +101,12 @@
           <div
             class="container flex items-center h-full px-6 mx-auto dark:text-purple-300"
           >
+            <h2 @click="handleShowHideLeftBar" style="cursor: pointer">
+              <img 
+                class="w-6 border-white "
+                alt="svgImg" 
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBkPSJNIDIgNSBMIDIgNyBMIDIyIDcgTCAyMiA1IEwgMiA1IHogTSAyIDExIEwgMiAxMyBMIDIyIDEzIEwgMjIgMTEgTCAyIDExIHogTSAyIDE3IEwgMiAxOSBMIDIyIDE5IEwgMjIgMTcgTCAyIDE3IHoiPjwvcGF0aD48L3N2Zz4="/>  
+            </h2>
           </div>
         </header>
         <div class="container p-10">
@@ -110,18 +117,27 @@
 </template>
 <script>
     export default {
-      data() {
-        return {
-          isActive: true,
+        data() {
+            return {
+                showLeftMenu: window.innerWidth <= 760 ? false : true,
+                isActive: true,
+            }
+        },
+        computed: {
+            menuActive() {
+                return {
+                    'text-gray-800': this.isActive,
+                }
+            },
+            actionLeftBar() {
+                return this.showLeftMenu ? 'w-60' : 'w-0';
+            }
+        },
+        methods: {
+            handleShowHideLeftBar() {
+                this.showLeftMenu = !this.showLeftMenu;
+            },
         }
-      },
-      computed: {
-        menuActive() {
-          return {
-            'text-gray-800': this.isActive,
-          }
-        }
-      }
     }
 </script>
 <style>
