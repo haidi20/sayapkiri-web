@@ -6,7 +6,7 @@
                     <div class="row flex my-4">
                         <div class="flex-1">
                             <div class="grid">
-                                <div class=" text-lg font-bold ">
+                                <div class=" text-lg font-bold "> 
                                     {{item.account}}
                                 </div>
                                 <div class=" text-green-600 ">
