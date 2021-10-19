@@ -83,11 +83,9 @@
                 </div>
             </div>
         </div>
-        <div class="relative">
-            <button type="button" @click="refresh" class="fixed bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                refresh
-            </button>
-        </div>
+        <button type="button" @click="refresh" class="bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-refresh">
+            refresh
+        </button>
     </main-layout>
 </template>
 
@@ -128,6 +126,7 @@
                     });
             },
             refresh() {
+                console.log('refresh');
                 this.getLast();
             },
             formatDate(date) {
@@ -136,3 +135,11 @@
         }
     }
 </script>
+
+<style lang="css" scoped>
+    .btn-refresh {
+        position: fixed;
+        right: 15px;
+        top: 150px;
+    }
+</style>
