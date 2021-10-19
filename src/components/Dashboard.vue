@@ -1,6 +1,6 @@
 <template>
     <main-layout>
-        <div class="grid md:grid-cols-3 ">
+        <div class="grid md:grid-cols-4 md:gap-5 ">
             <div v-for="(item, index) in table.data" class="max-w-sm overflow-hidden my-2 shadow-lg hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
@@ -121,7 +121,7 @@
                     .then(function(data) {
                         if (data.status) {
                             that.table = data.data;
-                        }
+                        }     
                     })
                     .catch(error => {
                         console.log(error);
@@ -131,7 +131,7 @@
                 this.getLast();
             },
             formatDate(date) {
-                return moment(date).format('YYYY MMM DD hh:mm');
+                return moment(date).format('DD MMM YYYY hh:mm');
             }
         }
     }
