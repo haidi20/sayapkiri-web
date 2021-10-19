@@ -128,7 +128,7 @@
             refresh() {
                 console.log('refresh');
                 this.getLast();
-            },
+            }, 
             formatDate(date) {
                 return moment(date).format('DD MMM YYYY hh:mm');
             }
