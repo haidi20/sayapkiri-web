@@ -84,7 +84,7 @@
             </div>
         </div>
         <button type="button" @click="refresh" class="bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline btn-refresh">
-            refresh
+            refresh {{loading ? "loading": ""}}
         </button>
     </main-layout>
 </template>
@@ -96,6 +96,7 @@
     export default {
         data() {
             return {
+                loading: false,
                 token: localStorage.getItem('token'),
                 table: [],
             }
@@ -109,6 +110,7 @@
         methods: {
             async getLast() {
                 let that = this;
+                this.loading = true;
 
                 await axios.post(process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
                         this.request, {
@@ -118,15 +120,16 @@
                         })
                     .then(function(data) {
                         if (data.status) {
+                            that.loading = false;
                             that.table = data.data;
                         }     
                     })
                     .catch(error => {
+                        that.loading = false;
                         console.log(error);
                     });
             },
             refresh() {
-                console.log('refresh');
                 this.getLast();
             },  
             formatDate(date) {
