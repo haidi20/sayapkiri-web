@@ -1,8 +1,8 @@
 <template>
     <main-layout>
-        <div class="grid grid-cols-1 gap-10 lg:grid-cols-4">
+        <div class="w-full md:grid md:grid-cols-4">
             <div class="col-span-1">
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="handleSubmit">
+                <form class="bg-white shadow-md rounded py-8 px-4 md:mr-6" @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form User</p>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -28,7 +28,7 @@
                         </label>
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.register_date" id="register_date" type="date" >
                     </div>
-                    <div class="flex items-center">
+                    <div class="">
                         <button 
                             type="submit" 
                             class="bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
@@ -37,7 +37,7 @@
                         <button 
                             @click="resetForm"
                             type="button" 
-                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3">
+                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3 float-right ">
                             cancel
                         </button>
                         <span >{{loading ? "loading" : ""}}</span>
@@ -45,24 +45,20 @@
                 </form>
             </div>
             <div class="w-full col-span-3">
-                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-x-auto ">
+                <div class="bg-white shadow-md rounded py-8 px-4 overflow-x-auto ">
                     <p class="mb-5 text-3xl">Data User</p>
                     <table class="shadow-lg bg-white w-full table-auto">
                         <tr>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Action</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Nama</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Email</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">No Telp</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Register Date</th>
+                            <th class="text-white border text-center md:px-0 px-5 py-4" width="100" style="background-color: #4680FE">Action</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Nama</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Email</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">No Telp</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Register Date</th>
                         </tr>
                         <tr v-for="(item, index) in table.data"  :key="index">
                             <td class="border px-5 py-4 text-xs">
-                                <button @click="edit(item.pid_user)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
-                                    Edit
-                                </button>
-                                <button @click="remove(item.pid_user)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                                    Delete
-                                </button>
+                                <img @click="edit(item.pid_user)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                <img @click="remove(item.pid_user)" width="20" style="display: inline" class="float-right cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                             </td>
                             <td class="border px-5 py-4 text-xs">{{item.nama}}</td>
                             <td class="border px-5 py-4 text-xs">{{item.email}}</td>
