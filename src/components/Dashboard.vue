@@ -10,7 +10,8 @@
                                     {{item.account}}
                                 </div>
                                 <div class=" text-green-600 ">
-                                    {{item.account_name}}
+                                    <!-- {{item.account_name}} -->
+                                   {{sortName(item.account_name)}}
                                 </div>
                             </div>
                         </div>
@@ -141,6 +142,9 @@
             },
             colorProfit(profit) {
                 return profit <= 0 ? 'text-red-500' : 'text-green-500';
+            },
+            sortName(name) {
+                return name.substring(0, 20) ;
             }
         }
     }
