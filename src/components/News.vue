@@ -1,8 +1,8 @@
 <template>
     <main-layout>
-        <div class="grid grid-cols-1 gap-10 lg:grid-cols-4">
+        <div class=" w-full md:grid md:grid-cols-4 ">
             <div class="col-span-1">
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="handleSubmit">
+                <form class=" bg-white shadow-md rounded py-8 px-4 md:mr-6 " @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form News</p>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -45,9 +45,9 @@
                             <select 
                                 v-model="form.impact"
                                 class="block appearance-none w-full bg-white border py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
+                                <option value="LOW">LOW</option>
+                                <option value="MEDIUM">MEDIUM</option>
+                                <option value="HIGH">HIGH</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -60,7 +60,7 @@
                         </label>
                         <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.desc" id="desc" type="text" > </textarea>
                     </div>
-                    <div class="flex items-center">
+                    <div class="">
                         <button 
                             type="submit" 
                             class="bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
@@ -69,34 +69,36 @@
                         <button 
                             @click="resetForm"
                             type="button" 
-                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3">
+                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3 float-right ">
                             cancel
                         </button>
                         <span >{{loading ? "loading" : ""}}</span>
                     </div>
                 </form>
             </div>
-            <div class="w-full col-span-3">
-                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 overflow-x-auto">
+            <div class="col-span-3">
+                <div class="bg-white shadow-md rounded py-8 px-4 overflow-x-auto">
                     <p class="mb-5 text-3xl">Data News</p>
-                    <table class="shadow-lg bg-white w-full">
+                    <table class="shadow-lg bg-white w-full ">
                         <tr>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Action</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Pair</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date News</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date Start</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Date Stop</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Impact</th>
-                            <th class="text-white border text-left px-8 py-4" style="background-color: #4680FE">Description</th>
+                            <th class="text-white border text-center md:px-0 px-5 py-4 " style="background-color: #4680FE">Action</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Pair</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Date News</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Date Start</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Date Stop</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Impact</th>
+                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Description</th>
                         </tr>
                         <tr v-for="(item, index) in table"  :key="index">
                             <td class="border px-5 py-4 text-xs">
-                                <button @click="edit(item.pid_news)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
+                                <!-- <button @click="edit(item.pid_news)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded mr-2">
                                     Edit
-                                </button>
-                                <button @click="remove(item.pid_news)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
+                                </button> -->
+                                <img @click="edit(item.pid_news)" width="20" style="display: inline" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                <!-- <button @click="remove(item.pid_news)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
                                     Delete
-                                </button>
+                                </button> -->
+                                <img @click="remove(item.pid_news)" width="20" style="display: inline" class="float-right"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                             </td>
                             <td class="border px-5 py-4 text-xs">{{item.pair}}</td>
                             <td class="border px-5 py-4 text-xs">{{item.date_news}}</td>
