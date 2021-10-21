@@ -76,11 +76,13 @@
                     </div>
                 </form>
             </div>
-            <div class="col-span-3">
-                <div class="bg-white shadow-md rounded py-8 px-4 overflow-x-auto">
+            <div class=" hidden sm:hidden md:block lg:block col-span-3 ">
+                <div                    
+                    class=" bg-white shadow-md rounded py-8 px-4 overflow-x-auto  ">
                     <p class="mb-5 text-3xl">Data News</p>
-                    <table class="shadow-lg bg-white w-full ">
-                        <tr>
+                    <table 
+                        class="shadow-lg bg-white w-full ">
+                        <!-- <tr>
                             <th class="text-white border text-center md:px-0 px-5 py-4 " style="background-color: #4680FE">Action</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Pair</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Date News</th>
@@ -88,7 +90,7 @@
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Date Stop</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Impact</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Description</th>
-                        </tr>
+                        </tr> -->
                         <tr v-for="(item, index) in table"  :key="index">
                             <td class="border px-5 py-4 text-xs">
                                 <img @click="edit(item.pid_news)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
@@ -104,206 +106,245 @@
                     </table>
                 </div>
             </div>
+            <!-- <div class=" sm:mt-9 mt-9 block sm:block md:hidden lg:hidden col-span-3">
+                <div class="bg-white shadow-md rounded py-8 overflow-x-auto" >
+                    <p class="mb-5 text-3xl ml-2">Data News</p>
+                    <table 
+                        class=" shadow-lg bg-white w-full ">
+                        <tr v-for="(item, index) in table" :key="index">
+                            <td class="border px-5 py-4 text-xs">
+                                <img @click="edit(item.pid_news)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                <img @click="remove(item.pid_news)" width="20" style="display: inline" class=" ml-2 cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                <div>
+                                    bawah
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div> -->
         </div>
     </main-layout>
 </template>
 
 <script>
-import axios from 'axios';
-import moment from 'moment';
-// import {baseUrl} from '@/helpers';
-import MainLayout from '@/components/MainLayout';
+    import axios from 'axios';
+    import moment from 'moment';
+    // import {baseUrl} from '@/helpers';
+    import MainLayout from '@/components/MainLayout';
 
-const initialState = () => {
-    return {
-        pid_news: null,
-        pair: null,
-        date_news: null,
-        date_start: null,
-        date_stop: null,
-        impact: null,
-        desc: null,
-    };
-}
-
-export default {
-    data(){
+    const initialState = () => {
         return {
-            token: localStorage.getItem('token'),
-            loading: false,
-            form: initialState(),
-            table: [],           
+            pid_news: null,
+            pair: null,
+            date_news: null,
+            date_start: null,
+            date_stop: null,
+            impact: null,
+            desc: null,
         };
-    },
-    components: {
-        MainLayout
-    },
-    mounted() {
-        this.getData();
-    },
-    methods: {
-        async getData() {
-            let that = this;
-
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData",
-                            {},
-                            {headers: { Authorization: `Bearer `+ that.token}})
-                        .then(function ({data}) {
-                            if(data.status) {
-                                that.table = data.data;
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
-        },
-        async handleSubmit() {
-            let that = this;
-            this.loading = true;
-
-            if(this.form.pair == null || this.form.impact == null){
-                console.log('form kosong');
-
-                this.loading = false;
-                this.$swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timerProgressBar: true,
-                    timer: 2000,
-                })
-                .fire({
-                    icon: "warning",
-                    title: "Maaf, form todak boleh kosong",
-                });
-                return false;
-            }
-
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/news/store", 
-                            this.form, 
-                            {headers: { Authorization: `Bearer ${that.token}`}})
-                        .then(function ({data}) {
-                            if(data.status != undefined && data.status) {
-                                that.$swal.mixin({
-                                    toast: true,
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timerProgressBar: true,
-                                    timer: 2000,
-                                })
-                                .fire({
-                                    icon: "success",
-                                    title: data.remark
-                                });
-                            }else if(data.status != undefined && !data.status) {
-                                that.$swal.mixin({
-                                    toast: true,
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timerProgressBar: true,
-                                    timer: 2000,
-                                })
-                                .fire({
-                                    icon: "warning",
-                                    title: data.remark
-                                });
-
-                                console.log(data.remark);
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
-                        .finally(() => {
-                            this.form = initialState();
-                            this.loading = false;
-                            this.getData();
-                        });
-        },
-        async remove(pid_news) {    
-            let that = this;        
-            let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
-
-            return await this.$swal.fire({
-                icon: 'question',
-                title: 'Do you want to delete this data ?',
-                showDenyButton: true,
-                confirmButtonText: 'Yes',
-                denyButtonText: `No`,
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    axios.post(process.env.VUE_APP_BASE_URL + "api/news/delete", 
-                            foundData, 
-                            {headers: { Authorization: `Bearer ${that.token}`}})
-                        .then(function ({data}) {
-                            if(data.status != undefined && data.status) {
-                                that.$swal.mixin({
-                                    toast: true,
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timerProgressBar: true,
-                                    timer: 2000,
-                                })
-                                .fire({
-                                    icon: "success",
-                                    title: data.remark
-                                });
-
-                                that.getData();
-                            }else if(data.status != undefined && !data.status) {
-                                that.$swal.mixin({
-                                    toast: true,
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timerProgressBar: true,
-                                    timer: 2000,
-                                })
-                                .fire({
-                                    icon: "warning",
-                                    title: data.remark
-                                });
-
-                                console.log(data.remark);
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
-                } else if (result.isDenied) {
-                    this.$swal.fire('Changes are not saved', '', 'info')
-                }
-            })
-        },
-        edit(pid_news) {   
-            // let that = this;        
-            let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
-
-            this.form.pid_news = foundData.pid_news;
-            this.form.pair = foundData.pair;
-            this.form.impact = foundData.impact;
-            this.form.desc = foundData.desc;
-            this.form.date_news =  moment(foundData.date_news).format('YYYY-MM-DDThh:mm:ss');
-            this.form.date_start =  moment(foundData.date_start).format('YYYY-MM-DDThh:mm:ss');
-            this.form.date_stop =  moment(foundData.date_stop).format('YYYY-MM-DDThh:mm:ss');
-        },
-        eventDateNews() {            
-            if(this.form.pid_news == null) {
-                this.form.date_start = moment(this.form.date_news).subtract({ hours: 5}).format('YYYY-MM-DDThh:mm:ss');
-                this.form.date_stop = moment(this.form.date_news).add({ hours: 2}).format('YYYY-MM-DDThh:mm:ss');
-            }
-        },
-        resetForm() {
-            this.form = initialState();
-        }
     }
-    
-}
+
+    export default {
+        data() {
+            return {
+                token: localStorage.getItem('token'),
+                loading: false,
+                form: initialState(),
+                table: [],
+            };
+        },
+        components: {
+            MainLayout
+        },
+        mounted() {
+            this.getData();
+        },
+        computed: {
+            hideTable() {
+                return window.innerWidth <= 760 ? 'hidden' : '';
+            }
+        },
+        methods: {
+            async getData() {
+                let that = this;
+
+                await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData", {}, {
+                        headers: {
+                            Authorization: `Bearer ` + that.token
+                        }
+                    })
+                    .then(function({
+                        data
+                    }) {
+                        if (data.status) {
+                            that.table = data.data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            },
+            async handleSubmit() {
+                let that = this;
+                this.loading = true;
+
+                if (this.form.pair == null || this.form.impact == null) {
+                    console.log('form kosong');
+
+                    this.loading = false;
+                    this.$swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timerProgressBar: true,
+                            timer: 2000,
+                        })
+                        .fire({
+                            icon: "warning",
+                            title: "Maaf, form todak boleh kosong",
+                        });
+                    return false;
+                }
+
+                await axios.post(process.env.VUE_APP_BASE_URL + "api/news/store",
+                        this.form, {
+                            headers: {
+                                Authorization: `Bearer ${that.token}`
+                            }
+                        })
+                    .then(function({
+                        data
+                    }) {
+                        if (data.status != undefined && data.status) {
+                            that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "success",
+                                    title: data.remark
+                                });
+                        } else if (data.status != undefined && !data.status) {
+                            that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "warning",
+                                    title: data.remark
+                                });
+
+                            console.log(data.remark);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+                    .finally(() => {
+                        this.form = initialState();
+                        this.loading = false;
+                        this.getData();
+                    });
+            },
+            async remove(pid_news) {
+                let that = this;
+                let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
+
+                return await this.$swal.fire({
+                    icon: 'question',
+                    title: 'Do you want to delete this data ?',
+                    showDenyButton: true,
+                    confirmButtonText: 'Yes',
+                    denyButtonText: `No`,
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        axios.post(process.env.VUE_APP_BASE_URL + "api/news/delete",
+                                foundData, {
+                                    headers: {
+                                        Authorization: `Bearer ${that.token}`
+                                    }
+                                })
+                            .then(function({
+                                data
+                            }) {
+                                if (data.status != undefined && data.status) {
+                                    that.$swal.mixin({
+                                            toast: true,
+                                            position: "top-end",
+                                            showConfirmButton: false,
+                                            timerProgressBar: true,
+                                            timer: 2000,
+                                        })
+                                        .fire({
+                                            icon: "success",
+                                            title: data.remark
+                                        });
+
+                                    that.getData();
+                                } else if (data.status != undefined && !data.status) {
+                                    that.$swal.mixin({
+                                            toast: true,
+                                            position: "top-end",
+                                            showConfirmButton: false,
+                                            timerProgressBar: true,
+                                            timer: 2000,
+                                        })
+                                        .fire({
+                                            icon: "warning",
+                                            title: data.remark
+                                        });
+
+                                    console.log(data.remark);
+                                }
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                    } else if (result.isDenied) {
+                        this.$swal.fire('Changes are not saved', '', 'info')
+                    }
+                })
+            },
+            edit(pid_news) {
+                // let that = this;        
+                let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
+
+                this.form.pid_news = foundData.pid_news;
+                this.form.pair = foundData.pair;
+                this.form.impact = foundData.impact;
+                this.form.desc = foundData.desc;
+                this.form.date_news = moment(foundData.date_news).format('YYYY-MM-DDThh:mm:ss');
+                this.form.date_start = moment(foundData.date_start).format('YYYY-MM-DDThh:mm:ss');
+                this.form.date_stop = moment(foundData.date_stop).format('YYYY-MM-DDThh:mm:ss');
+            },
+            eventDateNews() {
+                if (this.form.pid_news == null) {
+                    this.form.date_start = moment(this.form.date_news).subtract({
+                        hours: 5
+                    }).format('YYYY-MM-DDThh:mm:ss');
+                    this.form.date_stop = moment(this.form.date_news).add({
+                        hours: 2
+                    }).format('YYYY-MM-DDThh:mm:ss');
+                }
+            },
+            resetForm() {
+                this.form = initialState();
+            },
+        }
+
+    }
 </script>
 
-// ketika set date_news
-// maka date_start = date_news - 5
-// date_stop = date_news + 2
+<style lang="css" scoped>
 
-// impact => low, medium, high
-// description type = "textarea"
+</style>
+
+// ketika set date_news // maka date_start = date_news - 5 // date_stop = date_news + 2 // impact => low, medium, high // description type = "textarea"

@@ -1,6 +1,6 @@
 <template lang="">
     <div
-      class="flex h-screen bg-gray-50 dark:bg-gray-900">
+      class="flex h-screen bg-gray-100 dark:bg-gray-900">
       <!-- Desktop sidebar -->
       <aside
         class="z-10 transition-all duration-300 overflow-y-auto overflow-hidden shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"

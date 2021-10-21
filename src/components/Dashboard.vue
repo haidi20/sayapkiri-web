@@ -1,7 +1,7 @@
 <template>
     <main-layout>
         <div class="grid md:grid-cols-4 md:gap-5 ">
-            <div v-for="(item, index) in table.data" class="max-w-sm overflow-hidden my-2 shadow-lg hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
+            <div v-for="(item, index) in table.data" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
                         <div class="flex-1">
@@ -149,7 +149,7 @@
                 return profit <= 0 ? 'text-red-500' : 'text-green-500';
             },
             sortName(name) {
-                return name.substring(0, 20) ;
+                return name.substring(0, 18) ;
             }
         }
     }
