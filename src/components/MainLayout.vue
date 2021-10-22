@@ -101,7 +101,7 @@
           <div
             class="container flex items-center h-full px-6 mx-auto dark:text-purple-300"
           >
-            <h2 @click="handleShowHideLeftBar" style="cursor: pointer">
+            <h2 @click="toggleLeftBar" style="cursor: pointer">
               <img 
                 class="w-6 border-white "
                 alt="svgImg" 
@@ -109,7 +109,7 @@
             </h2>
           </div>
         </header>
-        <div class="w-full md:px-10 md:py-16 px-3 py-2 align-middle ">
+        <div class="w-full align-middle ">
           <slot />
         </div>
       </div>
@@ -134,7 +134,7 @@
             }
         },
         methods: {
-            handleShowHideLeftBar() {
+            toggleLeftBar() {
                 this.showLeftMenu = !this.showLeftMenu;
             },
         }
