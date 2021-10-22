@@ -2,7 +2,9 @@
     <main-layout>
         <modal 
             v-bind:open="open"
-            v-bind:toggleModal="toggleModal"
+            v-bind:getLast="getLast"
+            v-bind:sortedBy="request.sorted_by"
+            @update:sortedBy="request.sorted_by = $event"
         />
         <!-- <div class="container">
             <img 
@@ -11,7 +13,7 @@
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAyklEQVRIie2TMQqDQBBF/9hYp7VZQbBLn0vYeoggmDKdm84LeJs9QHob2cqcwFpQTJEQRGZXBJMi7O92hnl/2dkPOK2I5oe4LaY9oDq8fbjeHsD/FnHFuC0qAOeNqEqHMltW2R0EgnIAagNdBQIX1tY0cXxcD/3k3wHEK3DtU3+qRdlxTeMvqkXZeSMlALGD7/t13kiJCW41AIAmkhqEFMDAtAcQ0iaS2sZYzYEWUgET876Uv3p2GXew1DLl87Ta9PUkOwNn4PQDPQExqS/MSsyAVgAAAABJRU5ErkJggg=="/>
         </div> -->
         <div class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-16 mx-3 my-2">
-            <div v-for="(item, index) in table.data" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
+            <div v-for="(item, index) in list.data" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
                         <div class="flex-1">
@@ -122,7 +124,10 @@
             return {
                 loading: false,
                 token: localStorage.getItem('token'),
-                table: [],
+                list: [],
+                request:{
+                    sorted_by: 'trade_asc',
+                },
                 open: false,
             }
         },
@@ -138,16 +143,20 @@
                 let that = this;
                 this.loading = true;
 
-                await axios.post(process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
-                        this.request, {
+                await axios.post(process.env.VUE_APP_BASE_URL + "api/dashboard/last-data", 
+                        this.request,
+                        {
                             headers: {
                                 Authorization: `Bearer ` + that.token
                             }
                         })
                     .then(function(data) {
+                        console.log(data);
                         if (data.status) {
                             that.loading = false;
-                            that.table = data.data;
+                            that.list = data.data;
+
+                            that.open = false;
                         }
                     })
                     .catch(error => {
@@ -169,7 +178,7 @@
             },
             toggleModal() {
                 this.open = !this.open;
-            }
+            },
         }
     }
 </script>
