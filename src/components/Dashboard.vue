@@ -174,7 +174,7 @@
                 return profit <= 0 ? 'text-red-500' : 'text-green-500';
             },
             sortName(name) {
-                return name.substring(0, 18) ;
+                return name.substring(0, 18);
             },
             toggleModal() {
                 this.open = !this.open;
