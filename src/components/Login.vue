@@ -35,8 +35,6 @@ export default {
         let that = this;
         await axios.post(process.env.VUE_APP_BASE_URL + "login", that.data)
                   .then(({data}) => {
-                    console.log(data);
-
                       if(data.status) {
                           let token = data.data.token;
 
