@@ -1,14 +1,16 @@
 <template>
     <main-layout>
-        <div class=" w-full md:grid md:grid-cols-4 md:mx-10 md:my-16 mx-3 my-2 ">
-            <div class="col-span-1">
+        <div class=" w-full md:grid md:grid-cols-4 md:my-16 my-2 ">
+            <div class="col-span-1 md:ml-6">
                 <form class=" bg-white shadow-md rounded py-8 px-4 md:mr-6 " @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form News</p>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
                             Pair
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.pair" id="pair" type="text" >
+                        <input 
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                            v-model="form.pair" id="pair" type="text" >
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -76,7 +78,7 @@
                     </div>
                 </form>
             </div>
-            <div class=" hidden sm:hidden md:block lg:block col-span-3 ">
+            <div class=" hidden sm:hidden md:block lg:block col-span-3 md:mr-5 ">
                 <div                    
                     class=" bg-white shadow-md rounded py-8 px-4 overflow-x-auto  ">
                     <p class="mb-5 text-3xl">Data News</p>
@@ -136,7 +138,7 @@
     const initialState = () => {
         return {
             pid_news: null,
-            pair: null,
+            pair: 'USD',
             date_news: null,
             date_start: null,
             date_stop: null,
@@ -174,11 +176,11 @@
                             Authorization: `Bearer ` + that.token
                         }
                     })
-                    .then(function({
-                        data
-                    }) {
+                    .then(function({data}) {
                         if (data.status) {
                             that.table = data.data;
+                        }else if(!data.status) {
+                            this.$router.push({name: "login"});
                         }
                     })
                     .catch(error => {

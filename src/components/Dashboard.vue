@@ -12,7 +12,7 @@
                 class="bg-white shadow-lg rounded-md cursor-pointer p-2 hover:shadow-2xl "
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAyklEQVRIie2TMQqDQBBF/9hYp7VZQbBLn0vYeoggmDKdm84LeJs9QHob2cqcwFpQTJEQRGZXBJMi7O92hnl/2dkPOK2I5oe4LaY9oDq8fbjeHsD/FnHFuC0qAOeNqEqHMltW2R0EgnIAagNdBQIX1tY0cXxcD/3k3wHEK3DtU3+qRdlxTeMvqkXZeSMlALGD7/t13kiJCW41AIAmkhqEFMDAtAcQ0iaS2sZYzYEWUgET876Uv3p2GXew1DLl87Ta9PUkOwNn4PQDPQExqS/MSsyAVgAAAABJRU5ErkJggg=="/>
         </div> -->
-        <div class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-16 mx-3 my-2">
+        <div class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6 mx-3 my-2">
             <div v-for="(item, index) in list.data" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
@@ -30,7 +30,7 @@
                         <div class="flex-1">
                             <div class="grid">
                                 <div class=" text-right ">
-                                    <strong>{{item.ea_enable ? "Active" : "not active"}} </strong>
+                                    <strong>{{item.ea_enable ? "Active" : "not Active"}} </strong>
                                 </div>
                                 <div class=" text-xs text-right ">
                                     <!-- Aync: 17 Oct 21 15:09 -->
@@ -126,7 +126,7 @@
                 token: localStorage.getItem('token'),
                 list: [],
                 request:{
-                    sorted_by: 'trade_asc',
+                    sorted_by: 'trade_desc',
                 },
                 open: false,
             }
@@ -150,13 +150,14 @@
                                 Authorization: `Bearer ` + that.token
                             }
                         })
-                    .then(function(data) {
-                        console.log(data);
-                        if (data.status) {
+                    .then(function(responses) {
+                        if (responses.data.status) {
                             that.loading = false;
-                            that.list = data.data;
+                            that.list = responses.data;
 
                             that.open = false;
+                        }else if(!responses.data.status){
+                            that.$router.push({name: "login"});
                         }
                     })
                     .catch(error => {

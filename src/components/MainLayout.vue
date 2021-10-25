@@ -97,7 +97,7 @@
         </div>
       </aside>
       <div class="flex flex-col flex-1 w-full">
-        <header class="z-10 md:py-12 py-5 shadow-md dark:bg-gray-800" style="background-color: #4680FE">
+        <header class="z-10 md:py-4 py-5 shadow-md dark:bg-gray-800" style="background-color: #4680FE">
           <div
             class="container flex items-center h-full px-6 mx-auto dark:text-purple-300"
           >

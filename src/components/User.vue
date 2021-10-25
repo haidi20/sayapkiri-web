@@ -1,7 +1,7 @@
 <template>
     <main-layout>
-        <div class="w-full md:grid md:grid-cols-4 md:mx-10 md:my-16 mx-3 my-2 ">
-            <div class="col-span-1">
+        <div class="w-full md:grid md:grid-cols-4 md:my-16my-2 ">
+            <div class="col-span-1 md:ml-6">
                 <form class="bg-white shadow-md rounded py-8 px-4 md:mr-6" @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form User</p>
                     <div class="mb-4">
@@ -44,7 +44,7 @@
                     </div>
                 </form>
             </div>
-            <div class="w-full col-span-3">
+            <div class="w-full col-span-3 md:mr-5">
                 <div class="bg-white shadow-md rounded py-8 px-4 overflow-x-auto ">
                     <p class="mb-5 text-3xl">Data User</p>
                     <table class="shadow-lg bg-white w-full table-auto">
