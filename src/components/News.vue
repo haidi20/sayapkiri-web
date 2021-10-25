@@ -65,13 +65,13 @@
                     <div class="">
                         <button 
                             type="submit" 
-                            class="bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            class=" btn-send ">
                             Kirim
                         </button>
                         <button 
                             @click="resetForm"
                             type="button" 
-                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3 float-right ">
+                            class=" btn-cancel ">
                             cancel
                         </button>
                         <span >{{loading ? "loading" : ""}}</span>
@@ -128,6 +128,18 @@
         </div>
     </main-layout>
 </template>
+
+<style lang="postcss" scoped>
+    .btn-send {
+        @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg
+                hover:bg-green-700 hover:text-white 
+
+    }
+    .btn-cancel {
+        @apply bg-white text-red-500 border-2 font-bold py-2 px-4 float-right rounded-lg           
+                hover:bg-red-500 hover:text-white
+    }
+</style>
 
 <script>
     import axios from 'axios';
@@ -344,9 +356,5 @@
 
     }
 </script>
-
-<style lang="css" scoped>
-
-</style>
 
 // ketika set date_news // maka date_start = date_news - 5 // date_stop = date_news + 2 // impact => low, medium, high // description type = "textarea"
