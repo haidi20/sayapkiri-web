@@ -47,13 +47,14 @@ const routes = [{
         name: 'notFound',
         component: NotFound,
     }
-]
+];
 
 const router = createRouter({
-    mode: 'history',
+    // mode: 'history',
+    mode: 'hash',
     history: createWebHistory(),
     routes: routes
-})
+});
 
 
 export default router;
