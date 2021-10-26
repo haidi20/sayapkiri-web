@@ -43,10 +43,10 @@
                         <div class="flex-1">
                             <div class="grid">
                                 <div class="">
-                                    <strong> Floating </strong>
+                                    <strong style="display: inline;" > Floating </strong> <p class="text-sm text-blue-500 font-bold " style="display: inline;" >{{item.dd}} %</p>
                                 </div>
                                 <div class=" text-red-500 font-bold text-2xl ">
-                                    {{item.floating}}
+                                    {{item.floating}} 
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                 loading: false,
                 token: localStorage.getItem('token'),
                 list: [],
-                request:{
+                request: {
                     sorted_by: 'trade_desc',
                 },
                 open: false,
@@ -143,9 +143,8 @@
                 let that = this;
                 this.loading = true;
 
-                await axios.post(process.env.VUE_APP_BASE_URL + "api/dashboard/last-data", 
-                        this.request,
-                        {
+                await axios.post(process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
+                        this.request, {
                             headers: {
                                 Authorization: `Bearer ` + that.token
                             }
@@ -156,8 +155,10 @@
                             that.list = responses.data.data;
 
                             that.open = false;
-                        }else if(!responses.data.status){
-                            that.$router.push({name: "login"});
+                        } else if (!responses.data.status) {
+                            that.$router.push({
+                                name: "login"
+                            });
                         }
                     })
                     .catch(error => {
@@ -190,6 +191,7 @@
         right: 15px;
         bottom: 75px;
     }
+    
     .btn-refresh {
         position: fixed;
         right: 15px;

@@ -1,6 +1,6 @@
 <template>
     <main-layout>
-        <div class="w-full md:grid md:grid-cols-4 md:my-16my-2 ">
+        <div class="w-full md:grid md:grid-cols-4 md:my-16 my-2 ">
             <div class="col-span-1 md:ml-6">
                 <form class="bg-white shadow-md rounded py-8 px-4 md:mr-6" @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form User</p>
@@ -31,13 +31,13 @@
                     <div class="">
                         <button 
                             type="submit" 
-                            class="bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            class=" btn-send ">
                             Kirim
                         </button>
                         <button 
                             @click="resetForm"
                             type="button" 
-                            class="bg-white text-red-500 border-2 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-3 float-right ">
+                            class=" btn-cancel ">
                             cancel
                         </button>
                         <span >{{loading ? "loading" : ""}}</span>
@@ -71,6 +71,18 @@
         </div>
     </main-layout>
 </template>
+
+<style lang="postcss" scoped>
+    .btn-send {
+        @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg
+                hover:bg-green-700 hover:text-white 
+
+    }
+    .btn-cancel {
+        @apply bg-white text-red-500 border-2 font-bold py-2 px-4 float-right rounded-lg           
+                hover:bg-red-500 hover:text-white
+    }
+</style>
 
 <script>
 import axios from 'axios';
@@ -250,7 +262,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

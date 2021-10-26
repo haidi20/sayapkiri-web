@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Account from '@/components/Account'
 import NotFound from '@/components/NotFound'
 import Dashboard from '@/components/Dashboard'
+import UltraProfit from '@/components/UltraProfit'
 
 const routes = [{
         path: '/',
@@ -35,6 +36,11 @@ const routes = [{
         path: '/account',
         name: 'account',
         component: Account,
+    },
+    {
+        path: '/ultra-profit',
+        name: 'ultraProfit',
+        component: UltraProfit,
     },
     {
         path: "/:pathMatch(.*)*",

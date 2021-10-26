@@ -85,7 +85,7 @@
             <li class="relative px-6 py-3">
               <router-link
                 class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
-                to="/news"
+                to="/ultra-profit"
               >
                 <img 
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA70lEQVRIie3UP04CQRTH8c8KMR7AE1AaO29gwwU8Ar2lPZi4NJacgNgbjoDQWtuaLKEkxNZg4RI2O8ufZdfC6C/Z5s2b3/ftezPDv0poglVN33htGmUAq5oLjvKBNb1bwbSb8Qm0dQGn6GOGBHEaK+WzCxAL+xxXBUxshpUUAJKCvMDnZEsVOys5Mq90ix7K+uwbcuy7LZWHXOWY9vKAH79o2SG/1Gg+3p/ym9VCB0+YC4/nGwa4wXlmX9PmQl4cCotwiVs8Y5GDfeIVj3hPYzMFL+mhauAKdxhhKfzD4bHmRTrDNe4xxQfadQL+gL4ASwtvvtpZqD4AAAAASUVORK5CYII="/>
