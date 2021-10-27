@@ -8,10 +8,10 @@
       >
         <div class="py-6 text-gray-500 dark:text-gray-400">
           <a
-            class="ml-6 text-2xl font-bold text-gray-800 dark:text-gray-200"
+            class="ml-6 text-2xl font-bold text-blue-400 dark:text-gray-200"
             href="#"
           >
-            Logo
+            SayapKiri
           </a>
           <ul class="mt-6">
             <li class="relative">
