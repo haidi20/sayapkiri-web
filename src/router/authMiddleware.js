@@ -14,6 +14,8 @@ export default (to, from, next) => {
     } else if (to.path == '/login') {
         if (dateNow <= expiredAt) {
             next({ name: 'dashboard' }).catch(() => {});
+        } else {
+            next();
         }
     } else {
         next();
