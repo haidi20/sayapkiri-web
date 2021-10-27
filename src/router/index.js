@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router"
 
+import auth from './authMiddleware';
+
 import User from '@/components/User'
 import News from '@/components/News'
 import Login from '@/components/Login'
@@ -10,7 +12,7 @@ import UltraProfit from '@/components/UltraProfit'
 
 const routes = [{
         path: '/',
-        redirect: { name: 'login' }
+        redirect: { name: 'dashboard' }
     },
     {
         path: '/dashboard',
@@ -53,11 +55,9 @@ const router = createRouter({
     // mode: 'history',
     mode: 'hash',
     history: createWebHashHistory(),
-    scrollBehavior: () => ({
-        y: 0
-    }),
     routes: routes
 });
 
+router.beforeEach(auth);
 
 export default router;

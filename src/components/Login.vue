@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import moment from 'moment';
 import axios from 'axios';
 
 export default {
@@ -26,7 +27,7 @@ export default {
         return {
            data: {
              email: "cybersmd96@gmail.com",
-             password: "",
+             password: "Ranger0010!",
            }
         }
     },
@@ -37,9 +38,11 @@ export default {
                   .then(({data}) => {
                       if(data.status) {
                           let token = data.data.token;
+                          let expiredAt = moment(data.data.expired_at).format('YYYY-MM-DD hh:mm:ss');
 
+                          localStorage.setItem("expiredAt", expiredAt);
                           localStorage.setItem("token", token);
-                          this.$router.push({name: "dashboard"});
+                          // this.$router.push({name: "dashboard"});
                       }
                   })
                   .catch(error => {

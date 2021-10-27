@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import router from './router'
+import route from './router'
 import moment from 'moment'
 import './index.css'
 
@@ -11,7 +11,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 const vueApp = createApp(App);
 vueApp.config.devtools = true;
-vueApp.use(router)
+vueApp.use(route)
     .use(VueAxios, axios)
     .use(VueSweetalert2)
     .use(moment)
