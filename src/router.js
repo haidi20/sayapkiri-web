@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 
 import User from '@/components/User'
 import News from '@/components/News'
@@ -52,7 +52,7 @@ const routes = [{
 const router = createRouter({
     // mode: 'history',
     mode: 'hash',
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     scrollBehavior: () => ({
         y: 0
     }),
