@@ -20,12 +20,11 @@
                 aria-hidden="true"
               ></span>
               <router-link
-                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                :class="menuActive"
+                class="router-link"
                 to="/dashboard"
               >
                 <svg
-                  class="w-6 h-6"
+                  class="w-6 h-6 "
                   aria-hidden="true"
                   fill="none"
                   stroke-linecap="round"
@@ -140,6 +139,12 @@
         }
     }
 </script>
-<style>
 
+<style lang="postcss" scoped>
+  .router-link {
+    @apply inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800
+  }
+  .router-link-active {
+    @apply text-black
+  }
 </style>
