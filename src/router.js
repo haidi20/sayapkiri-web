@@ -53,6 +53,9 @@ const router = createRouter({
     // mode: 'history',
     mode: 'hash',
     history: createWebHistory(),
+    scrollBehavior: () => ({
+        y: 0
+    }),
     routes: routes
 });
 
