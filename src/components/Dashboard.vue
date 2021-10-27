@@ -31,6 +31,9 @@
                             <div class="grid">
                                 <div class=" text-right ">
                                     <strong>{{item.ea_enable ? "Active" : "not Active"}} </strong>
+                                    <span class="text-xs font-semibold inline-block ml-1 py-1 px-1 rounded-sm text-pink-600 bg-pink-200 last:mr-0 mr-1">
+                                        {{item.location}}
+                                    </span>
                                 </div>
                                 <div class=" text-xs text-right ">
                                     <!-- Aync: 17 Oct 21 15:09 -->

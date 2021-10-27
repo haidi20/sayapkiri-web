@@ -3,7 +3,7 @@
       class="flex h-screen bg-gray-100 dark:bg-gray-900">
       <!-- Desktop sidebar -->
       <aside
-        class="z-10 transition-all duration-300 overflow-y-auto overflow-hidden shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
+        class="z-10 h-full transition-all duration-300 overflow-y-auto overflow-hidden shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
         :class="actionLeftBar"
       >
         <div class="py-6 text-gray-500 dark:text-gray-400">
@@ -14,11 +14,11 @@
             Logo
           </a>
           <ul class="mt-6">
-            <li class="relative px-6 py-3">
-              <span
+            <li class="relative">
+              <!-- <span
                 class="absolute inset-y-0 left-0 w-1 rounded-tr-lg rounded-br-lg"
                 aria-hidden="true"
-              ></span>
+              ></span> -->
               <router-link
                 class="router-link"
                 to="/dashboard"
@@ -37,14 +37,14 @@
                     d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                   ></path>
                 </svg>
-                <span class="ml-4 text-2xl ">Dashboard</span>
+                <span class=" ml-4 text-2xl ">Dashboard</span>
               </router-link>
             </li>
           </ul>
           <ul>
-            <li class="relative px-6 py-3">
+            <li class="relative">
               <router-link
-                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                class="router-link"
                 to="/news"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -56,9 +56,9 @@
             </li>
           </ul>
           <ul>
-            <li class="relative px-6 py-3">
+            <li class="relative">
               <router-link
-                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                class="router-link"
                 to="/user"
               >
                 <img 
@@ -68,9 +68,9 @@
             </li>
           </ul>
           <ul>
-            <li class="relative px-6 py-3">
+            <li class="relative">
               <router-link
-                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                class="router-link"
                 to="/account"
               >
                <img 
@@ -81,9 +81,9 @@
             </li>
           </ul>
           <ul>
-            <li class="relative px-6 py-3">
+            <li class="relative">
               <router-link
-                class="inline-flex items-center w-full text-sm font-semibold  transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 "
+                class="router-link"
                 to="/ultra-profit"
               >
                 <img 
@@ -114,6 +114,15 @@
       </div>
     </div>
 </template>
+<style lang="postcss" scoped>
+  .router-link {
+    @apply inline-flex items-center w-full text-sm font-semibold 
+    transition-colors duration-150 px-6 py-4 hover:bg-blue-400 hover:text-white
+  }
+  .router-link-active {
+    @apply bg-blue-400 text-white
+  }
+</style>
 <script>
     export default {
         data() {
@@ -139,13 +148,3 @@
         }
     }
 </script>
-
-<style lang="postcss" scoped>
-  .router-link {
-    @apply inline-flex items-center w-full text-sm font-semibold 
-    transition-colors duration-150 hover:text-gray-800
-  }
-  .router-link-active {
-    @apply text-black
-  }
-</style>
