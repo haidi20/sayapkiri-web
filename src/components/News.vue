@@ -99,9 +99,9 @@
                                 <img @click="remove(item.pid_news)" width="20" style="display: inline" class="float-right cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                             </td>
                             <td class="border px-5 py-4 text-xs">{{item.pair}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.date_news}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.date_start}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.date_stop}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.custom_date_news}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.custom_date_start}}</td>
+                            <td class="border px-5 py-4 text-xs">{{item.custom_date_stop}}</td>
                             <td class="border px-5 py-4 text-xs">{{item.impact}}</td>
                             <td class="border px-5 py-4 text-xs">{{item.desc}}</td>
                         </tr>
