@@ -42,7 +42,7 @@ export default {
 
                           localStorage.setItem("expiredAt", expiredAt);
                           localStorage.setItem("token", token);
-                          // this.$router.push({name: "dashboard"});
+                          this.$router.push({name: "dashboard"});
                       }
                   })
                   .catch(error => {

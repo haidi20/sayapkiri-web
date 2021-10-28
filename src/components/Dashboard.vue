@@ -30,8 +30,8 @@
                         <div class="flex-1">
                             <div class="grid">
                                 <div class=" text-right ">
-                                    <strong>{{item.ea_enable ? "Active" : "not Active"}} </strong>
-                                    <span class="text-xs font-semibold inline-block ml-1 py-1 px-1 rounded-sm text-white bg-green-500 last:mr-0 mr-1">
+                                    <strong>{{item.ea_enable == 1 ? "Active" : "Non-Active"}} </strong>
+                                    <span v-if="item.location" class="text-xs font-semibold inline-block ml-1 py-1 px-1 rounded-sm text-white bg-green-500 last:mr-0 mr-1">
                                         {{item.location}}
                                     </span>
                                 </div>
@@ -67,7 +67,9 @@
                         </div>
                     </div>
                 </div>
-                <div class=" flex text-center bg-green-500 text-white py-2 ">
+                <div 
+                    :class="bgFooter(item.ea_enable)"
+                    class=" flex text-center text-white py-2 ">
                     <div class="flex-1">
                         <div class="grid">
                             <div class="text-lg font-bold ">
@@ -178,6 +180,10 @@
             colorProfit(profit) {
                 return profit <= 0 ? 'text-red-500' : 'text-green-500';
             },
+            bgFooter(eaEnable){
+                console.log(eaEnable);
+                return eaEnable == 1 ? 'bg-green-500' : 'bg-gray-500';
+            },
             sortName(name) {
                 return name.substring(0, 18);
             },
@@ -188,7 +194,7 @@
     }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss">
     .btn-orderBy {
         position: fixed;
         right: 15px;
