@@ -335,18 +335,18 @@
                 this.form.pair = foundData.pair;
                 this.form.impact = foundData.impact;
                 this.form.desc = foundData.desc;
-                this.form.date_news = moment(foundData.date_news).format('YYYY-MM-DDThh:mm:ss');
-                this.form.date_start = moment(foundData.date_start).format('YYYY-MM-DDThh:mm:ss');
-                this.form.date_stop = moment(foundData.date_stop).format('YYYY-MM-DDThh:mm:ss');
+                this.form.date_news = moment(foundData.date_news).format('YYYY-MM-DDTHH:mm:ss');
+                this.form.date_start = moment(foundData.date_start).format('YYYY-MM-DDTHH:mm:ss');
+                this.form.date_stop = moment(foundData.date_stop).format('YYYY-MM-DDTHH:mm:ss');
             },
             eventDateNews() {
                 if (this.form.pid_news == null) {
                     this.form.date_start = moment(this.form.date_news).subtract({
                         hours: 5
-                    }).format('YYYY-MM-DDThh:mm:ss');
+                    }).format('YYYY-MM-DDTHH:mm:ss');
                     this.form.date_stop = moment(this.form.date_news).add({
                         hours: 2
-                    }).format('YYYY-MM-DDThh:mm:ss');
+                    }).format('YYYY-MM-DDTHH:mm:ss');
                 }
             },
             resetForm() {
