@@ -115,9 +115,6 @@
     </div>
 </template>
 <style lang="postcss" scoped>
-  /* @tailwind base;
-  @tailwind components;
-  @tailwind utilities; */
 
   .router-link {
     @apply inline-flex items-center w-full text-sm text-gray-400 font-semibold 
