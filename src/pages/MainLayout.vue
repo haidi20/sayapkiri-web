@@ -114,7 +114,7 @@
       </div>
     </div>
 </template>
-<style lang="postcss" scoped>
+<style lang="postcss">
 
   .router-link {
     @apply inline-flex items-center w-full text-sm text-gray-700 font-semibold 
@@ -123,6 +123,23 @@
   }
   .router-link-active {
     @apply text-white bg-blue-450
+  }
+  .input-custom {
+      @apply border w-full py-2 px-3 border-gray-300 text-black
+      overflow-hidden rounded-md shadow-sm
+      focus:outline-none        
+  }
+  .label-custom {
+    @apply block text-black text-sm font-bold mb-2
+  }
+  .btn-send {
+      @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg
+              hover:bg-green-700 hover:text-white 
+
+  }
+  .btn-cancel {
+      @apply bg-white text-red-500 border-2 border-red-500 font-bold py-2 px-4 float-right rounded-lg           
+              hover:bg-red-500 hover:text-white
   }
 </style>
 <script>

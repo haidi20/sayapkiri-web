@@ -5,42 +5,42 @@
                 <form class=" bg-white shadow-md rounded py-8 px-4 md:mr-6 " @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form News</p>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Pair
                         </label>
                         <input 
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                            class="input-custom" 
                             v-model="form.pair" id="pair" type="text" >
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Date News
                         </label>
                         <input 
                             @input="eventDateNews($event.target.value)"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                            class="input-custom" 
                             v-model="form.date_news" 
                             id="date_news" 
                             type="datetime-local" >
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Date Start
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.date_start" id="date_start" type="datetime-local" >
+                        <input class="input-custom" v-model="form.date_start" id="date_start" type="datetime-local" >
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Date Stop
                         </label>
                         <input 
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                            class="input-custom" 
                             v-model="form.date_stop" 
                             id="date_stop" 
                             type="datetime-local" >
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Impact
                         </label>
                         <div class="inline-block relative w-full">
@@ -57,10 +57,10 @@
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Description
                         </label>
-                        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.desc" id="desc" type="text" > </textarea>
+                        <textarea class="input-custom" v-model="form.desc" id="desc" type="text" > </textarea>
                     </div>
                     <div class="">
                         <button 
@@ -145,7 +145,7 @@
     import axios from 'axios';
     import moment from 'moment';
     // import {baseUrl} from '@/helpers';
-    import MainLayout from '@/components/MainLayout';
+    import MainLayout from '@/pages/MainLayout';
 
     const initialState = () => {
         return {

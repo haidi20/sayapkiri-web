@@ -5,28 +5,28 @@
                 <form class="bg-white shadow-md rounded py-8 px-4 md:mr-6" @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form User</p>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class=" label-custom ">
                             Nama
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.nama" id="nama" type="text" >
+                        <input class="input-custom" v-model="form.nama" id="nama" type="text" >
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Email
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.email" id="email" type="email" >
+                        <input class="input-custom" v-model="form.email" id="email" type="email" >
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             No Telp
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.no_telp" id="no_telp" type="text" >
+                        <input class="input-custom" v-model="form.no_telp" id="no_telp" type="text" >
                     </div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2">
+                        <label class="label-custom">
                             Register Date
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="form.register_date" id="register_date" type="date" >
+                        <input class="input-custom" v-model="form.register_date" id="register_date" type="date" >
                     </div>
                     <div class="">
                         <button 
@@ -87,7 +87,7 @@
 <script>
 import axios from 'axios';
 import moment from 'moment';
-import MainLayout from '@/components/MainLayout';
+import MainLayout from '@/pages/MainLayout';
 
 const initialState = () => {
     return {

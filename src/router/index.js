@@ -2,13 +2,13 @@ import { createRouter, createWebHashHistory } from "vue-router"
 
 import auth from './authMiddleware';
 
-import User from '@/components/User'
-import News from '@/components/News'
-import Login from '@/components/Login'
-import Account from '@/components/Account'
-import NotFound from '@/components/NotFound'
-import Dashboard from '@/components/Dashboard'
-import UltraProfit from '@/components/UltraProfit'
+import User from '@/pages/User'
+import News from '@/pages/News'
+import Login from '@/pages/Login'
+import Account from '@/pages/Account'
+import NotFound from '@/pages/NotFound'
+import Dashboard from '@/pages/Dashboard'
+import UltraProfit from '@/pages/UltraProfit'
 
 const routes = [{
         path: '/',

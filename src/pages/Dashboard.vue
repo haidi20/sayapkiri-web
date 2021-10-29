@@ -119,11 +119,25 @@
     </main-layout>
 </template>
 
+<style lang="scss">
+    .btn-orderBy {
+        position: fixed;
+        right: 15px;
+        bottom: 75px;
+    }
+    
+    .btn-refresh {
+        position: fixed;
+        right: 15px;
+        bottom: 30px;
+    }
+</style>
+
 <script>
     import moment from 'moment';
     import axios from 'axios';
-    import MainLayout from '@/components/MainLayout'
-    import Modal from '@/components/DashboardModal'
+    import MainLayout from '@/pages/MainLayout'
+    import Modal from '@/pages/DashboardModal'
     export default {
         data() {
             return {
@@ -193,17 +207,3 @@
         }
     }
 </script>
-
-<style lang="scss">
-    .btn-orderBy {
-        position: fixed;
-        right: 15px;
-        bottom: 75px;
-    }
-    
-    .btn-refresh {
-        position: fixed;
-        right: 15px;
-        bottom: 30px;
-    }
-</style>

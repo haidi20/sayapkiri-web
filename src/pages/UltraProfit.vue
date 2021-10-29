@@ -5,9 +5,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import moment from 'moment';
-import MainLayout from '@/components/MainLayout';
+import MainLayout from '@/pages/MainLayout';
 
 export default {
     components: { 
