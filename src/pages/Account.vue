@@ -85,6 +85,9 @@
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Investor Password</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Location</th>
                         </tr>
+                        <tr v-if="loading">
+                            <td  class=" text-center " colspan="8">Loading</td>
+                        </tr>
                         <tr v-for="(item, index) in table.data"  :key="index">
                             <td class="border px-5 py-4 text-xs">
                                 <img @click="edit(item.pid_account)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
@@ -157,6 +160,7 @@ export default {
     methods: {
         async getDataAccounts() {
             let that = this;
+            this.loading = true;
 
             await axios.post(process.env.VUE_APP_BASE_URL + "api/account",
                            this.request,
@@ -167,6 +171,7 @@ export default {
 
                             if(status){
                                 this.table = data;
+                                this.loading = false;
                             }
                         })
                         .catch(error => {
