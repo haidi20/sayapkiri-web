@@ -9,7 +9,7 @@
           <input
             id="email"
             @keyup="showOptions = true"
-            v-model="formData.client"
+            v-model="name_user"
             class=" input-custom "
             autocomplete="off"
           />
@@ -25,7 +25,7 @@
               class="px-3 py-2 cursor-pointer hover:bg-gray-200"
               :key="index"
             >
-              {{ value.clients_name }}
+              {{ value.nama }}
             </li>
           </ul>
         </div>
@@ -39,29 +39,44 @@ export default {
   data() {
     return {
       show: false,
-      formData: {},
       showOptions: false,
-      data: [
-        { id: 1, clients_name: "Jane Doe" },
-        { id: 2, clients_name: "John Doe" },
-        { id: 3, clients_name: "Hello World" },
-      ]
     };
+  },
+  props: {
+    data: Array,
+    nameUser: String,
+    chooseUser: Function,
+  },
+  emits: ['update:nameUser'],
+  computed: {
+      name_user: {
+          get() {
+              return this.nameUser
+          },
+          set(value) {
+              this.$emit('update:nameUser', value)
+          }
+      }
   },
   methods: {
     setInput(value) {
-        this.formData.client_id = value.id;
-        this.formData.client = value.clients_name;
+        this.$emit('update:nameUser', value.nama);
         this.showOptions = false;
+
+        this.chooseUser(value);
     },
     resultQuery() {
-      if (this.formData.client) {
-        let data = this.data.filter((item) => {
-          return this.formData.client
+      if (this.nameUser) {
+        let data = this.data.filter(item => {
+          return this.nameUser
             .toLowerCase()
             .split(" ")
-            .every((v) => item.clients_name.toLowerCase().includes(v));
+            .every(v => item.nama?.toLowerCase().includes(v));
         });
+
+        // let data = this.data.filter(item => 
+        //   this.nameUser == item.nama
+        // )
 
         return data;
       } else {
@@ -73,7 +88,7 @@ export default {
 </script>
 
 <style scoped>
-.max-height-48 {
-  max-height: 200px;
-}
+  .max-height-48 {
+    max-height: 200px;
+  }
 </style>

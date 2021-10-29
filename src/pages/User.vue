@@ -32,13 +32,13 @@
                         <button 
                             type="submit" 
                             class=" btn-send ">
-                            Kirim
+                            Send
                         </button>
                         <button 
                             @click="resetForm"
                             type="button" 
                             class=" btn-cancel ">
-                            cancel
+                            Cancel
                         </button>
                         <span >{{loading ? "loading" : ""}}</span>
                     </div>
