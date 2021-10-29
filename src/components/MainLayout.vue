@@ -117,7 +117,7 @@
 <style lang="postcss" scoped>
 
   .router-link {
-    @apply inline-flex items-center w-full text-sm text-gray-400 font-semibold 
+    @apply inline-flex items-center w-full text-sm text-gray-700 font-semibold 
     transition-colors duration-150 px-6 py-4 
     hover:bg-blue-450 hover:text-white
   }
