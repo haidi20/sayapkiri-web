@@ -84,7 +84,7 @@
                     <p class="mb-5 text-3xl">Data News</p>
                     <table 
                         class="shadow-lg bg-white w-full ">
-                        <!-- <tr>
+                        <tr>
                             <th class="text-white border text-center md:px-0 px-5 py-4 " style="background-color: #4680FE">Action</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Pair</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Date News</th>
@@ -92,7 +92,10 @@
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Date Stop</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Impact</th>
                             <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Description</th>
-                        </tr> -->
+                        </tr>
+                        <tr v-if="loading">
+                            <td  class=" text-center " colspan="7">Loading</td>
+                        </tr>
                         <tr v-for="(item, index) in table"  :key="index">
                             <td class="border px-5 py-4 text-xs">
                                 <img @click="edit(item.pid_news)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
@@ -182,6 +185,7 @@
         methods: {
             async getData() {
                 let that = this;
+                this.loading = true;
 
                 await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData", {}, {
                         headers: {
@@ -191,6 +195,7 @@
                     .then(function({data}) {
                         if (data.status) {
                             that.table = data.data;
+                            that.loading = false;
                         }else if(!data.status) {
                             this.$router.push({name: "login"});
                         }
