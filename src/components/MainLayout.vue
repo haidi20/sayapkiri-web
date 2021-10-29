@@ -1,6 +1,6 @@
 <template lang="">
     <div
-      class="flex h-screen bg-gray-100 dark:bg-gray-900">
+      class="flex h-screen bg-gray-300 ">
       <!-- Desktop sidebar -->
       <aside
         class="z-10 h-full transition-all duration-300 overflow-y-auto overflow-hidden shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
@@ -8,7 +8,7 @@
       >
         <div class="py-6 text-gray-500 dark:text-gray-400">
           <a
-            class="ml-6 text-2xl font-bold text-blue-400 dark:text-gray-200"
+            class="ml-6 text-2xl font-bold text-blue-custom text-blue-450 "
             href="#"
           >
             SayapKiri
@@ -115,12 +115,17 @@
     </div>
 </template>
 <style lang="postcss" scoped>
+  /* @tailwind base;
+  @tailwind components;
+  @tailwind utilities; */
+
   .router-link {
-    @apply inline-flex items-center w-full text-sm font-semibold 
-    transition-colors duration-150 px-6 py-4 hover:bg-blue-400 hover:text-white
+    @apply inline-flex items-center w-full text-sm text-gray-400 font-semibold 
+    transition-colors duration-150 px-6 py-4 
+    hover:bg-blue-450 hover:text-white
   }
   .router-link-active {
-    @apply bg-blue-400 text-white
+    @apply text-white bg-blue-450
   }
 </style>
 <script>

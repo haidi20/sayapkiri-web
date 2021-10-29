@@ -6,6 +6,16 @@
 
         <!-- A basic modal dialog with title, body and one button to close -->
         <div class="h-auto text-left w-full bg-white rounded shadow-2xl md:max-w-xl lg:p-8 p-4 mx-2">
+            <!-- <div class="mt-3 text-center sm:text-left">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">
+                    Cari Nama
+                </h3>
+                <div class="mt-2">
+                    <div class="grid">
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" v-model="name" >
+                    </div>
+                </div>
+            </div> -->
             <div class="mt-3 text-center sm:text-left">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">
                     Pilih Urutan Data

@@ -10,6 +10,7 @@
     "dependencies": {
         "axios": "^0.22.0",
         "core-js": "^3.6.5",
+        "npx": "^10.2.2",
         "vue": "^3.0.0",
         "vue-axios": "^3.3.7",
         "vue-moment": "^4.1.0",
@@ -27,6 +28,7 @@
         "eslint-plugin-vue": "^7.0.0",
         "node-sass": "^6.0.1",
         "postcss": "^7.0.36",
+        "postcss-preset-env": "^6.7.0",
         "sass-loader": "^10",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4"
     },
