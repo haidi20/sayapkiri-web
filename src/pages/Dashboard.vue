@@ -12,7 +12,15 @@
                 class="bg-white shadow-lg rounded-md cursor-pointer p-2 hover:shadow-2xl "
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAyklEQVRIie2TMQqDQBBF/9hYp7VZQbBLn0vYeoggmDKdm84LeJs9QHob2cqcwFpQTJEQRGZXBJMi7O92hnl/2dkPOK2I5oe4LaY9oDq8fbjeHsD/FnHFuC0qAOeNqEqHMltW2R0EgnIAagNdBQIX1tY0cXxcD/3k3wHEK3DtU3+qRdlxTeMvqkXZeSMlALGD7/t13kiJCW41AIAmkhqEFMDAtAcQ0iaS2sZYzYEWUgET876Uv3p2GXew1DLl87Ta9PUkOwNn4PQDPQExqS/MSsyAVgAAAABJRU5ErkJggg=="/>
         </div> -->
-        <div class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6 mx-3 my-2">
+        <div v-if="list.length <= 0" class="bg-white mx-3 my-2 h-screen flex ">
+            <div class="text-center m-auto ">
+                <img 
+                    class=" m-auto "
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAwUlEQVRIie2UQQrCMBBFH130CIIguPAqigp6moJ4AC8j7vQwuq7QraC41oUzEFJDp4kLF3kQCtOZ95MGCpkIJkADvHquRmY7OUXIdR275DNpvANDy26EAXCT2WWoqQQu0lT1kCuVzJ7F1WJL/Kfx18aXj4DHDwOewNgNOHgNsbiOvRb1Yt0TpAaoa1oAK3m5M+7MclJ1rbUw53PzoUFrgNZLcQYbYmnNFwkyEzng/wKu8oz9RbiOryyAOiGgFkfGzhvuZpNwB/LJQQAAAABJRU5ErkJggg=="/>
+                <p class=" " >Data Kosong</p>
+            </div>
+        </div>
+        <div v-if="list.length > 0" class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6 mx-3 my-2">
             <div v-for="(item, index) in list" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
@@ -194,8 +202,7 @@
             colorProfit(profit) {
                 return profit <= 0 ? 'text-red-500' : 'text-green-500';
             },
-            bgFooter(eaEnable){
-                console.log(eaEnable);
+            bgFooter(eaEnable) {
                 return eaEnable == 1 ? 'bg-green-500' : 'bg-gray-500';
             },
             sortName(name) {

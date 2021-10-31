@@ -124,7 +124,7 @@
             </h2>
           </div>
         </header>
-        <div class="w-full align-middle ">
+        <div class="w-full h-full align-middle ">
           <slot />
         </div>
       </div>
