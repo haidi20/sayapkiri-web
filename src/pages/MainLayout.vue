@@ -92,6 +92,22 @@
               </router-link>
             </li>
           </ul>
+
+          <ul>
+            <li 
+              @click="logout"
+              class="relative">
+              <a
+                class="router-link"
+                href="#"
+              >
+                <img 
+                  class="w-6"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAADCklEQVRoge3aS6hVVRzH8c+xBmlhWoZyDdTSwBIifKDQA4NImiToqFScORCsQTPnGs4sHAkOBAeiNjCJHgpBiFH3gpWvMhTyCSqKlfm4aIP/2p7D6XjO2efs293C/sLisPZa/7X/v732Y/3/Z1Ecj+AlrMInOIhreKfAczyQR3u0G4NZmJfKXLyCJ1L7n/gFT6Z+I063QgaEs1lZhKdT2984jG0YSuU4xuNqkc62o5WQZqcXYlJqu4OT+ELd6R9we8Q97UAt/T6OHXhV/Urfwk/C2cFUjmG4y7EniBn5FWdy+nUDa3G2W4NsRmbiXezDXuH0ETED/TIOE3P0H4sXsV0OIRkv4x6W5jVsw4Q05gc57eYku2V5jMbkPElpqYSUjUpI2aiElI1KSNmohJSNMgo5K1bcJ1J9hlhADrQzKkLIBqwvYJyMayLqPJrqi7AS32Lqg4yKEPIGXitgnE5MF2KebdXYa8zeLzURZb7QRd8sD7AaW4SYxZqCtdES8hiW4GcRQXbiAnbiN3ytLuaPrMNoCcnYgU05+g/iTezHd0LMKcr51urEYbwlbrkDIt/wUAohkoE13BVhcSG31j6R2/q/WICvcEXcWjcoRsjGPmzfF9+MTlzGutT3S1wSIu5nWYoQsgL/YE8Om5v4DNPwXIe+T4mv+/f4FBfFA3+uVed+0kEHxVVqptd0UDPvpXHuiGVLy6VKETPyjeKfkfG43nTsdzETF9oZlilBN1WkZV9P9QHxN8WUdkaj/UFsxUTxen0m1c+LB70tD+t35D9UQspGJaRsVELKRiWkbFRCykbzWmuNWLQNidj4ZoHnGpfG3IuPMBtbRUalkbG9DJ4JOYldYsPAknRsWPzXnm0YGBLpm1u9nEjM/l8ik0hcpMtS8qCBbJPBoTyD11oca97CMR+TU9uwyC0NNZRBrWcu2/nwITbncaoXWi3jz6fyecOxZnFvi3ws9f0pjeJ+HCF/R4QZWI6PRcLsqgik7onMxqBiQt2u6CewOp3K7lSv4Xn1/VvzhLjc+0l64V9z4J+Zr+byUAAAAABJRU5ErkJggg=="/>
+                <span class="ml-4 text-2xl">Logout</span>
+              </a>
+            </li>
+          </ul>
           
         </div>
       </aside>
@@ -163,6 +179,11 @@
         methods: {
             toggleLeftBar() {
                 this.showLeftMenu = !this.showLeftMenu;
+            },
+            logout() {
+              localStorage.removeItem('token');
+
+              this.$router.push({name: "login"});
             },
         }
     }
