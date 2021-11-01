@@ -111,36 +111,75 @@
                     </table>
                 </div>
             </div>
-            <!-- <div class=" sm:mt-9 mt-9 block sm:block md:hidden lg:hidden col-span-3">
+            <div class=" sm:mt-9 mt-9 block sm:block md:hidden lg:hidden col-span-3">
                 <div class="bg-white shadow-md rounded py-8 overflow-x-auto" >
                     <p class="mb-5 text-3xl ml-2">Data News</p>
                     <table 
                         class=" shadow-lg bg-white w-full ">
                         <tr v-for="(item, index) in table" :key="index">
-                            <td class="border px-5 py-4 text-xs">
-                                <img @click="edit(item.pid_news)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
-                                <img @click="remove(item.pid_news)" width="20" style="display: inline" class=" ml-2 cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
-                                <div>
-                                    bawah
+                            <td class="py-4 text-xs border-b-2 border-gray-500">
+                                <div class=" px-5 ">
+                                    <img @click="edit(item.pid_news)" style="display: inline" class=" cursor-pointer md:w-4 w-7 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                    <img @click="remove(item.pid_news)" style="display: inline" class=" ml-2 cursor-pointer md:w-4 w-7 float-right "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                    <div class=" flex flex-col mt-8 text-sm ">
+                                        <div class="flex flex-row w-full justify-between ">
+                                            <div> Pair </div>
+                                            <div> {{item.pair}} </div>
+                                        </div>
+                                        <div class="flex flex-row w-full justify-between ">
+                                            <div> Date News </div>
+                                            <div> {{item.custom_date_news}} </div>
+                                        </div>
+                                        <div class="flex flex-row w-full justify-between ">
+                                            <div> Date Start </div>
+                                            <div> {{item.custom_date_start}} </div>
+                                        </div>
+                                        <div class="flex flex-row w-full justify-between ">
+                                            <div> Date Stop </div>
+                                            <div> {{item.custom_date_stop}} </div>
+                                        </div>
+                                        <div class="flex flex-row w-full justify-between ">
+                                            <div> Impact </div>
+                                            <div> {{item.impact}} </div>
+                                        </div>
+                                        <div class="flex flex-row w-full justify-between ">
+                                            <div> Description </div>
+                                            <div> {{item.desc}} </div>
+                                        </div>
+                                        <!-- <div class="w-full flex flex-col ">
+                                            <div> Pair </div>
+                                            <div>Date News</div>
+                                            <div>Date Start</div>
+                                            <div>Date Stop</div>
+                                            <div>Impact</div>
+                                            <div>Description</div>
+                                        </div> -->
+                                        <!-- <div class="w-full text-left  ">
+                                            <div class="border-4 border-gray-500 "> {{item.pair}} </div>
+                                            <div>{{item.custom_date_news}}</div>
+                                            <div>{{item.custom_date_start}}</div>
+                                            <div>{{item.custom_date_stop}}</div>
+                                            <div>{{item.impact}}</div>
+                                            <div>{{item.desc}}</div>
+                                        </div> -->
+                                    </div>
                                 </div>
                             </td>
                         </tr>
                     </table>
                 </div>
-            </div> -->
+            </div>
         </div>
     </main-layout>
 </template>
 
 <style lang="postcss" scoped>
     .btn-send {
-        @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg
-                hover:bg-green-700 hover:text-white 
-
+        @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg hover:bg-green-700 hover:text-white
     }
+    
     .btn-cancel {
-        @apply bg-white text-red-500 border-2 font-bold py-2 px-4 float-right rounded-lg           
-                hover:bg-red-500 hover:text-white
+        @apply bg-white text-red-500 border-2 font-bold py-2 px-4 float-right rounded-lg hover:bg-red-500 hover:text-white
     }
 </style>
 
@@ -192,12 +231,16 @@
                             Authorization: `Bearer ` + that.token
                         }
                     })
-                    .then(function({data}) {
+                    .then(function({
+                        data
+                    }) {
                         if (data.status) {
                             that.table = data.data;
                             that.loading = false;
-                        }else if(!data.status) {
-                            this.$router.push({name: "login"});
+                        } else if (!data.status) {
+                            this.$router.push({
+                                name: "login"
+                            });
                         }
                     })
                     .catch(error => {

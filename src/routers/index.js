@@ -8,7 +8,6 @@ import Login from '@/pages/Login'
 import Account from '@/pages/Account'
 import NotFound from '@/pages/NotFound'
 import Dashboard from '@/pages/Dashboard'
-import UltraProfit from '@/pages/UltraProfit'
 
 const routes = [{
         path: '/',
@@ -38,11 +37,6 @@ const routes = [{
         path: '/account',
         name: 'account',
         component: Account,
-    },
-    {
-        path: '/ultra-profit',
-        name: 'ultraProfit',
-        component: UltraProfit,
     },
     {
         path: "/:pathMatch(.*)*",
