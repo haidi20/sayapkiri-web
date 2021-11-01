@@ -36,7 +36,7 @@
                     </div>
                     <div class="mb-4">
                         <label class="label-custom">
-                            Date News
+                            Date Register
                         </label>
                         <input 
                             class="input-custom" 
