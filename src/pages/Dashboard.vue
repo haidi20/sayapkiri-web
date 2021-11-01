@@ -12,7 +12,7 @@
                 class="bg-white shadow-lg rounded-md cursor-pointer p-2 hover:shadow-2xl "
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAyklEQVRIie2TMQqDQBBF/9hYp7VZQbBLn0vYeoggmDKdm84LeJs9QHob2cqcwFpQTJEQRGZXBJMi7O92hnl/2dkPOK2I5oe4LaY9oDq8fbjeHsD/FnHFuC0qAOeNqEqHMltW2R0EgnIAagNdBQIX1tY0cXxcD/3k3wHEK3DtU3+qRdlxTeMvqkXZeSMlALGD7/t13kiJCW41AIAmkhqEFMDAtAcQ0iaS2sZYzYEWUgET876Uv3p2GXew1DLl87Ta9PUkOwNn4PQDPQExqS/MSsyAVgAAAABJRU5ErkJggg=="/>
         </div> -->
-        <div v-if="list.length <= 0" class="bg-white mx-3 my-2 h-screen flex ">
+        <div v-if="list.length <= 0 && !loading" class="bg-white mx-3 my-2 h-screen flex ">
             <div class="text-center m-auto ">
                 <img 
                     class=" m-auto "
