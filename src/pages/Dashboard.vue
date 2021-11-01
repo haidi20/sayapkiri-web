@@ -64,9 +64,9 @@
                         <div class="flex-1">
                             <div class="grid text-right">
                                 <!-- pnlday -->
-                                <p class="text-sm text-blue-500 font-bold " style="display: inline;" >{{item.pnlday}} %</p>
-                                <div class=" font-bold  " style="display: inline;">
-                                    Profit/Day
+                                <div class=" font-bold  ">
+                                    <p class="text-sm text-blue-500 font-bold " style="display: inline;" >{{item.pnlday}} %</p>
+                                    <strong style="display: inline;"> Profit/Day </strong>
                                 </div>
                                 <div
                                     :class="colorProfit(item.profit)" 
