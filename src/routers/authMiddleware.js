@@ -14,8 +14,6 @@ export default (to, from, next) => {
         }
     } else if (to.path == '/login') {
         if (dateNow <= expiredAt && token != null) {
-            console.log(token);
-            console.log('masuk dashboard');
             next({ name: 'dashboard' }).catch(() => {});
         } else {
             next();

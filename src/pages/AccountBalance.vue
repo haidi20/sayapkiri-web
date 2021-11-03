@@ -82,7 +82,7 @@
                         </thead>
                         <tbody v-if="loading">
                             <tr>
-                                <td  class=" text-center " colspan="8">Loading</td>
+                                <td class=" text-center " colspan="8">Loading</td>
                             </tr>
                         </tbody>
                         <tbody v-if="!loading">

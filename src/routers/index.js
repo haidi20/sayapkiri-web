@@ -6,6 +6,7 @@ import User from '@/pages/User'
 import News from '@/pages/News'
 import Login from '@/pages/Login'
 import Account from '@/pages/Account'
+import LastData from '@/pages/LastData'
 import NotFound from '@/pages/NotFound'
 import Dashboard from '@/pages/Dashboard'
 import AccountBalance from '@/pages/AccountBalance'
@@ -18,6 +19,11 @@ const routes = [{
         path: '/dashboard',
         name: 'dashboard',
         component: Dashboard
+    },
+    {
+        path: '/last-data',
+        name: 'lastData',
+        component: LastData
     },
     {
         path: '/news',
