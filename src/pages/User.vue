@@ -99,14 +99,6 @@ const initialState = () => {
         email: null,
         no_telp: null,
         register_date: null,
-        // account
-        // pid_account: null,
-        // account: null,
-        // password: null,
-        // server: null,
-        // register_date_account: null,
-        // investor_pass: null,
-        // location: null,
     };
 }
 export default {

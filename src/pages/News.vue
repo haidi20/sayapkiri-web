@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class=" sm:mt-9 mt-9 block sm:block md:hidden lg:hidden col-span-3">
-                <div class="bg-white shadow-md rounded py-8 overflow-x-auto" >
+                <div class="bg-white shadow-md rounded pt-8 overflow-x-auto" >
                     <p class="mb-5 text-3xl ml-2">Data News</p>
                     <table 
                         class=" shadow-lg bg-white w-full ">
@@ -122,29 +122,29 @@
                                     <img @click="edit(item.pid_news)" style="display: inline" class=" cursor-pointer md:w-4 w-7 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
                                     <img @click="remove(item.pid_news)" style="display: inline" class=" ml-2 cursor-pointer md:w-4 w-7 float-right "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                                     <div class=" flex flex-col mt-8 text-sm ">
-                                        <div class="flex flex-row w-full justify-between ">
-                                            <div> Pair </div>
-                                            <div> {{item.pair}} </div>
+                                        <div class="flex flex-row ">
+                                            <div class="w-full font-bold " > Pair </div>
+                                            <div class="w-full"> {{item.pair}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div> Date News </div>
-                                            <div> {{item.custom_date_news}} </div>
+                                            <div class="w-full font-bold "> Date News </div>
+                                            <div class="w-full"> {{item.custom_date_news}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div> Date Start </div>
-                                            <div> {{item.custom_date_start}} </div>
+                                            <div class="w-full font-bold "> Date Start </div>
+                                            <div class="w-full"> {{item.custom_date_start}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div> Date Stop </div>
-                                            <div> {{item.custom_date_stop}} </div>
+                                            <div class="w-full font-bold "> Date Stop </div>
+                                            <div class="w-full"> {{item.custom_date_stop}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div> Impact </div>
-                                            <div> {{item.impact}} </div>
+                                            <div class="w-full font-bold "> Impact </div>
+                                            <div class="w-full"> {{item.impact}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div> Description </div>
-                                            <div> {{item.desc}} </div>
+                                            <div class="w-full font-bold "> Description </div>
+                                            <div class="w-full"> {{item.desc}} </div>
                                         </div>
                                         <!-- <div class="w-full flex flex-col ">
                                             <div> Pair </div>

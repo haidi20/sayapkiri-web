@@ -21,7 +21,7 @@
             </div>
         </div>
         <div v-if="list.length > 0" class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6 mx-3 my-2">
-            <div v-for="(item, index) in list" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200 cursor-pointer" :key="index">
+            <div v-for="(item, index) in list" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
                         <div class="flex-1">
@@ -54,7 +54,7 @@
                         <div class="flex-1">
                             <div class="grid">
                                 <div class="">
-                                    <strong style="display: inline;" > Floating </strong> <p class="text-sm text-blue-500 font-bold " style="display: inline;" >{{item.dd}} %</p>
+                                    <strong style="display: inline;" > Floating </strong> <p class="text-sm text-blue-500 font-bold " style="display: inline;" >{{item.dd}}%</p>
                                 </div>
                                 <div class=" text-red-500 font-bold text-2xl ">
                                     {{item.floating}} 
@@ -65,7 +65,7 @@
                             <div class="grid text-right">
                                 <!-- pnlday -->
                                 <div class=" font-bold  ">
-                                    <p class="text-sm text-blue-500 font-bold " style="display: inline;" >{{item.pnlday}} %</p>
+                                    <p class="text-sm text-blue-500 font-bold " style="display: inline;" >{{item.pnlday}}%</p>
                                     <strong style="display: inline;"> Profit/Day </strong>
                                 </div>
                                 <div
