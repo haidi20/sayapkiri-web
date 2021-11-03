@@ -188,11 +188,6 @@ export default {
                             console.log(error);
                         });
         },
-        chooseUser(user) {
-            this.form.pid_user = user.pid_user;
-
-            this.getDataAccount();
-        },
         async getDataAccount() {
             let that = this;
 
@@ -301,8 +296,6 @@ export default {
                                     icon: "warning",
                                     title: data.remark
                                 });
-
-                                console.log(data.remark);
                             }
                         })
                         .catch(error => {
@@ -334,6 +327,11 @@ export default {
 
                 return false;
             }
+        },
+        chooseUser(user) {
+            this.form.pid_user = user.pid_user;
+
+            this.getDataAccount();
         },
     }
 }

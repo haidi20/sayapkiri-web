@@ -154,9 +154,6 @@ export default {
         this.getDataAccounts();
         this.getAllUser();
     },
-    created() {
-        
-    },
     methods: {
         async getDataAccounts() {
             let that = this;
@@ -195,9 +192,6 @@ export default {
                         .catch(error => {
                             console.log(error);
                         });
-        },
-        chooseUser(user) {
-            this.form.pid_user = user.pid_user;
         },
         async handleSubmit() {
             let that = this;
@@ -309,7 +303,10 @@ export default {
         resetForm() {
             this.form = initialState();
             this.nameUser = null;
-        }
+        },
+        chooseUser(user) {
+            this.form.pid_user = user.pid_user;
+        },
     }
 }
 </script>
