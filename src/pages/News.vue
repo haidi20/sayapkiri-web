@@ -171,15 +171,7 @@
 </template>
 
 <style lang="postcss" scoped>
-    .btn-send {
-        @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg hover:bg-green-700 hover:text-white
-    }
-    .btn-cancel {
-        @apply bg-white text-red-500 border-2 font-bold py-2 px-4 float-right rounded-lg hover:bg-red-500 hover:text-white
-    }
-    .label-custom-mobile {
-        @apply w-full font-bold bg-blue-450 text-white pl-5 py-1
-    }
+    
 </style>
 
 <script>

@@ -147,12 +147,12 @@
 <style lang="postcss">
 
   .router-link {
-    @apply inline-flex items-center w-full text-sm text-gray-700 font-semibold 
-    transition-colors duration-150 px-6 py-4 
-    hover:bg-blue-450 hover:text-white
+      @apply inline-flex items-center w-full text-sm text-gray-700 font-semibold 
+      transition-colors duration-150 px-6 py-4 
+      hover:bg-blue-450 hover:text-white
   }
   .router-link-active {
-    @apply text-white bg-blue-450
+      @apply text-white bg-blue-450
   }
   .input-custom {
       @apply border w-full py-2 px-3 border-gray-300 text-black
@@ -160,7 +160,10 @@
       focus:outline-none        
   }
   .label-custom {
-    @apply block text-black text-sm font-bold mb-2
+      @apply block text-black text-sm font-bold mb-2
+  }
+  .label-custom-mobile {
+      @apply w-full font-bold bg-blue-450 text-white pl-5 py-1
   }
   .btn-send {
       @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg
