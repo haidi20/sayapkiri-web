@@ -113,38 +113,35 @@
             </div>
             <div class=" sm:mt-9 mt-9 block sm:block md:hidden lg:hidden col-span-3">
                 <div class="bg-white shadow-md rounded pt-8 overflow-x-auto" >
-                    <p class="mb-5 text-3xl ml-2">Data News</p>
+                    <p class="mb-5 text-3xl ml-5">Data News</p>
                     <table 
                         class=" shadow-lg bg-white w-full ">
-                        <tr v-for="(item, index) in table" :key="index">
-                            <td class="py-4 text-xs border-b-2 border-gray-500">
-                                <div class=" px-5 ">
-                                    <img @click="edit(item.pid_news)" style="display: inline" class=" cursor-pointer md:w-4 w-7 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
-                                    <img @click="remove(item.pid_news)" style="display: inline" class=" ml-2 cursor-pointer md:w-4 w-7 float-right "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
-                                    <div class=" flex flex-col mt-8 text-sm ">
+                        <tr 
+                            v-for="(item, index) in table" 
+                            :key="index">
+                            <td class="text-xs ">
+                                <div class=" ">
+                                    <div class=" flex flex-col text-sm ">
+                                        
                                         <div class="flex flex-row ">
-                                            <div class="w-full font-bold " > Pair </div>
-                                            <div class="w-full"> {{item.pair}} </div>
+                                            <div class="  label-custom-mobile "> Pair </div>
+                                            <div class="w-full pl-2 py-1 "> {{item.pair}} </div>
+                                        </div>
+                                        <div class="flex flex-row justify-between ">
+                                            <div class=" label-custom-mobile "> Date News </div>
+                                            <div class="w-full pl-2 py-1 "> {{item.custom_date_news}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div class="w-full font-bold "> Date News </div>
-                                            <div class="w-full"> {{item.custom_date_news}} </div>
+                                            <div class=" label-custom-mobile "> Start Stop </div>
+                                            <div class="w-full pl-2 py-1 "> {{item.custom_date_start}} / <br> {{item.custom_date_stop}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div class="w-full font-bold "> Date Start </div>
-                                            <div class="w-full"> {{item.custom_date_start}} </div>
+                                            <div class=" label-custom-mobile "> Impact </div>
+                                            <div class="w-full pl-2 py-1 "> {{item.impact}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
-                                            <div class="w-full font-bold "> Date Stop </div>
-                                            <div class="w-full"> {{item.custom_date_stop}} </div>
-                                        </div>
-                                        <div class="flex flex-row w-full justify-between ">
-                                            <div class="w-full font-bold "> Impact </div>
-                                            <div class="w-full"> {{item.impact}} </div>
-                                        </div>
-                                        <div class="flex flex-row w-full justify-between ">
-                                            <div class="w-full font-bold "> Description </div>
-                                            <div class="w-full"> {{item.desc}} </div>
+                                            <div class=" label-custom-mobile "> Description </div>
+                                            <div class="w-full pl-2 py-1 "> {{item.desc}} </div>
                                         </div>
                                         <!-- <div class="w-full flex flex-col ">
                                             <div> Pair </div>
@@ -177,9 +174,11 @@
     .btn-send {
         @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg hover:bg-green-700 hover:text-white
     }
-    
     .btn-cancel {
         @apply bg-white text-red-500 border-2 font-bold py-2 px-4 float-right rounded-lg hover:bg-red-500 hover:text-white
+    }
+    .label-custom-mobile {
+        @apply w-full font-bold bg-blue-450 text-white pl-5 py-1
     }
 </style>
 
@@ -371,7 +370,7 @@
                                 console.log(error);
                             })
                     } else if (result.isDenied) {
-                        this.$swal.fire('Changes are not saved', '', 'info')
+                        this.$swal.fire('Changes are not saved', '', 'info');
                     }
                 })
             },

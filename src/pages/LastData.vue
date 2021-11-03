@@ -102,3 +102,10 @@ import MainLayout from '@/pages/MainLayout';
         },
     }
 </script>
+
+// // version mobile
+// location ea enable (hijau bundar)
+// account
+// profit and pnlday %
+// equity
+// floating and dd %
