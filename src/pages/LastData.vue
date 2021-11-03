@@ -23,7 +23,6 @@
                         <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Location</th>
                         <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Balance</th>
                         <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Pnlday</th>
-                        <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">User</th>
                     </tr>
                     <tr v-if="loading">
                         <td  class=" text-center " colspan="8">Loading</td>
@@ -47,7 +46,6 @@
                         <td class="border px-5 py-4 text-xs">{{item.location}}</td>
                         <td class="border px-5 py-4 text-xs">{{item.balance}}</td>
                         <td class="border px-5 py-4 text-xs">{{item.pnlday}}</td>
-                        <td class="border px-5 py-4 text-xs">{{item.name_user}}</td>
                     </tr>
                 </table>
             </div>
