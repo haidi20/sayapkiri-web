@@ -115,7 +115,7 @@
 <script>
 import axios from 'axios';
 import MainLayout from '@/pages/MainLayout';
-import AccountInputUser from '@/pages/AccountInputUser';
+import AccountInputUser from '@/components/AccountInputUser';
 
 const initialState = () => (
     {

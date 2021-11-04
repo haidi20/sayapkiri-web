@@ -78,10 +78,15 @@
                     </div>
                 </form>
             </div>
-            <div class=" hidden sm:hidden md:block lg:block col-span-3 md:mr-5 ">
+            <div class=" h-screen hidden sm:hidden md:block lg:block col-span-3 md:mr-5 ">
                 <div                    
                     class=" bg-white shadow-md rounded py-8 px-4 overflow-x-auto  ">
-                    <p class="mb-5 text-3xl">Data News</p>
+                    <div style="margin-bottom: 50px">
+                        <p class="text-3xl">Data News</p>
+                        <!-- <div class=" float-right ">
+                            <input type="text" class="input-custom" placeholder="search" >
+                        </div> -->
+                    </div>
                     <table 
                         class="shadow-lg bg-white w-full ">
                         <tr>
@@ -143,22 +148,6 @@
                                             <div class=" label-custom-mobile "> Description </div>
                                             <div class="w-full pl-2 py-1 "> {{item.desc}} </div>
                                         </div>
-                                        <!-- <div class="w-full flex flex-col ">
-                                            <div> Pair </div>
-                                            <div>Date News</div>
-                                            <div>Date Start</div>
-                                            <div>Date Stop</div>
-                                            <div>Impact</div>
-                                            <div>Description</div>
-                                        </div> -->
-                                        <!-- <div class="w-full text-left  ">
-                                            <div class="border-4 border-gray-500 "> {{item.pair}} </div>
-                                            <div>{{item.custom_date_news}}</div>
-                                            <div>{{item.custom_date_start}}</div>
-                                            <div>{{item.custom_date_stop}}</div>
-                                            <div>{{item.impact}}</div>
-                                            <div>{{item.desc}}</div>
-                                        </div> -->
                                     </div>
                                 </div>
                             </td>
