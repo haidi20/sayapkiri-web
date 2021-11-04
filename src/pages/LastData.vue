@@ -1,9 +1,9 @@
 <template>
     <main-layout>
-        <div class="grid md:mt-16 md:ml-6 mt-6 ml-2 ">
-            <div class=" w-auto bg-white shadow-md rounded py-8 px-4 overflow-scroll ">
+        <div class="grid md:mt-16 md:ml-6 ">
+            <div class=" w-auto bg-white shadow-md rounded py-8 px-4 overflow-scroll  md:block lg:block sm:hidden hidden ">
                 <p class="mb-5 text-3xl">Last Data</p>
-                <table class="shadow-lg bg-white w-full md:block lg:block sm:hidden hidden ">
+                <table class="shadow-lg bg-white w-full ">
                     <tr>
                         <th class="text-white border text-center px-8 py-4 bg-blue-450 " >Account</th>
                         <th class="text-white border text-center px-8 py-4 bg-blue-450 " >Account Name</th>
@@ -25,7 +25,7 @@
                         <th class="text-white border text-center px-8 py-4 bg-blue-450 " >Pnlday</th>
                     </tr>
                     <tr v-if="loading">
-                        <td  class=" text-center " colspan="8">Loading</td>
+                        <td  class=" text-center " colspan="20">Loading</td>
                     </tr>
                     <tr v-for="(item, index) in table"  :key="index">
                         <td class="border px-5 py-4 text-xs">{{item.account}}</td>
@@ -48,12 +48,16 @@
                         <td class="border px-5 py-4 text-xs">{{item.pnlday}}</td>
                     </tr>
                 </table>
+            </div>
+            <div class="block sm:block md:hidden lg:hidden" >
+                <p class=" pl-2 py-4 text-3xl bg-white ">Last Data</p>
                 <table 
-                    class=" shadow-lg bg-white w-full block sm:block md:hidden lg:hidden ">
+                    class=" shadow-lg bg-white w-full ">
                     <tr 
+                        class="w-full"
                         v-for="(item, index) in table" 
                         :key="index">
-                        <td class="text-sm flex flex-col w-full ">
+                        <td class="text-md flex flex-col w-full ">
                            <div class="flex flex-row ">
                                 <div class="  label-custom-mobile "> Location </div>
                                 <div class="w-full pl-2 py-1 "> {{item.location}} </div>
