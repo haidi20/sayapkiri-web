@@ -71,20 +71,20 @@
                                 <div class="w-full pl-2 py-1 "> 
                                     {{item.profit}} 
                                     <span class=" text-blue-450 ">
-                                        {{item.pnlday}}%
+                                        ({{item.pnlday}}%)
                                     </span>
                                 </div>
                             </div>
                             <div class="flex flex-row w-full justify-between ">
                                 <div class=" label-custom-mobile "> Equity </div>
-                                <div class="w-full pl-2 py-1 "> {{item.equity}} </div>
+                                <div class="w-full pl-2 py-1 "> {{customEquity(item.equity)}} </div>
                             </div>
                             <div class="flex flex-row w-full justify-between ">
                                 <div class=" label-custom-mobile "> Floating </div>
                                 <div class="w-full pl-2 py-1 "> 
                                     {{item.floating}}  
                                     <span class=" text-blue-450 ">
-                                        {{item.dd}}%
+                                        ({{item.dd}}%)
                                     </span>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
 </template>
 
 <style lang="postcss" scoped>
-
+    
 </style>
 
 <script>
@@ -141,7 +141,10 @@ import MainLayout from '@/pages/MainLayout';
                             .catch(error => {
                                 console.log(error);
                             });
-            }
+            },
+            customEquity(number) {
+                return Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USC' }).format(number);
+            },
         },
     }
 </script>
