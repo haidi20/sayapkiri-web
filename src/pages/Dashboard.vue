@@ -93,7 +93,7 @@
                     <div class="flex-1">
                         <div class="grid">
                             <div class="text-lg font-bold ">
-                                {{item.equity}}
+                                {{customNumber(item.equity)}}
                             </div>
                             <div class="text-sm ">
                                 Equity USC
@@ -103,7 +103,7 @@
                     <div class="flex-1">
                         <div class="grid">
                             <div class="text-lg font-bold ">
-                                {{item.free_margin}}
+                                {{customNumber(item.free_margin)}}
                             </div>
                             <div class="text-sm">
                                 Free Margin
@@ -212,6 +212,9 @@
             },
             toggleModal() {
                 this.open = !this.open;
+            },
+            customNumber(number) {
+                return Intl.NumberFormat().format(number);
             },
         }
     }
