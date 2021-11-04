@@ -103,10 +103,10 @@
                     <div class="flex-1">
                         <div class="grid">
                             <div class="text-lg font-bold ">
-                                {{customNumber(item.free_margin)}}
+                                {{customNumber(item.pnlmnt)}}%
                             </div>
                             <div class="text-sm">
-                                Free Margin
+                                PnL Month
                             </div>
                         </div>  
                     </div>
