@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
                                             <div class=" label-custom-mobile "> Start Stop </div>
-                                            <div class="w-full pl-2 py-1 "> {{item.custom_date_start}} / <br> {{item.custom_date_stop}} </div>
+                                            <div class="w-full pl-2 py-1 "> {{item.custom_date_start}} / <br :class="customHiddenBr" > {{item.custom_date_stop}} </div>
                                         </div>
                                         <div class="flex flex-row w-full justify-between ">
                                             <div class=" label-custom-mobile "> Impact </div>
@@ -208,7 +208,7 @@
             this.getData();
         },
         computed: {
-            hideTable() {
+            customHiddenBr() {
                 return window.innerWidth <= 760 ? 'hidden' : '';
             }
         },

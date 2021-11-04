@@ -160,7 +160,7 @@
       @apply block text-black text-sm font-bold mb-2
   }
   .label-custom-mobile {
-      @apply w-full font-bold bg-blue-450 text-white pl-5 py-1
+      @apply w-1/2 font-bold bg-blue-450 text-white pl-5 py-1
   }
   .btn-send {
       @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg
