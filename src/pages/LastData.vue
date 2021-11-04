@@ -68,7 +68,12 @@
                             </div>
                             <div class="flex flex-row w-full justify-between ">
                                 <div class=" label-custom-mobile "> Profit </div>
-                                <div class="w-full pl-2 py-1 "> {{item.profit}} {{item.pnlday}}% </div>
+                                <div class="w-full pl-2 py-1 "> 
+                                    {{item.profit}} 
+                                    <span class=" text-blue-450 ">
+                                        {{item.pnlday}}%
+                                    </span>
+                                </div>
                             </div>
                             <div class="flex flex-row w-full justify-between ">
                                 <div class=" label-custom-mobile "> Equity </div>
@@ -76,7 +81,12 @@
                             </div>
                             <div class="flex flex-row w-full justify-between ">
                                 <div class=" label-custom-mobile "> Floating </div>
-                                <div class="w-full pl-2 py-1 "> {{item.floating}} {{item.dd}}% </div>
+                                <div class="w-full pl-2 py-1 "> 
+                                    {{item.floating}}  
+                                    <span class=" text-blue-450 ">
+                                        {{item.dd}}%
+                                    </span>
+                                </div>
                             </div>
                         </td>
                     </tr>
