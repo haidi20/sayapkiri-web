@@ -147,7 +147,7 @@ import MainLayout from '@/pages/MainLayout';
                 table: {},
                 loading: false,
                 request: {
-                    sorted_by: "trade_desc",
+                    sorted_by: "drawdown_desc",
                 },
             }
         },
