@@ -66,7 +66,7 @@
                 <p class="mb-5 text-3xl pl-5 ">Last Data</p>
                 <table class="shadow-lg bg-white w-96 " >
                     <tr class="w-full">
-                        <th class=" label-column " width="65" >Loc</th>
+                        <th class=" label-column " width="75" >Loc</th>
                         <th class=" label-column " >Account</th>
                         <th class=" label-column " width="120" >Profit</th>
                         <th class=" label-column " >Equity</th>
@@ -77,7 +77,7 @@
                     </tr>
                     <tr v-for="(item, index) in table"  :key="index">
                         <td class=" data text-center ">
-                            {{item.location}} 
+                            {{item.location}}B10 
                             <img 
                                 class="w-5"
                                 style="display:inline"
