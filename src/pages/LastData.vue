@@ -64,9 +64,9 @@
             </div>
             <div class=" overflow-auto bg-white shadow-md rounded pt-8 show-mobile ">
                 <p class="mb-5 text-3xl pl-5 ">Last Data</p>
-                <table class="shadow-lg bg-white  ">
+                <table class="shadow-lg bg-white w-96 " >
                     <tr class="w-full">
-                        <th class=" label-column " >Loc</th>
+                        <th class=" label-column " width="55" >Loc</th>
                         <th class=" label-column " >Account</th>
                         <th class=" label-column " >Profit</th>
                         <th class=" label-column " >Equity</th>
@@ -97,13 +97,13 @@
                                 {{item.account_name}}
                             </span>
                         </td>
-                        <td class=" data ">
-                            {{item.profit}} 
+                        <td class=" data text-center ">
+                            {{item.profit}} <br>
                             <span class=" text-blue-450 "> 
-                                {{item.pnlday}} /
+                                {{item.pnlday}}% /
                             </span>                            
-                            <span class=" text-green-400 " style="display: inline-block" >
-                                {{item.pnlmnt}}
+                            <span class=" text-green-400 " style="display: inline" >
+                                {{item.pnlmnt}}%
                             </span>
 
                         </td>
