@@ -77,7 +77,7 @@
                     </tr>
                     <tr v-for="(item, index) in table"  :key="index">
                         <td class=" data text-center ">
-                            {{item.location}}B10 
+                            {{item.location}} 
                             <img 
                                 class="w-5"
                                 style="display:inline"
