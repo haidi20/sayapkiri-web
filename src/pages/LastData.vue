@@ -110,7 +110,7 @@
                         </td>
                         <td class=" data text-right ">{{customNumber(item.equity)}}</td>
                         <td class=" data text-red-500 text-right ">
-                            {{item.floating}} <br>
+                            {{customNumber(item.floating)}} <br>
                             <span class=" text-blue-450 "> 
                                 {{item.dd}}% 
                             </span>
