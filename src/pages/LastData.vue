@@ -75,7 +75,7 @@
                     <tr v-if="loading">
                         <td  class=" text-center " colspan="20">Loading</td>
                     </tr>
-                    <tr class=" border-t-2 border-blue-450 " v-for="(item, index) in table"  :key="index">
+                    <tr class=" border-t-2 border-blue-200 " v-for="(item, index) in table"  :key="index">
                         <td class=" data text-center ">
                             {{item.location}} 
                             <img 
