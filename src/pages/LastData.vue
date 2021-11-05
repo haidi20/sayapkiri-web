@@ -63,7 +63,7 @@
                 </table>
             </div>
             <div class=" w-auto bg-white shadow-md rounded pt-8 show-mobile ">
-                <p class="mb-5 text-3xl pl-2 ">Last Data</p>
+                <p class="mb-5 text-3xl pl-5 ">Last Data</p>
                 <table class="shadow-lg bg-white w-full ">
                     <tr>
                         <th class=" label-column " >Location</th>
@@ -102,9 +102,14 @@
                             <span class=" text-blue-450 "> 
                                 {{item.pnlday}}% 
                             </span>
+                            /
+                            <span class=" text-green-400 " >
+                                {{item.pnlmnt}}%
+                            </span>
+
                         </td>
-                        <td class=" data ">{{item.equity}}</td>
-                        <td class=" data ">
+                        <td class=" data text-right ">{{customNumber(item.equity)}}</td>
+                        <td class=" data text-red-500 text-right ">
                             {{item.floating}} <br>
                             <span class=" text-blue-450 "> 
                                 {{item.dd}}% 
@@ -220,6 +225,9 @@ import MainLayout from '@/pages/MainLayout';
             },
             customEquity(number) {
                 return Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USC' }).format(number);
+            },
+            customNumber(number) {
+                return Intl.NumberFormat().format(number);
             },
         },
     }
