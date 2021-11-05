@@ -63,12 +63,12 @@
                 </table>
             </div>
             <div class=" overflow-auto bg-white shadow-md rounded pt-8 show-mobile ">
-                <p class="mb-5 text-3xl pl-5 ">Last Data</p>
-                <table class="shadow-lg bg-white w-96 " >
-                    <tr class="w-full">
-                        <th class=" label-column " width="75" >Loc</th>
+                <p class="mb-5 pl-5 text-md ">Last Data</p>
+                <table class="shadow-lg bg-white w-full " style="font-size: 9px" >
+                    <tr class="">
+                        <th class=" label-column " >Loc</th>
                         <th class=" label-column " >Account</th>
-                        <th class=" label-column " width="120" >Profit</th>
+                        <th class=" label-column " >Profit</th>
                         <th class=" label-column " >Equity</th>
                         <th class=" label-column " >Floating</th>
                     </tr>
@@ -166,7 +166,7 @@
 
 <style lang="postcss" scoped>
     .label-column {
-        @apply text-white text-center text-sm
+        @apply text-white text-center
         border px-3 py-1 bg-blue-450
     }
     .hidden-mobile {
@@ -176,7 +176,7 @@
         @apply block sm:hidden md:hidden lg:hidden
     }
     .data {
-        @apply border px-2 py-1 text-xs
+        @apply border px-2 py-1
     }
 </style>
 
