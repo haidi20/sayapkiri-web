@@ -62,10 +62,10 @@
                     </tr>
                 </table>
             </div>
-            <div class=" w-auto bg-white shadow-md rounded pt-8 show-mobile ">
+            <div class=" overflow-auto bg-white shadow-md rounded pt-8 show-mobile ">
                 <p class="mb-5 text-3xl pl-5 ">Last Data</p>
-                <table class="shadow-lg bg-white w-full ">
-                    <tr>
+                <table class="shadow-lg bg-white  ">
+                    <tr class="w-full">
                         <th class=" label-column " >Location</th>
                         <th class=" label-column " >Account</th>
                         <th class=" label-column " >Profit</th>
