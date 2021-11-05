@@ -66,7 +66,7 @@
                 <p class="mb-5 text-3xl pl-5 ">Last Data</p>
                 <table class="shadow-lg bg-white  ">
                     <tr class="w-full">
-                        <th class=" label-column " >Location</th>
+                        <th class=" label-column " >Loc</th>
                         <th class=" label-column " >Account</th>
                         <th class=" label-column " >Profit</th>
                         <th class=" label-column " >Equity</th>
@@ -100,11 +100,10 @@
                         <td class=" data ">
                             {{item.profit}} 
                             <span class=" text-blue-450 "> 
-                                {{item.pnlday}}% 
-                            </span>
-                            /
-                            <span class=" text-green-400 " >
-                                {{item.pnlmnt}}%
+                                {{item.pnlday}} /
+                            </span>                            
+                            <span class=" text-green-400 " style="display: inline-block" >
+                                {{item.pnlmnt}}
                             </span>
 
                         </td>
