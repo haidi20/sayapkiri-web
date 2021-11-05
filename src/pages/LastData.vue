@@ -62,8 +62,8 @@
                     </tr>
                 </table>
             </div>
-            <div class=" overflow-auto bg-white shadow-md rounded pt-8 show-mobile ">
-                <p class="mb-5 pl-5 text-md ">Last Data</p>
+            <div class=" overflow-auto bg-white shadow-md rounded pt-2 show-mobile ">
+                <p class="mb-1 pl-5 text-md ">Last Data</p>
                 <table class="shadow-lg bg-white w-full " style="font-size: 9px" >
                     <tr class="">
                         <th class=" label-column " >Loc</th>
