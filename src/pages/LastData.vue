@@ -66,9 +66,9 @@
                 <p class="mb-5 text-3xl pl-5 ">Last Data</p>
                 <table class="shadow-lg bg-white w-96 " >
                     <tr class="w-full">
-                        <th class=" label-column " width="55" >Loc</th>
+                        <th class=" label-column " width="65" >Loc</th>
                         <th class=" label-column " >Account</th>
-                        <th class=" label-column " >Profit</th>
+                        <th class=" label-column " width="120" >Profit</th>
                         <th class=" label-column " >Equity</th>
                         <th class=" label-column " >Floating</th>
                     </tr>
