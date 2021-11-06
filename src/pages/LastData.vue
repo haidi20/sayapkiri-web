@@ -1,6 +1,6 @@
 <template>
     <main-layout>
-        <div class="grid md:mt-16 md:ml-6 ">
+        <div class="grid md:mt-16 md:ml-6 h-full ">
             <div class=" w-auto bg-white shadow-md rounded pt-8 hidden-mobile ">
                 <p class="mb-5 text-3xl pl-2 ">Last Data</p>
                 <table class="shadow-lg bg-white w-full ">
@@ -64,7 +64,7 @@
             </div>
             <div class=" overflow-auto bg-white shadow-md rounded pt-2 show-mobile ">
                 <p class="mb-1 pl-5 text-md ">Last Data</p>
-                <table class="shadow-lg bg-white w-full " style="font-size: 9px" >
+                <table class="shadow-lg bg-white w-full h-full " style="font-size: 9px" >
                     <tr class="">
                         <th class=" label-column " >Loc</th>
                         <th class=" label-column " >Account</th>
@@ -74,6 +74,9 @@
                     </tr>
                     <tr v-if="loading">
                         <td  class=" text-center " colspan="20">Loading</td>
+                    </tr>
+                    <tr class="h-full" >
+                        <td v-if="table.length <= 0" class=" text-center " colspan="20" >Data Empty</td>
                     </tr>
                     <tr class=" border-t-2 border-blue-200 " v-for="(item, index) in table"  :key="index">
                         <td class=" data text-center ">

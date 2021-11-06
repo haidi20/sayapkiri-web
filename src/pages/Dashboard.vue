@@ -17,7 +17,7 @@
                 <img 
                     class=" m-auto "
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAwUlEQVRIie2UQQrCMBBFH130CIIguPAqigp6moJ4AC8j7vQwuq7QraC41oUzEFJDp4kLF3kQCtOZ95MGCpkIJkADvHquRmY7OUXIdR275DNpvANDy26EAXCT2WWoqQQu0lT1kCuVzJ7F1WJL/Kfx18aXj4DHDwOewNgNOHgNsbiOvRb1Yt0TpAaoa1oAK3m5M+7MclJ1rbUw53PzoUFrgNZLcQYbYmnNFwkyEzng/wKu8oz9RbiOryyAOiGgFkfGzhvuZpNwB/LJQQAAAABJRU5ErkJggg=="/>
-                <p class=" " >Data Kosong</p>
+                <p class=" " >Data Empty</p>
             </div>
         </div>
         <div v-if="list.length > 0" class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6 mx-3 my-2">
