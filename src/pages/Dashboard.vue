@@ -180,7 +180,6 @@
                         })
                     .then(function(responses) {
                         if (responses.data.status) {
-                            that.loading = false;
                             that.list = responses.data.data;
 
                             that.open = false;
@@ -189,6 +188,8 @@
                                 name: "login"
                             });
                         }
+
+                        that.loading = false;
                     })
                     .catch(error => {
                         that.loading = false;

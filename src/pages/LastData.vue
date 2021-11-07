@@ -72,11 +72,11 @@
                         <th class=" label-column " >Equity</th>
                         <th class=" label-column " >Floating</th>
                     </tr>
-                    <tr v-if="loading">
+                    <tr class="h-full" v-if="loading">
                         <td  class=" text-center " colspan="20">Loading</td>
                     </tr>
-                    <tr class="h-full" >
-                        <td v-if="table.length <= 0" class=" text-center " colspan="20" >Data Empty</td>
+                    <tr class="h-full" v-if="table.length <= 0" >
+                        <td class=" text-center " colspan="20" >Data Empty</td>
                     </tr>
                     <tr class=" border-t-2 border-blue-200 " v-for="(item, index) in table"  :key="index">
                         <td class=" data text-center ">
@@ -190,7 +190,7 @@ import MainLayout from '@/pages/MainLayout';
         data() {
             return {
                 token: localStorage.getItem('token'),
-                table: {},
+                table: [],
                 loading: false,
                 request: {
                     sorted_by: "drawdown_desc",
@@ -217,8 +217,9 @@ import MainLayout from '@/pages/MainLayout';
 
                                 if(status){
                                     this.table = data;
-                                    this.loading = false;
                                 }
+
+                                this.loading = false;
                             })
                             .catch(error => {
                                 console.log(error);
