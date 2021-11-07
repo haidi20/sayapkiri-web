@@ -1,8 +1,8 @@
 <template>
     <main-layout>
-        <div class=" w-full md:grid md:grid-cols-4 md:my-16 my-2 ">
+        <div class=" w-full md:grid md:grid-cols-4 md:my-16 ">
             <div class="col-span-1 md:ml-6">
-                <form class=" bg-white shadow-md rounded py-8 px-4 md:mr-6 " @submit.prevent="handleSubmit">
+                <form class=" bg-white shadow-md rounded py-8 px-2 md:mr-6 " @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form News</p>
                     <div class="mb-4">
                         <label class="label-custom">
@@ -78,7 +78,8 @@
                     </div>
                 </form>
             </div>
-            <div class=" h-screen hidden sm:hidden md:block lg:block col-span-3 md:mr-5 ">
+            <!-- Start table Desktop -->
+            <div class=" h-screen hidden-mobile col-span-3 md:mr-5 ">
                 <div                    
                     class=" bg-white shadow-md rounded py-8 px-4 overflow-x-auto  ">
                     <div style="margin-bottom: 50px">
@@ -116,7 +117,9 @@
                     </table>
                 </div>
             </div>
-            <div class=" sm:mt-9 mt-9 block sm:block md:hidden lg:hidden col-span-3">
+            <!-- End table Desktop -->
+            <!-- Start tabe mobile -->
+            <div class=" sm:mt-9 mt-2 block sm:block md:hidden lg:hidden col-span-3">
                 <div class="bg-white shadow-md rounded pt-8 overflow-x-auto" >
                     <p class="mb-5 text-3xl ml-5">Data News</p>
                     <table 
@@ -155,6 +158,7 @@
                     </table>
                 </div>
             </div>
+            <!-- End table mobile -->
         </div>
     </main-layout>
 </template>

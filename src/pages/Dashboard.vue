@@ -12,7 +12,7 @@
                 class="bg-white shadow-lg rounded-md cursor-pointer p-2 hover:shadow-2xl "
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAyklEQVRIie2TMQqDQBBF/9hYp7VZQbBLn0vYeoggmDKdm84LeJs9QHob2cqcwFpQTJEQRGZXBJMi7O92hnl/2dkPOK2I5oe4LaY9oDq8fbjeHsD/FnHFuC0qAOeNqEqHMltW2R0EgnIAagNdBQIX1tY0cXxcD/3k3wHEK3DtU3+qRdlxTeMvqkXZeSMlALGD7/t13kiJCW41AIAmkhqEFMDAtAcQ0iaS2sZYzYEWUgET876Uv3p2GXew1DLl87Ta9PUkOwNn4PQDPQExqS/MSsyAVgAAAABJRU5ErkJggg=="/>
         </div> -->
-        <div v-if="list.length <= 0 && !loading" class="bg-white mx-3 my-2 h-screen flex ">
+        <div v-if="list.length <= 0 && !loading" class="bg-white h-screen flex ">
             <div class="text-center m-auto ">
                 <img 
                     class=" m-auto "
@@ -20,8 +20,8 @@
                 <p class=" " >Data Empty</p>
             </div>
         </div>
-        <div v-if="list.length > 0" class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6 mx-3 my-2">
-            <div v-for="(item, index) in list" class="max-w-sm overflow-hidden my-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200" :key="index">
+        <div v-if="list.length > 0" class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6">
+            <div v-for="(item, index) in list" class="max-w-sm overflow-hidden mb-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
                         <div class="flex-1">

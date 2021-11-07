@@ -123,9 +123,9 @@
         </div>
       </aside>
       <div class="flex flex-col flex-1 w-full">
-        <header class="z-10 md:py-4 py-5 shadow-md dark:bg-gray-800" style="background-color: #4680FE">
+        <header class="z-10 md:py-4 py-2 shadow-md dark:bg-gray-800" style="background-color: #4680FE">
           <div
-            class="container flex items-center h-full px-6 mx-auto dark:text-purple-300"
+            class="container flex items-center ml-2 h-full mx-auto dark:text-purple-300"
           >
             <h2 @click="toggleLeftBar" style="cursor: pointer">
               <img 
@@ -142,7 +142,6 @@
     </div>
 </template>
 <style lang="postcss">
-
   .router-link {
       @apply inline-flex items-center w-full text-sm text-gray-700 font-semibold 
       transition-colors duration-150 px-6 py-4 
@@ -162,10 +161,22 @@
   .label-custom-mobile {
       @apply w-1/2 font-bold bg-blue-450 text-white pl-5 py-1
   }
+  .th-mobile {
+      @apply text-white text-center
+      border px-3 py-1 bg-blue-450
+  }
+  .td-mobile {
+      @apply border px-2 py-1
+  }
+  .hidden-mobile {
+      @apply hidden sm:hidden md:block lg:block
+  }
+  .show-mobile {
+      @apply block sm:hidden md:hidden lg:hidden
+  }
   .btn-send {
       @apply bg-green-500 text-white border-2 font-bold py-2 px-4 rounded-lg
               hover:bg-green-700 hover:text-white 
-
   }
   .btn-cancel {
       @apply bg-white text-red-500 border-2 border-red-500 font-bold py-2 px-4 float-right rounded-lg           

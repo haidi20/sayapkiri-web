@@ -1,33 +1,33 @@
 <template>
     <main-layout>
-        <div class="grid md:mt-16 md:ml-6 h-full ">
+        <div class="grid md:mt-16 md:mx-6 h-full ">
             <div class=" w-auto bg-white shadow-md rounded pt-8 hidden-mobile ">
                 <p class="mb-5 text-3xl pl-2 ">Last Data</p>
                 <table class="shadow-lg bg-white w-full ">
                     <tr>
-                        <th class=" label-column " >Location</th>
-                        <th class=" label-column " >Account</th>
-                        <th class=" label-column " >Profit</th>
-                        <th class=" label-column " >Equity</th>
-                        <th class=" label-column " >Floating</th>
-                        <th class=" label-column " >Account Name</th>
-                        <th class=" label-column " >ea enable</th>                        
-                        <th class=" label-column " >Trade</th>
-                        <th class=" label-column " >Broker Time</th>
-                        <th class=" label-column " >Created Date</th>
-                        <th class=" label-column " >Float Max</th>
-                        <th class=" label-column " >Float Trade</th>
-                        <th class=" label-column " >Float Date</th>
-                        <th class=" label-column " >Day</th>
-                        <th class=" label-column " >Row num</th>
-                        <th class=" label-column " >DD</th>
-                        <th class=" label-column " >Balance</th>
-                        <th class=" label-column " >Pnlday</th>
+                        <th class=" th-mobile " >Location</th>
+                        <th class=" th-mobile " >Account</th>
+                        <th class=" th-mobile " >Profit</th>
+                        <th class=" th-mobile " >Equity</th>
+                        <th class=" th-mobile " >Floating</th>
+                        <th class=" th-mobile " >Account Name</th>
+                        <th class=" th-mobile " >ea enable</th>                        
+                        <th class=" th-mobile " >Trade</th>
+                        <th class=" th-mobile " >Broker Time</th>
+                        <th class=" th-mobile " >Created Date</th>
+                        <th class=" th-mobile " >Float Max</th>
+                        <th class=" th-mobile " >Float Trade</th>
+                        <th class=" th-mobile " >Float Date</th>
+                        <th class=" th-mobile " >Day</th>
+                        <th class=" th-mobile " >Row num</th>
+                        <th class=" th-mobile " >DD</th>
+                        <th class=" th-mobile " >Balance</th>
+                        <th class=" th-mobile " >Pnlday</th>
                     </tr>
                     <tr v-if="loading">
                         <td  class=" text-center " colspan="20">Loading</td>
                     </tr>
-                    <tr v-for="(item, index) in table"  :key="index">
+                    <tr v-for="(item, index) in table"  :key="index" >
                         <td class=" data text-center ">
                             {{item.location}} 
                         </td>
@@ -72,7 +72,6 @@
                             class="border w-full py-1 px-1 border-gray-300 text-black
                                     overflow-hidden rounded-md shadow-sm
                                     focus:outline-none" :disabled="table.length <= 0 ? true : false" >
-                            <option value="null">Select Column</option>
                             <option value="location">loc</option>
                             <option value="account_name">user</option>
                             <option value="account">account</option>
@@ -98,11 +97,11 @@
                 </div>
                 <table class="shadow-lg bg-white w-full h-full mt-2 " style="font-size: 9px" >
                     <tr class="">
-                        <th class=" label-column " >Loc</th>
-                        <th class=" label-column " >Account</th>
-                        <th class=" label-column " >Profit</th>
-                        <th class=" label-column " >Equity</th>
-                        <th class=" label-column " >Floating</th>
+                        <th class=" th-mobile " >Loc</th>
+                        <th class=" th-mobile " >Account</th>
+                        <th class=" th-mobile " >Profit</th>
+                        <th class=" th-mobile " >Equity</th>
+                        <th class=" th-mobile " >Floating</th>
                     </tr>
                     <tr class="h-full" v-if="loading">
                         <td  class=" text-center " colspan="20">Loading</td>
@@ -110,8 +109,12 @@
                     <tr class="h-full" v-if="table.length <= 0" >
                         <td class=" text-center " colspan="20" >Data Empty</td>
                     </tr>
-                    <tr class=" border-t-2 border-blue-200 " v-for="(item, index) in table"  :key="index">
-                        <td class=" data text-center ">
+                    <tr 
+                        @click="insertActiveIndexRow(index)"
+                        :class="classActiveRow(index)"
+                        class=" border-t-2 border-blue-200" 
+                        v-for="(item, index) in table"  :key="index">
+                        <td class=" td-mobile text-center ">
                             {{item.location}} 
                             <img 
                                 class="w-5"
@@ -124,7 +127,7 @@
                                 v-if="item.ea_enable == 0"
                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAHrklEQVRoge1Zy24cxxU99eie7mlyZkiIkoh4k0W8MII4ASxRjKgYTgDL+ggjBLINEMBLw4GQ2D+QVZYKko9wHCCxIkRQJIeJso12tkGBkUQOyel31a0suqpZHHGGQ5qxN7xAY7qrq6vOuXXrPmqAczmXczmXb1LYWQ3075s3b+g8X6e6vkJEy9C6B8YkABhjFBNij3P+lAvxKJyfv/Pdjz++fxbzfiUCT27d6uxl2Ycqy97lnF+Oul0EUQQZBBCcA5w3HYmgiaDqGnVRoMgyGKKnQbf7h++PRh+wjY36ayfweG3tvTLPb4dx3Ov2euhEEWSngyAIwIUA4xyMNcMbY2CIQFqjrmuoskRZFMj29lDl+W6UJLdfv3fvN18LgS9u3lzc3N7+RArxRrKwgDhJEMUxZBCACQEuRKN9xg4RgDHQloTRGqquUeQ58jRFurMDpfVnF5Pk7W/fvTv8vxF4vLb2ap6m95P5+QtzgwGiuTmEYQgZBOBSgnMO7syG83ZwAwBEaH6ouZSCqmtUVYViNMJoOEQ6Gj3rz81df+3evSdnTuDx2tqrRZo+mh8M+slggDhJEFjwTIgGPGOA1bp/D2NAxhy6J6J2JeqqalZiOMT+cLjbC8Mrrz18OBMJPkunL1ZXF/P9/ftz/X4/6ffR9cBzziEYO9CEMWDGtGYDe8/cs9WaYAycc8ggQBCG6CYJkn4fc/1+f1iW95+srPRmwSZnIpDnnyRJcqHb6yHudpuNKmWjZXgmwg4W1BhzaAUYYzBHvOOMQUgJZgzibhdEBF1VSy+y7E8Arh2H7dgV+MfKyi8CId7o9nqI47iZjHNwp2UiMKJG63aDElHrdUjr5t6ajNEazBgwIoAIxhhwY8A4h5AScRyj2+tBCLHyz6tX3zsO39Q98OTWrc7zzz//b+/ixV5vMEDU7TY+XojGw1jTYYw1pgI0mnUadnY/1sZsm3HfWGVo552yDHvDIXafP99dDcOlaXFi6grsbG19FMRxL4oiBNZkuLNrp0GrZad1o1SraePa3LNS7Wo4dwrbB3YlOGMIpEQURQg7nf4G8KtpGKcSqIvi3ShJ0AlDcM8twpoMHAAHzgF1z/41/s5+C2tSzs0yAJxzdMIQUZKgzPP1UxF4ePXqDc75pdD5dwDMapg8YKQUTF03wOr6ZeDjl9f3pXGUAiMCtyRCKcGFWN5YWZm4mSd6IZNl651OB1LKxs4tAXAOEIFsm2k/MJOGOlp8j+W1MaJ2PiklOmGIOk3XAfz9RARIqStyfr5JC4AGtLcxmd2AZhJwNuYfJvRr0w3P5bq+gnPIMESWpquTcE4mYMyysAkZd5vWC1iHwI+D88Ec9ez1Mx4Jf1xuY4fgHIxo+cQEDFGP20ldNsnthMYu85HmMwXsxL52LGYdBXmRnDeEJkbliQSYLUZ8D2Gcv/dTBd/fO1DTzOqIvsbFFHfvAuTBCgYnJmA8zYOo0bx7Z/32WRGAJWDsfnOpibGReuI+m0YAWitoHbqUwEXQ1oTsoC6SHgI13jap3d9TjIHsHAS0gRFaA1pPjMTTkrk9rfUF0rrVlEZjUgwHRcpLBI4CexwpW/wY5+mAxutpDd0ob+/EBAzRplLqAikFbe2TufzFc3XOvF6SGdwoAw7MxtUPdg7tih6lYIzZPDkBYz6ry/J7dRRBCNFER3gmYze27TtpmKnCGGtMBGgCpDUpAqCJUNc16rIEmxDEphIIpbxTluXPVF2DggAtXKt9BruZbdtJKTAcBC/GeZMbMdbsBQBkM9OyLCGBO9PGmSh3X3nlaW9h4fJ8kiCwxbqLDX61BX8/zAjemQvzTAcWvCZCrTX20xT7Ozubb3755bcmjTU1G+XA74ssQ1lV0DZlbgsUly57abPLLs2Eq81e/TR7bEwigtYaZVWhyDLAmInaP5bAjUuXPqiKYrcsS9RKNSS8QEYuHowBgkfGgT6yjyvu3Xi2qKmVQtmcHQ1/dPny6esBtrFRB0r9Mh+NUBYFtCMxBrw1oTHtuiOUQ8XNWH+fiNYaWimURYF8NIIA3j/u1G6mY5U/Ly09SubnryRJgigMIa3tHkozXF0MHJxKjBf11ssYxsC88yNjXacyBkVVIU1T5Gn64K2trR8eh22mU4nFun57J03/wxlbgjEIgwACzYkC845R/PrW146fufq5jnHBywbJqq6R5znS0WgrUeqdWbDNdC70g+FwKIiuj/b2drMsQ1GWUFo3wcbabhsf3Cp4z23m6r1332kiKK1RlCWyLMP+/v4ugOvXtrcnRl9fTnS0+Nelpe8o4G9xHF+M4xihlJCMNSvhTiicScErVtxJBJrI61aErNlUSiHPc2RZthUwduPNZ8/O/mjRyb8Gg8E2538MomglsiRCIQ5IuBx+rPhhxoBsuwNfaY1KKRR5jqooHswB78yq+VMTcPLpwsLPNecfdaKo3+l0EHAOYa92Nfzjdfur7X8FNVHrKhnR+z/Z2fntaXB8pT84DBD8pd//NXH+UxmGy6GUkFK2EbtNFaz2NRGUUqiUgq6qTUn0O7O7e/stQJ0Ww5n9xfTp4uI1U1XrJMQqY2zZMNZnUjZejqiG1nvGmKdc6wfodO78+MWLh2c197mcy7mcyzcn/wN5Pwx0yKEqhgAAAABJRU5ErkJggg=="/>
                         </td>
-                        <td class=" data ">
+                        <td class=" td-mobile ">
                             <span class="text-blue-450">
                                 {{item.account}}
                             </span>  <br>
@@ -132,7 +135,7 @@
                                 {{item.account_name}}
                             </span>
                         </td>
-                        <td class=" data text-center ">
+                        <td class=" td-mobile text-center ">
                             {{item.profit}} <br>
                             <span class=" text-blue-450 "> 
                                 {{item.pnlday}}% /
@@ -141,8 +144,8 @@
                                 {{item.pnlmnt}}%
                             </span>
                         </td>
-                        <td class=" data text-right ">{{customNumber(item.equity)}}</td>
-                        <td class=" data text-red-500 text-right ">
+                        <td class=" td-mobile text-right ">{{customNumber(item.equity)}}</td>
+                        <td class=" td-mobile text-red-500 text-right ">
                             {{customNumber(item.floating)}} <br>
                             <span class=" text-blue-450 "> 
                                 {{item.dd}}% 
@@ -151,66 +154,13 @@
                     </tr>
                 </table>
             </div>
-            <!-- <div class="block sm:block md:hidden lg:hidden" >
-                <p class=" pl-2 py-4 text-3xl bg-white ">Last Data</p>
-                <table 
-                    class=" shadow-lg bg-white w-full ">
-                    <tr 
-                        class="w-full"
-                        v-for="(item, index) in table" 
-                        :key="index">
-                        <td class="text-md flex flex-col w-full ">
-                           <div class="flex flex-row ">
-                                <div class="  label-custom-mobile "> Location </div>
-                                <div class="w-full pl-2 py-1 "> {{item.location}} </div>
-                            </div>
-                            <div class="flex flex-row justify-between ">
-                                <div class=" label-custom-mobile "> Account </div>
-                                <div class="w-full pl-2 py-1 "> {{item.account_name}} </div>
-                            </div>
-                            <div class="flex flex-row w-full justify-between ">
-                                <div class=" label-custom-mobile "> Profit </div>
-                                <div class="w-full pl-2 py-1 "> 
-                                    {{item.profit}} 
-                                    <span class=" text-blue-450 ">
-                                        ({{item.pnlday}}%)
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="flex flex-row w-full justify-between ">
-                                <div class=" label-custom-mobile "> Equity </div>
-                                <div class="w-full pl-2 py-1 "> {{customEquity(item.equity)}} </div>
-                            </div>
-                            <div class="flex flex-row w-full justify-between ">
-                                <div class=" label-custom-mobile "> Floating </div>
-                                <div class="w-full pl-2 py-1 "> 
-                                    {{item.floating}}  
-                                    <span class=" text-blue-450 ">
-                                        ({{item.dd}}%)
-                                    </span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div> -->
         </div>
     </main-layout>
 </template>
 
 <style lang="postcss" scoped>
-    .label-column {
-        @apply text-white text-center
-        border px-3 py-1 bg-blue-450
-    }
-    .hidden-mobile {
-        @apply hidden sm:hidden md:block lg:block
-    }
-    .show-mobile {
-        @apply block sm:hidden md:hidden lg:hidden
-    }
-    .data {
-        @apply border px-2 py-1
+    .active {
+        @apply bg-blue-100
     }
     select:disabled {
         @apply bg-gray-400 font-bold text-black
@@ -227,6 +177,7 @@ import MainLayout from '@/pages/MainLayout';
                 token: localStorage.getItem('token'),
                 table: [],
                 loading: false,
+                indexSelected: null,
                 request: {
                     field: "dd",
                     sorted: "desc",
@@ -246,8 +197,7 @@ import MainLayout from '@/pages/MainLayout';
                 this.loading = true;
 
                 await axios.post(process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
-                            this.request,
-                                {headers: { Authorization: `Bearer `+ that.token}})
+                            this.request, {headers: { Authorization: `Bearer `+ that.token}})
                             .then(responses => {
                                 let status = responses.data.status;
                                 let data = responses.data.data;
@@ -268,6 +218,14 @@ import MainLayout from '@/pages/MainLayout';
             customNumber(number) {
                 return Intl.NumberFormat().format(number);
             },
+            insertActiveIndexRow(index) {
+                this.indexSelected = index;
+            },
+            classActiveRow(index){
+                return {
+                    'active': this.indexSelected == index ? true : false
+                };
+            }
         },
     }
 </script>
