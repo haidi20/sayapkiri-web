@@ -178,6 +178,9 @@
                         <td class=" td-mobile text-right ">{{customNumber(item.equity)}}</td>
                         <td class=" td-mobile text-red-500 text-right ">
                             {{customNumber(item.floating)}} <br>
+                            <span class=" text-black ">
+                                ({{item.trade}})
+                            </span>
                             <span class=" text-blue-450 "> 
                                 {{item.dd}}% 
                             </span>
