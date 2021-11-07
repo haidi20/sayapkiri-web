@@ -67,14 +67,18 @@
                 <div class=" flex flex-row mx-1 " style="font-size: 9px" >
                     <div class="w-full">
                         <select 
-                            v-model="filter.field"
+                            @change="getLastData"
+                            v-model="request.field"
                             class="border w-full py-1 px-1 border-gray-300 text-black
                                     overflow-hidden rounded-md shadow-sm
-                                    focus:outline-none  ">
+                                    focus:outline-none" :disabled="table.length <= 0 ? true : false" >
                             <option value="null">Select Column</option>
                             <option value="location">loc</option>
+                            <option value="account_name">user</option>
                             <option value="account">account</option>
                             <option value="profit">profit</option>
+                            <option value="pnlday">pnlday</option>
+                            <option value="pnlmnt">pnlmonth</option>
                             <option value="equity">equity</option>
                             <option value="floating">floating</option>
                             <option value="dd">dd</option>
@@ -82,10 +86,11 @@
                     </div>
                     <div class="w-full ml-1">
                         <select 
-                            v-model="filter.sorted"
+                            @change="getLastData"
+                            v-model="request.sorted"
                             class="border w-full py-1 px-1 border-gray-300 text-black
                                     overflow-hidden rounded-md shadow-sm
-                                    focus:outline-none ">
+                                    focus:outline-none " :disabled="table.length <= 0 ? true : false" >
                             <option value="asc">Ascending</option>
                             <option value="desc">Descending</option>
                         </select>
@@ -207,18 +212,14 @@
     .data {
         @apply border px-2 py-1
     }
+    select:disabled {
+        @apply bg-gray-400 font-bold text-black
+    }
 </style>
 
 <script>
 import axios from 'axios';
 import MainLayout from '@/pages/MainLayout';
-
-    function initialFilter() {
-        return {
-            field: "dd",
-            sorted: "asc",
-        }
-    }
 
     export default {
         data() {
@@ -226,9 +227,9 @@ import MainLayout from '@/pages/MainLayout';
                 token: localStorage.getItem('token'),
                 table: [],
                 loading: false,
-                filter: initialFilter(),
                 request: {
-                    sorted_by: "drawdown_desc",
+                    field: "dd",
+                    sorted: "desc",
                 },
             }
         },
@@ -241,6 +242,7 @@ import MainLayout from '@/pages/MainLayout';
         methods: {
             async getLastData() {
                 let that = this;
+                this.table = [];
                 this.loading = true;
 
                 await axios.post(process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
