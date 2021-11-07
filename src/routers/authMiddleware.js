@@ -1,5 +1,4 @@
 import moment from 'moment';
-import VueRouter from 'vue-router'
 
 export default (to, from, next) => {
     let dateNow = moment().format('YYYY-MM-DD hh:mm:ss');

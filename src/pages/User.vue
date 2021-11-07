@@ -134,10 +134,13 @@ export default {
                             {headers: { Authorization: `Bearer `+ that.token}})
                         .then(function ({data}) {
 
+                            console.log(data);
+
                             if(data.status) {
                                 that.table = data.data;
-                                that.loading = false;
                             }
+
+                            that.loading = false;
                         })
                         .catch(error => {
                             console.log(error);

@@ -64,7 +64,34 @@
             </div>
             <div class=" overflow-auto bg-white shadow-md rounded pt-2 show-mobile ">
                 <p class="mb-1 pl-5 text-md ">Last Data</p>
-                <table class="shadow-lg bg-white w-full h-full " style="font-size: 9px" >
+                <div class=" flex flex-row mx-1 " style="font-size: 9px" >
+                    <div class="w-full">
+                        <select 
+                            v-model="filter.field"
+                            class="border w-full py-1 px-1 border-gray-300 text-black
+                                    overflow-hidden rounded-md shadow-sm
+                                    focus:outline-none  ">
+                            <option value="null">Select Column</option>
+                            <option value="location">loc</option>
+                            <option value="account">account</option>
+                            <option value="profit">profit</option>
+                            <option value="equity">equity</option>
+                            <option value="floating">floating</option>
+                        </select>
+                    </div>
+                    <div class="w-full ml-1">
+                        <select 
+                            v-model="filter.sorted"
+                            class="border w-full py-1 px-1 border-gray-300 text-black
+                                    overflow-hidden rounded-md shadow-sm
+                                    focus:outline-none ">
+                            <option value="null">Select Sorting</option>
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="shadow-lg bg-white w-full h-full mt-2 " style="font-size: 9px" >
                     <tr class="">
                         <th class=" label-column " >Loc</th>
                         <th class=" label-column " >Account</th>
@@ -186,12 +213,20 @@
 import axios from 'axios';
 import MainLayout from '@/pages/MainLayout';
 
+    function initialFilter() {
+        return {
+            field: "null",
+            sorted: "null",
+        }
+    }
+
     export default {
         data() {
             return {
                 token: localStorage.getItem('token'),
                 table: [],
                 loading: false,
+                filter: initialFilter(),
                 request: {
                     sorted_by: "drawdown_desc",
                 },
