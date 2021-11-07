@@ -1,9 +1,40 @@
 <template>
     <main-layout>
-        <div class="grid md:mt-16 md:mx-6 h-full ">
+        <div class="grid md:mt-16 md:mx-6 h-full mt-10 ">
             <div class=" w-auto bg-white shadow-md rounded pt-8 hidden-mobile ">
                 <p class="mb-5 text-3xl pl-2 ">Last Data</p>
-                <table class="shadow-lg bg-white w-full ">
+                <div class=" flex flex-row mx-1 " >
+                    <div class="w-full">
+                        <select 
+                            @change="getLastData"
+                            v-model="request.field"
+                            class="border w-full py-1 px-1 border-gray-300 text-black
+                                    overflow-hidden rounded-md shadow-sm
+                                    focus:outline-none" :disabled="table.length <= 0 ? true : false" >
+                            <option value="location">loc</option>
+                            <option value="account_name">user</option>
+                            <option value="account">account</option>
+                            <option value="profit">profit</option>
+                            <option value="pnlday">pnlday</option>
+                            <option value="pnlmnt">pnlmonth</option>
+                            <option value="equity">equity</option>
+                            <option value="floating">floating</option>
+                            <option value="dd">dd</option>
+                        </select>
+                    </div>
+                    <div class="w-full ml-1">
+                        <select 
+                            @change="getLastData"
+                            v-model="request.sorted"
+                            class="border w-full py-1 px-1 border-gray-300 text-black
+                                    overflow-hidden rounded-md shadow-sm
+                                    focus:outline-none " :disabled="table.length <= 0 ? true : false" >
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                </div>
+                <table class="shadow-lg bg-white w-full mt-2 ">
                     <tr>
                         <th class=" th-mobile " >Location</th>
                         <th class=" th-mobile " >Account</th>

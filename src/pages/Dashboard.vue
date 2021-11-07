@@ -20,7 +20,7 @@
                 <p class=" " >Data Empty</p>
             </div>
         </div>
-        <div v-if="list.length > 0" class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6">
+        <div v-if="list.length > 0" class="grid md:grid-cols-4 md:gap-5 md:mx-10 md:my-6 mt-12 md:mt-20 ">
             <div v-for="(item, index) in list" class="max-w-sm overflow-hidden mb-2 shadow-lg bg-white hover:shadow-2xl rounded-lg transform duration-200" :key="index">
                 <div class="mx-6 border-b grid">
                     <div class="row flex my-4">
