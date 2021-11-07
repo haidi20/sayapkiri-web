@@ -63,7 +63,7 @@
                 </table>
             </div>
             <div class=" overflow-auto bg-white shadow-md rounded pt-2 show-mobile ">
-                <p class="mb-1 pl-5 text-md ">Last Data</p>
+                <p class="mb-1 pl-2 text-md ">Last Data</p>
                 <div class=" flex flex-row mx-1 " style="font-size: 9px" >
                     <div class="w-full">
                         <select 
@@ -77,6 +77,7 @@
                             <option value="profit">profit</option>
                             <option value="equity">equity</option>
                             <option value="floating">floating</option>
+                            <option value="dd">dd</option>
                         </select>
                     </div>
                     <div class="w-full ml-1">
@@ -85,7 +86,6 @@
                             class="border w-full py-1 px-1 border-gray-300 text-black
                                     overflow-hidden rounded-md shadow-sm
                                     focus:outline-none ">
-                            <option value="null">Select Sorting</option>
                             <option value="asc">Ascending</option>
                             <option value="desc">Descending</option>
                         </select>
@@ -215,8 +215,8 @@ import MainLayout from '@/pages/MainLayout';
 
     function initialFilter() {
         return {
-            field: "null",
-            sorted: "null",
+            field: "dd",
+            sorted: "asc",
         }
     }
 
