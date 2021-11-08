@@ -19,6 +19,7 @@
                             <option value="pnlmnt">pnlmonth</option>
                             <option value="equity">equity</option>
                             <option value="floating">floating</option>
+                            <option value="trade">trade</option>
                             <option value="dd">dd</option>
                         </select>
                     </div>
@@ -111,6 +112,7 @@
                             <option value="pnlmnt">pnlmonth</option>
                             <option value="equity">equity</option>
                             <option value="floating">floating</option>
+                            <option value="trade">trade</option>
                             <option value="dd">dd</option>
                         </select>
                     </div>
