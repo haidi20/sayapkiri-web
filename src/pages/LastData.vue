@@ -35,7 +35,7 @@
                         </select>
                     </div>
                 </div>
-                <table class="shadow-lg bg-white w-full mt-2  h-full">
+                <table class="shadow-lg bg-white w-full mt-2 ">
                     <thead>
                         <tr>
                             <th class=" th-mobile " >Location</th>
@@ -58,7 +58,7 @@
                             <th class=" th-mobile " >Pnlday</th>
                         </tr>
                     </thead>
-                    <tbody class="h-full">
+                    <tbody class="">
                         <tr v-if="loading">
                             <td  class=" text-center " colspan="20">Loading</td>
                         </tr>
