@@ -102,7 +102,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class=" overflow-auto bg-white shadow-md rounded pt-2 show-mobile ">
+            <div class=" h-screen overflow-auto bg-white rounded pt-2 show-mobile ">
                 <p class="mb-1 pl-2 text-md ">Last Data</p>
                 <div class=" flex flex-row mx-1 " style="font-size: 9px" >
                     <div class="w-full">
@@ -136,7 +136,7 @@
                         </select>
                     </div>
                 </div>
-                <table class=" border-b-2 border-gray-300 bg-white w-full mt-2 " style="font-size: 9px" >
+                <table class=" bg-white w-full mt-2 " style="font-size: 9px" >
                     <thead>
                         <tr class="">
                             <th class=" th-mobile " >Loc</th>
@@ -146,7 +146,7 @@
                             <th class=" th-mobile " >Floating</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="">
                         <tr class="" v-if="loading">
                             <td  class=" text-center " colspan="20">Loading</td>
                         </tr>
