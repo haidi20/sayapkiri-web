@@ -147,16 +147,16 @@
                         </tr>
                     </thead>
                     <tbody class="">
-                        <tr class="" v-if="loading">
+                        <tr class=" border-t-2 border-b-2 border-blue-400" v-if="loading">
                             <td  class=" text-center " colspan="20">Loading</td>
                         </tr>
-                        <tr class="" v-if="table.length <= 0 && !loading" >
+                        <tr class=" border-t-2 border-b-2 border-blue-300" v-if="table.length <= 0 && !loading" >
                             <td class=" text-center " colspan="20" >Data Empty</td>
                         </tr>
                         <tr 
                             @click="insertActiveIndexRow(index)"
                             :class="classActiveRow(index)"
-                            class=" border-t-2 border-blue-200" 
+                            class=" border-t-2 border-b-2 border-blue-400" 
                             v-for="(item, index) in table"  :key="index">
                             <td class=" td-mobile text-center ">
                                 {{item.location}} 
