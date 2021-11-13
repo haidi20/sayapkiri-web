@@ -1,9 +1,10 @@
 <template>
     <main-layout>
-        <div class="grid md:mt-16 md:mx-6 h-screen ">
+        <div class="grid md:mt-16 mt-10 md:mx-6 ">
             <div class=" w-auto bg-white shadow-md rounded pt-4 mt-6 hidden-mobile ">
-                <p class="mb-5 text-3xl pl-2 ">Last Data</p>
-                <div class=" flex flex-row mx-1 " >
+                <p class="text-3xl pl-4 ">Last Data</p>
+                <hr class="border-1 border-gray-400 mb-5 " >
+                <div class=" flex flex-row mx-4 " >
                     <div class="">
                         <select 
                             @change="getLastData"
@@ -23,7 +24,7 @@
                             <option value="dd">dd</option>
                         </select>
                     </div>
-                    <div class="ml-1">
+                    <div class="ml-4">
                         <select 
                             @change="getLastData"
                             v-model="request.sorted"
@@ -35,7 +36,7 @@
                         </select>
                     </div>
                 </div>
-                <table class="shadow-lg bg-white w-full mt-2 ">
+                <table class=" border-b-2 border-gray-300 bg-white w-full mt-2 ">
                     <thead>
                         <tr>
                             <th class=" th-mobile " >Location</th>
@@ -134,16 +135,8 @@
                             <option value="desc">Descending</option>
                         </select>
                     </div>
-                    <div>
-                        <button 
-                            @click="getLastData"
-                            type="submit" 
-                            class=" bg-blue-500 rounded-md py-1 px-2 ml-1 text-white ">
-                            Reload
-                        </button>
-                    </div>
                 </div>
-                <table class="shadow-lg bg-white w-full h-full mt-2 " style="font-size: 9px" >
+                <table class=" border-b-2 border-gray-300 bg-white w-full mt-2 " style="font-size: 9px" >
                     <thead>
                         <tr class="">
                             <th class=" th-mobile " >Loc</th>
@@ -154,10 +147,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="h-full" v-if="loading">
+                        <tr class="" v-if="loading">
                             <td  class=" text-center " colspan="20">Loading</td>
                         </tr>
-                        <tr class="h-full" v-if="table.length <= 0 && !loading" >
+                        <tr class="" v-if="table.length <= 0 && !loading" >
                             <td class=" text-center " colspan="20" >Data Empty</td>
                         </tr>
                         <tr 
