@@ -200,7 +200,7 @@
                 this.getLast();
             },
             formatDate(date) {
-                return moment(date).format('DD MMM YYYY hh:mm');
+                return moment(date).format('DD MMM YYYY HH:mm');
             },
             colorProfit(profit) {
                 return profit <= 0 ? 'text-red-500' : 'text-green-500';
