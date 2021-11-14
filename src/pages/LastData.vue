@@ -1,6 +1,6 @@
 <template>
     <main-layout>
-        <div class="grid md:mt-16 mt-10 md:mx-6 ">
+        <div class="grid md:mt-28 mt-10 md:mx-6 ">
             <div class=" bg-white shadow-md rounded pt-4 mt-6 hidden-mobile px-2 ">
                 <p class="text-3xl mb-5 ">Last Data</p>
                 <!-- <hr class="border-1 border-gray-400 mb-5 " > -->
@@ -253,8 +253,6 @@ import MainLayout from '@/pages/MainLayout';
 
                                 if(status){
                                     this.table = data;
-
-                                    console.log(this.table.length);
                                 }
 
                                 this.loading = false;

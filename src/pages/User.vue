@@ -134,8 +134,6 @@ export default {
                             {headers: { Authorization: `Bearer `+ that.token}})
                         .then(function ({data}) {
 
-                            console.log(data);
-
                             if(data.status) {
                                 that.table = data.data;
                             }
