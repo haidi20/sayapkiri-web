@@ -4,22 +4,31 @@
       <div class="flex flex-col w-full">
         <header class="z-30 md:py-4 py-2 w-full shadow-md dark:bg-gray-800 fixed" style="background-color: #4680FE">
           <div
-            class=" flex flex-row md:grid md:grid-cols-2 md:w-1/6 "
+            class=" flex md:grid md:grid-cols-6 w-full "
           >
-            <div class="md:col-span-1 md:text-center ">
+            <div class=" hidden-mobile text-center ">
               <a
-                class=" text-2xl md:ml-0 ml-2 font-bold text-blue-custom text-white "
+                class=" text-2xl ml-2 font-bold text-white w-1/2 "
                 href="#"
+                style=""
               >
                 SayapKiri
               </a>
             </div>
-            <div class="md:col-span-1">
+            <div class=" col-span-1 content-start ">
               <img 
                   @click="toggleLeftBar"
-                  class="w-6 border-white cursor-pointer ml-4 mt-1 "
+                  class="w-7 cursor-pointer mt-1 "
                   alt="svgImg" 
                   src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBkPSJNIDIgNSBMIDIgNyBMIDIyIDcgTCAyMiA1IEwgMiA1IHogTSAyIDExIEwgMiAxMyBMIDIyIDEzIEwgMjIgMTEgTCAyIDExIHogTSAyIDE3IEwgMiAxOSBMIDIyIDE5IEwgMjIgMTcgTCAyIDE3IHoiPjwvcGF0aD48L3N2Zz4="/>  
+            </div>
+            <div class="md:col-span-1 md:text-center show-mobile mx-auto ">
+              <a
+                class=" text-2xl md:ml-0 font-bold text-white "
+                href="#"
+              >
+                SayapKiri
+              </a>
             </div>
           </div>
         </header>
