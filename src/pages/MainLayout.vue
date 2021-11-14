@@ -4,8 +4,7 @@
       <div class="flex flex-col w-full">
         <header class="z-30 md:py-4 py-2 w-full shadow-md dark:bg-gray-800 fixed bg-blue-450">
           <div
-            class=" flex md:grid md:grid-cols-7 w-full "
-          >
+            class=" flex md:grid md:grid-cols-7 w-full ">
             <div class=" col-span-1 hidden-mobile text-center ">
               <a
                 class=" text-2xl ml-2 font-bold text-white w-1/2 "
