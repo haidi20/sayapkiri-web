@@ -3,32 +3,28 @@
       class=" ">      
       <div class="flex flex-col w-full">
         <header class="z-30 md:py-4 py-2 w-full shadow-md dark:bg-gray-800 fixed bg-blue-450">
-          <div
-            class=" flex md:grid md:grid-cols-7 w-full ">
-            <div class=" col-span-1 hidden-mobile text-center ">
-              <a
-                class=" text-2xl ml-2 font-bold text-white w-1/2 "
-                href="#"
-                style=""
-              >
-                SayapKiri
-              </a>
-            </div>
-            <div class=" col-span-1 content-start ml-2 ">
-              <img 
-                  @click="toggleLeftBar"
-                  class="w-7 cursor-pointer mt-1 "
-                  alt="svgImg" 
-                  src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBkPSJNIDIgNSBMIDIgNyBMIDIyIDcgTCAyMiA1IEwgMiA1IHogTSAyIDExIEwgMiAxMyBMIDIyIDEzIEwgMjIgMTEgTCAyIDExIHogTSAyIDE3IEwgMiAxOSBMIDIyIDE5IEwgMjIgMTcgTCAyIDE3IHoiPjwvcGF0aD48L3N2Zz4="/>  
-            </div>
-            <div class=" show-mobile mx-auto ">
-              <a
-                class=" text-2xl md:ml-0 font-bold text-white "
-                href="#"
-              >
-                SayapKiri
-              </a>
-            </div>
+          <div class="hidden-mobile pl-14">
+            <a
+              class="text-2xl font-bold text-white "
+              href="#"
+            >
+              SayapKiri
+            </a>
+            <svg xmlns="http://www.w3.org/2000/svg" @click="toggleLeftBar" fill="currentColor" class="bi bi-list w-7 text-white ml-20 cursor-pointer " style="display:inline" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </div>
+          <div class="show-mobile ">
+            <svg 
+              class="bi bi-list w-7 text-white ml-5 m-0 cursor-pointer float-left "
+              xmlns="http://www.w3.org/2000/svg" style="display:inline" @click="toggleLeftBar" fill="currentColor"  viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            <p
+              class=" text-white font-bold text-2xl ml-16 "
+              style="display:inline" >
+              SayapKiri
+            </p>
           </div>
         </header>
         <div class=" flex flex-row w-full h-full align-middle ">
