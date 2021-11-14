@@ -15,7 +15,7 @@
                 SayapKiri
               </a>
             </div>
-            <div class=" col-span-1 content-start ">
+            <div class=" col-span-1 content-start ml-2 ">
               <img 
                   @click="toggleLeftBar"
                   class="w-7 cursor-pointer mt-1 "
@@ -174,6 +174,9 @@
   }
   .label-custom {
       @apply block text-black text-sm font-bold mb-2
+  }
+  .th-desktop {
+    @apply text-white border text-center py-1 bg-blue-450      
   }
   .label-custom-mobile {
       @apply w-1/2 font-bold bg-blue-450 text-white pl-5 py-1

@@ -1,7 +1,7 @@
 <template>
     <main-layout>
-        <div class=" w-full md:grid md:grid-cols-4 md:my-16 mt-5 ">
-            <div class="col-span-1 md:ml-6">
+        <div class=" md:grid md:grid-cols-4 md:mt-28 mt-5 md:mx-6 ">
+            <div class="col-span-1 ">
                 <form class=" bg-white shadow-md rounded py-8 px-2 md:mr-6 " @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl">Form News</p>
                     <div class="mb-4">
@@ -79,7 +79,7 @@
                 </form>
             </div>
             <!-- Start table Desktop -->
-            <div class=" h-screen hidden-mobile col-span-3 md:mr-5 ">
+            <div class=" h-screen hidden-mobile col-span-3 ">
                 <div                    
                     class=" bg-white shadow-md rounded py-8 px-4 overflow-x-auto  ">
                     <div style="margin-bottom: 50px">

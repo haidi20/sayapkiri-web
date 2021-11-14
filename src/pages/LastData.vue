@@ -1,10 +1,10 @@
 <template>
     <main-layout>
         <div class="grid md:mt-16 mt-10 md:mx-6 ">
-            <div class=" w-auto bg-white shadow-md rounded pt-4 mt-6 hidden-mobile ">
-                <p class="text-3xl pl-4 ">Last Data</p>
-                <hr class="border-1 border-gray-400 mb-5 " >
-                <div class=" flex flex-row mx-4 " >
+            <div class=" bg-white shadow-md rounded pt-4 mt-6 hidden-mobile px-2 ">
+                <p class="text-3xl mb-5 ">Last Data</p>
+                <!-- <hr class="border-1 border-gray-400 mb-5 " > -->
+                <div class=" flex flex-row " >
                     <div class="">
                         <select 
                             @change="getLastData"
@@ -36,27 +36,27 @@
                         </select>
                     </div>
                 </div>
-                <table class=" bg-white w-full mt-2 ">
+                <table class=" w-full bg-white mt-2 ">
                     <thead>
                         <tr>
-                            <th class=" th-mobile " >Location</th>
-                            <th class=" th-mobile " >Account</th>
-                            <th class=" th-mobile " >Account Name</th>
-                            <th class=" th-mobile " >Profit</th>
-                            <th class=" th-mobile " >Pnlday</th>
-                            <th class=" th-mobile " >Balance</th>
-                            <th class=" th-mobile " >Equity</th>
-                            <th class=" th-mobile " >Floating</th>
-                            <!-- <th class=" th-mobile " >ea enable</th>                         -->
-                            <th class=" th-mobile " >Trade</th>
-                            <th class=" th-mobile " >Broker Time</th>
-                            <!-- <th class=" th-mobile " >Created Date</th> -->
-                            <th class=" th-mobile " >Float Max</th>
-                            <th class=" th-mobile " >Float Trade</th>
-                            <th class=" th-mobile " >Float Date</th>
-                            <th class=" th-mobile " >Day</th>
-                            <!-- <th class=" th-mobile " >Row num</th> -->
-                            <th class=" th-mobile " >DD</th>
+                            <th class=" th-desktop " >Location</th>
+                            <th class=" th-desktop " >Account</th>
+                            <th class=" th-desktop " >Account Name</th>
+                            <th class=" th-desktop " >Profit</th>
+                            <th class=" th-desktop " >Pnlday</th>
+                            <th class=" th-desktop " >Balance</th>
+                            <th class=" th-desktop " >Equity</th>
+                            <th class=" th-desktop " >Floating</th>
+                            <!-- <th class=" th-desktop " >ea enable</th>                         -->
+                            <th class=" th-desktop " >Trade</th>
+                            <th class=" th-desktop " >Broker Time</th>
+                            <!-- <th class=" th-desktop " >Created Date</th> -->
+                            <th class=" th-desktop " >Float Max</th>
+                            <th class=" th-desktop " >Float Trade</th>
+                            <th class=" th-desktop " >Float Date</th>
+                            <th class=" th-desktop " >Day</th>
+                            <!-- <th class=" th-desktop " >Row num</th> -->
+                            <th class=" th-desktop " >DD</th>
                         </tr>
                     </thead>
                     <tbody class="">
