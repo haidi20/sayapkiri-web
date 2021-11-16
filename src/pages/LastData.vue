@@ -1,7 +1,7 @@
 <template>
     <main-layout>
         <div class="grid md:mt-28 mt-10 md:mx-6 ">
-            <div class=" bg-white shadow-md rounded pt-4 mt-6 hidden-mobile px-2 ">
+            <div class=" bg-white shadow-md rounded pt-4 hidden-mobile px-2 ">
                 <p class="text-3xl mb-5 ">Last Data</p>
                 <!-- <hr class="border-1 border-gray-400 mb-5 " > -->
                 <div class=" flex flex-row " >
@@ -39,13 +39,15 @@
                         <button 
                             @click="getLastData"
                             type="button" 
-                            class=" bg-green-500 text-white border-2 font-bold py-2 px-3 rounded-lg
+                            :disabled="loading ? true : false"
+                            class=" bg-green-500 text-white border-2 font-bold py-2 px-3 rounded-lg float-left
                                     hover:bg-green-700 hover:text-white  ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
                                 <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
                             </svg>
                         </button>
+                        <p v-if="loading" class="inline-block mt-3 ml-1 " >Loading...</p>
                     </div>
                 </div>
                 <table class=" w-full bg-white mt-2 ">
@@ -169,7 +171,7 @@
                             <td class=" text-center " colspan="20" >Data Empty</td>
                         </tr>
                         <tr 
-                            @click="insertActiveIndexRow(index)"
+                            @click="activeRow(index)"
                             :class="classActiveRow(index)"
                             class=" border-b-2 border-blue-400" 
                             v-for="(item, index) in table"  :key="index">
@@ -228,6 +230,9 @@
     select:disabled {
         @apply bg-gray-400 font-bold text-black
     }
+    button:disabled {
+        @apply bg-gray-500 
+    }
 </style>
 
 <script>
@@ -281,7 +286,7 @@ import MainLayout from '@/pages/MainLayout';
             customNumber(number) {
                 return Intl.NumberFormat().format(number);
             },
-            insertActiveIndexRow(index) {
+            activeRow(index) {
                 this.indexSelected = index;
             },
             classActiveRow(index){

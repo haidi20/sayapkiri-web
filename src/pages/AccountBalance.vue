@@ -93,7 +93,7 @@
                                 </td>
                                 <td class="border px-5 py-4 text-xs">{{item.account_number}}</td>
                                 <td class="border px-5 py-4 text-xs">{{item.periode}}</td>
-                                <td class="border px-5 py-4 text-xs">{{item.balance}}</td>
+                                <td class="border px-5 py-4 text-xs">{{customNumber(item.balance)}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -332,6 +332,9 @@ export default {
             this.form.pid_user = user.pid_user;
 
             this.getDataAccount();
+        },
+        customNumber(number) {
+            return Intl.NumberFormat().format(number);
         },
     }
 }
