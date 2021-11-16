@@ -1,89 +1,97 @@
 <template>
     <main-layout>
         <div class=" md:grid md:grid-cols-4 md:mt-28 mt-5 md:mx-6 ">
+            <!-- Start form -->
             <div class="col-span-1 ">
                 <form class=" bg-white shadow-md rounded py-8 px-2 md:mr-6 " @submit.prevent="handleSubmit">
-                    <p class="mb-5 text-3xl">Form News</p>
-                    <div class="mb-4">
-                        <label class="label-custom">
-                            Pair
-                        </label>
-                        <input 
-                            class="input-custom" 
-                            v-model="form.pair" id="pair" type="text" >
-                    </div>
-                    <div class="mb-4">
-                        <label class="label-custom">
-                            Date News
-                        </label>
-                        <input 
-                            @input="eventDateNews($event.target.value)"
-                            class="input-custom" 
-                            v-model="form.date_news" 
-                            id="date_news" 
-                            type="datetime-local" >
-                    </div>
-                    <div class="mb-4">
-                        <label class="label-custom">
-                            Date Start
-                        </label>
-                        <input class="input-custom" v-model="form.date_start" id="date_start" type="datetime-local" >
-                    </div>
-                    <div class="mb-4">
-                        <label class="label-custom">
-                            Date Stop
-                        </label>
-                        <input 
-                            class="input-custom" 
-                            v-model="form.date_stop" 
-                            id="date_stop" 
-                            type="datetime-local" >
-                    </div>
-                    <div class="mb-4">
-                        <label class="label-custom">
-                            Impact
-                        </label>
-                        <div class="inline-block relative w-full">
-                            <select 
-                                v-model="form.impact"
-                                class="block appearance-none w-full bg-white border py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="LOW">LOW</option>
-                                <option value="MEDIUM">MEDIUM</option>
-                                <option value="HIGH">HIGH</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    <p class="mb-5 text-3xl inline-flex ">Form News</p>
+                    <button type="button" class="bg-blue-500 text-white border-2 font-bold py-0 px-2 rounded-lg hover:bg-blue-700 hover:text-white float-right ">
+                        <p v-if="!hiddenForm" @click="hiddenForm = !hiddenForm" >-</p>
+                        <p v-if="hiddenForm" @click="hiddenForm = !hiddenForm" >+</p>
+                    </button>
+                    <div :class="showHideForm" class=" transition-all duration-1000 overflow-y-auto ">
+                        <div class="mb-4">
+                            <label class="label-custom">
+                                Pair
+                            </label>
+                            <input 
+                                class="input-custom" 
+                                v-model="form.pair" id="pair" type="text" >
+                        </div>
+                        <div class="mb-4">
+                            <label class="label-custom">
+                                Date News
+                            </label>
+                            <input 
+                                @input="eventDateNews($event.target.value)"
+                                class="input-custom" 
+                                v-model="form.date_news" 
+                                id="date_news" 
+                                type="datetime-local" >
+                        </div>
+                        <div class="mb-4">
+                            <label class="label-custom">
+                                Date Start
+                            </label>
+                            <input class="input-custom" v-model="form.date_start" id="date_start" type="datetime-local" >
+                        </div>
+                        <div class="mb-4">
+                            <label class="label-custom">
+                                Date Stop
+                            </label>
+                            <input 
+                                class="input-custom" 
+                                v-model="form.date_stop" 
+                                id="date_stop" 
+                                type="datetime-local" >
+                        </div>
+                        <div class="mb-4">
+                            <label class="label-custom">
+                                Impact
+                            </label>
+                            <div class="inline-block relative w-full">
+                                <select 
+                                    v-model="form.impact"
+                                    class="block appearance-none w-full bg-white border py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="LOW">LOW</option>
+                                    <option value="MEDIUM">MEDIUM</option>
+                                    <option value="HIGH">HIGH</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mb-4">
-                        <label class="label-custom">
-                            Description
-                        </label>
-                        <textarea class="input-custom" v-model="form.desc" id="desc" type="text" > </textarea>
-                    </div>
-                    <div class="">
-                        <button 
-                            type="submit" 
-                            class=" btn-send ">
-                            Send
-                        </button>
-                        <button 
-                            @click="resetForm"
-                            type="button" 
-                            class=" btn-cancel ">
-                            Cancel
-                        </button>
-                        <span >{{loading ? "loading" : ""}}</span>
+                        <div class="mb-4">
+                            <label class="label-custom">
+                                Description
+                            </label>
+                            <textarea class="input-custom" v-model="form.desc" id="desc" type="text" > </textarea>
+                        </div>
+                        <div class="">
+                            <button 
+                                type="submit" 
+                                class=" btn-send ">
+                                Send
+                            </button>
+                            <button 
+                                @click="resetForm"
+                                type="button" 
+                                class=" btn-cancel ">
+                                Cancel
+                            </button>
+                            <span >{{loading ? "loading" : ""}}</span>
+                        </div>
                     </div>
                 </form>
             </div>
+            <!-- End form -->
             <!-- Start table Desktop -->
             <div class=" h-screen hidden-mobile col-span-3 ">
                 <div                    
                     class=" bg-white shadow-md rounded py-8 px-4 overflow-x-auto  ">
-                    <div style="margin-bottom: 50px">
-                        <p class="text-3xl">Data News</p>
+                    <div class="mb-5">
+                        <p class=" text-3xl">Data News</p>
                         <!-- <div class=" float-right ">
                             <input type="text" class="input-custom" placeholder="search" >
                         </div> -->
@@ -129,8 +137,7 @@
                             :key="index">
                             <td class="text-xs ">
                                 <div class=" ">
-                                    <div class=" flex flex-col text-sm ">
-                                        
+                                    <div class=" flex flex-col text-sm ">                                        
                                         <div class="flex flex-row ">
                                             <div class="  label-custom-mobile "> Pair </div>
                                             <div class="w-full pl-2 py-1 "> {{item.pair}} </div>
@@ -188,6 +195,7 @@
     export default {
         data() {
             return {
+                hiddenForm: true,
                 token: localStorage.getItem('token'),
                 loading: false,
                 form: initialState(),
@@ -201,7 +209,11 @@
             this.getData();
         },
         computed: {
-            
+            showHideForm() {
+                return {
+                    'hidden': this.hiddenForm,
+                }
+            }
         },
         methods: {
             async getData() {
