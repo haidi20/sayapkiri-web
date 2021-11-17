@@ -284,7 +284,8 @@ import MainLayout from '@/pages/MainLayout';
                 return Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USC' }).format(number);
             },
             customNumber(number) {
-                return Intl.NumberFormat().format(number);
+                // return Intl.NumberFormat(2).format(number);
+                return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
             },
             activeRow(index) {
                 this.indexSelected = index;
