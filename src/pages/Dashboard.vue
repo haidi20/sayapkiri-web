@@ -6,12 +6,6 @@
       v-bind:sortedBy="request.sorted_by"
       @update:sortedBy="request.sorted_by = $event"
     />
-    <!-- <div class="container">
-            <img 
-                @click="toggleModal"
-                class="bg-white shadow-lg rounded-md cursor-pointer p-2 hover:shadow-2xl "
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAyklEQVRIie2TMQqDQBBF/9hYp7VZQbBLn0vYeoggmDKdm84LeJs9QHob2cqcwFpQTJEQRGZXBJMi7O92hnl/2dkPOK2I5oe4LaY9oDq8fbjeHsD/FnHFuC0qAOeNqEqHMltW2R0EgnIAagNdBQIX1tY0cXxcD/3k3wHEK3DtU3+qRdlxTeMvqkXZeSMlALGD7/t13kiJCW41AIAmkhqEFMDAtAcQ0iaS2sZYzYEWUgET876Uv3p2GXew1DLl87Ta9PUkOwNn4PQDPQExqS/MSsyAVgAAAABJRU5ErkJggg=="/>
-        </div> -->
     <div v-if="list.length <= 0 && !loading" class="bg-white h-screen flex">
       <div class="text-center m-auto">
         <img
@@ -34,16 +28,14 @@
           max-w-sm
           overflow-hidden
           mb-2
-          shadow-lg
           bg-white
-          hover:shadow-2xl
           rounded-lg
           transform
           duration-200
           cursor-pointer
         "
       >
-        <div class="mx-6 border-b grid">
+        <div class="mx-6 border-b grid bg-white">
           <div class="row flex my-4">
             <div class="flex-1">
               <div class="grid">
@@ -68,14 +60,12 @@
                       text-xs
                       font-semibold
                       inline-block
-                      ml-1
-                      py-1
-                      px-1
+                      mx-1
+                      pb-2
+                      px-2
                       rounded-sm
                       text-white
                       bg-green-500
-                      last:mr-0
-                      mr-1
                     "
                   >
                     {{ item.location }}
@@ -346,8 +336,10 @@ export default {
           canvas.toBlob((blob) =>
             navigator.clipboard.write([
               new ClipboardItem({ "image/png": blob }),
-            ])
+            ]),
           );
+
+        //   document.body.append(canvas);
         } catch (err) {
           console.error(err.name, err.message);
         }

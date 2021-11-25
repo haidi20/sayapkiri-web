@@ -1,7 +1,10 @@
 <template>
     <!-- Dialog (full screen) -->
-    <div 
-        v-if="open" 
+    <div
+        v-if="open"
+        data-aos="fade-in"
+        data-aos-delay="200"
+        id="popup_filter"
         class=" custom-modal " >
 
         <!-- A basic modal dialog with title, body and one button to close -->
@@ -43,7 +46,7 @@
             <!-- One big close button.  --->
             <div class="mt-5 sm:mt-6">
                 <span class="flex w-full rounded-md shadow-sm">
-                    <button @click="getLast" class="inline-flex justify-center w-full px-4 py-2 text-white bg-green-500 rounded hover:bg-green-700">
+                    <button @click="sendGetLastData" class="inline-flex justify-center w-full px-4 py-2 text-white bg-green-500 rounded hover:bg-green-700">
                         Oke
                     </button>
                 </span>
@@ -53,24 +56,37 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            open: Boolean,
-            sortedBy: String,
-            getLast: Function,
-        },
-        emits: ['update:sortedBy'],
-        computed: {
-            sorted_by: {
-                get() {
-                    return this.sortedBy
-                },
-                set(value) {
-                    this.$emit('update:sortedBy', value)
-                }
+import AOS from 'aos';
+
+import 'aos/dist/aos.css';
+
+export default {
+    props: {
+        open: Boolean,
+        sortedBy: String,
+        getLast: Function,
+    },
+    emits: ['update:sortedBy'],
+    mounted() {
+        AOS.init();
+    },
+    computed: {
+        sorted_by: {
+            get() {
+                return this.sortedBy
+            },
+            set(value) {
+                this.$emit('update:sortedBy', value)
             }
         }
+    },
+    methods: {
+        sendGetLastData() {
+            document.getElementById('popup_filter').classList.remove('aos-animate');
+            this.getLast();
+        }
     }
+}
 </script>
 
 <style lang="postcss" scoped>
