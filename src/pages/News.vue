@@ -390,7 +390,9 @@
                 })
             },
             edit(pid_news) {
-                // let that = this;        
+                // let that = this; 
+                //show form for edit
+                this.hiddenForm = false;       
                 let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
 
                 this.form.pid_news = foundData.pid_news;
