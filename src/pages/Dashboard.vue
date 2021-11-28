@@ -63,19 +63,16 @@
                       pb-1
                       px-1
                       bg-green-500
+                      rounded-sm
                     "
                   >
                     {{ item.location }}
                   </div>
                 </div>
-                <!-- <div 
-                        class="inline-block ml-1 px-1 bg-green-500 "
-                        v-if="item.location">
-                        <p
-                            class=" text-xs font-semibold text-white " >
-                            {{ item.location }}
-                        </p>
-                    </div> -->
+                <div class="text-xs text-right mt-1 ">
+                  <!-- Aync: 17 Oct 21 15:09 -->
+                  Sync: {{ formatDate(item.broker_time) }}
+                </div>
               </div>
             </div>
           </div>

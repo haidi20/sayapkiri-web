@@ -83,7 +83,6 @@ export default {
             return Intl.NumberFormat().format(number);
         },
         capture(index) {
-            let that = this;
             this.copyCard = true;
 
             let elCard = document.getElementById("card_" + index);
@@ -124,7 +123,7 @@ export default {
                     elLocation.classList.remove("pb-3");
                     elLocation.classList.add("pt-1");
                 });
-            }, 800);
+            }, 400);
         },
     },
 };
