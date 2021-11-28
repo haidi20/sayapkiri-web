@@ -36,45 +36,46 @@
         "
       >
         <div class="mx-6 border-b grid bg-white">
-          <div class="row flex my-4">
+          <div class="flex my-4">
             <div class="flex-1">
               <div class="grid">
                 <div class="text-lg font-bold">
                   {{ item.account }}
                 </div>
                 <div class="text-green-600">
-                  <!-- {{item.account_name}} -->
                   {{ !hiddenName ? sortName(item.account_name) : "*****" }}
                 </div>
               </div>
             </div>
             <div class="flex-1">
-              <div class="grid">
-                <div class="text-right">
-                  <strong
-                    >{{ item.ea_enable == 1 ? "Active" : "Non-Active" }}
-                  </strong>
-                  <span
-                    v-if="item.location"
+              <div class="text-right">
+                <!-- pnlday -->
+                <div class="font-bold inline-block text-lg">
+                  {{ item.ea_enable == 1 ? "Active" : "Non-Active" }}
+                  <div
+                    :id="'location_' + index"
                     class="
                       text-xs
                       font-semibold
                       inline-block
-                      mx-1
-                      pb-2
-                      px-2
-                      rounded-sm
                       text-white
+                      pt-1
+                      pb-1
+                      px-1
                       bg-green-500
                     "
                   >
                     {{ item.location }}
-                  </span>
+                  </div>
                 </div>
-                <div class="text-xs text-right">
-                  <!-- Aync: 17 Oct 21 15:09 -->
-                  Sync: {{ formatDate(item.broker_time) }}
-                </div>
+                <!-- <div 
+                        class="inline-block ml-1 px-1 bg-green-500 "
+                        v-if="item.location">
+                        <p
+                            class=" text-xs font-semibold text-white " >
+                            {{ item.location }}
+                        </p>
+                    </div> -->
               </div>
             </div>
           </div>
@@ -83,10 +84,7 @@
               <div class="grid">
                 <div class="">
                   <strong style="display: inline"> Floating </strong>
-                  <p
-                    class="text-sm text-blue-500 font-bold"
-                    style="display: inline"
-                  >
+                  <p class="text-sm text-blue-500 font-bold inline-block">
                     {{ item.dd }}%
                   </p>
                 </div>
@@ -163,14 +161,36 @@
         btn-hidden-name
       "
     >
-        <svg v-if="!hiddenName" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye text-green-300 " width="20" viewBox="0 0 16 16">
-            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-        </svg>
-        <svg v-if="hiddenName" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-slash-fill text-green-300 " width="20" viewBox="0 0 16 16">
-            <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
-            <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
-        </svg>
+      <svg
+        v-if="!hiddenName"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        class="bi bi-eye text-green-300"
+        width="20"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"
+        />
+        <path
+          d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+        />
+      </svg>
+      <svg
+        v-if="hiddenName"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        class="bi bi-eye-slash-fill text-green-300"
+        width="20"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"
+        />
+        <path
+          d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"
+        />
+      </svg>
     </button>
     <button
       type="button"
@@ -226,9 +246,9 @@
 
 <style lang="scss">
 .btn-hidden-name {
-    position: fixed;
-    right: 15px;
-    bottom: 120px;
+  position: fixed;
+  right: 15px;
+  bottom: 120px;
 }
 
 .btn-orderBy {
@@ -242,121 +262,6 @@
   right: 15px;
   bottom: 30px;
 }
-
-
 </style>
 
-<script>
-import moment from "moment";
-import axios from "axios";
-import MainLayout from "@/pages/MainLayout";
-import Modal from "@/pages/DashboardModal";
-import html2canvas from "html2canvas";
-const { ClipboardItem } = window;
-
-export default {
-  data() {
-    return {
-      loading: false,
-      hiddenName: false,
-      token: localStorage.getItem("token"),
-      list: [],
-      request: {
-        sorted_by: "trade_desc",
-      },
-      open: false,
-    };
-  },
-  components: {
-    MainLayout,
-    Modal,
-  },
-  mounted() {
-    this.getLast();
-  },
-  methods: {
-    async getLast() {
-      let that = this;
-      this.loading = true;
-
-      await axios
-        .post(
-          process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
-          this.request,
-          {
-            headers: {
-              Authorization: `Bearer ` + that.token,
-            },
-          }
-        )
-        .then(function (responses) {
-          if (responses.data.status) {
-            that.list = responses.data.data;
-
-            that.open = false;
-          } else if (!responses.data.status) {
-            that.$router.push({
-              name: "login",
-            });
-          }
-
-          that.loading = false;
-        })
-        .catch((error) => {
-          that.loading = false;
-          console.log(error);
-        });
-    },
-    refresh() {
-      this.getLast();
-    },
-    formatDate(date) {
-      return moment(date).format("DD MMM YYYY HH:mm");
-    },
-    colorProfit(profit) {
-      return profit <= 0 ? "text-red-500" : "text-green-500";
-    },
-    bgFooter(eaEnable) {
-      return eaEnable == 1 ? "bg-green-500" : "bg-gray-500";
-    },
-    sortName(name) {
-      return name.substring(0, 18);
-    },
-    toggleModal() {
-      this.open = !this.open;
-    },
-    customNumber(number) {
-      return Intl.NumberFormat().format(number);
-    },
-    capture(index) {
-      let elementCard = document.getElementById("card_" + index);
-
-      html2canvas(elementCard).then((canvas) => {
-        try {
-          canvas.toBlob((blob) =>
-            navigator.clipboard.write([
-              new ClipboardItem({ "image/png": blob }),
-            ]),
-          );
-
-        //   document.body.append(canvas);
-        } catch (err) {
-          console.error(err.name, err.message);
-        }
-
-        this.$swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 2000,
-        })
-        .fire({
-            icon: "success",
-            title: "Copy image",
-        });
-      });
-    },
-  },
-};
-</script>
+<script lang="js" src="./DashboardController.js"></script>
