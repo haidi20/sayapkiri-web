@@ -141,13 +141,13 @@
                         style="font-size: 9px">
                         <thead>
                             <tr>
-                                <th class=" bg-blue-450 py-1 px-1 text-white ">Action</th>
-                                <th class=" bg-blue-450 py-1 px-1 text-white ">Pair</th>
-                                <th class=" bg-blue-450 py-1 px-1 text-white ">Date News</th>
-                                <th class=" bg-blue-450 py-1 px-1 text-white ">Date Start</th>
-                                <th class=" bg-blue-450 py-1 px-1 text-white ">Date Stop</th>
-                                <th class=" bg-blue-450 py-1 px-1 text-white ">Impact</th>
-                                <th class=" bg-blue-450 py-1 px-1 text-white ">Desc</th>
+                                <th class=" bg-blue-450 py-1 text-white ">Action</th>
+                                <th class=" bg-blue-450 py-1 text-white ">Pair</th>
+                                <th class=" bg-blue-450 py-1 text-white ">Date News</th>
+                                <th class=" bg-blue-450 py-1 px-2 text-white ">Date Start</th>
+                                <th class=" bg-blue-450 py-1 px-2 text-white ">Date Stop</th>
+                                <th class=" bg-blue-450 text-white ">Impact</th>
+                                <th class=" bg-blue-450 text-white ">Desc</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -160,16 +160,24 @@
                                 class=" border-b-2 border-gray-300 "
                                 v-for="(item, index) in table"  
                                 :key="index">
-                                <td class="row-mobile">
-                                    <img @click="edit(item.pid_news)" width="15" class=" mb-2 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
-                                    <img @click="remove(item.pid_news)" width="15" class=" "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                <td class="pl-1">
+                                    <img @click="edit(item.pid_news)" width="15" class=" my-1 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                    <img @click="remove(item.pid_news)" width="15" class=" my-1 "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                    <!-- <button 
+                                        class=" mb-1 bg-blue-450 text-white p-1 rounded-md" style="font-size: 9px">
+                                        edit
+                                    </button>
+                                    <button 
+                                        class=" bg-red-600 text-white p-1 rounded-md" style="font-size: 9px">
+                                        delete
+                                    </button> -->
                                 </td>
-                                <td class="row-mobile">{{item.pair}}</td>
+                                <td class="">{{item.pair}}</td>
                                 <td class="row-mobile">{{item.custom_date_news}}</td>
                                 <td class="row-mobile">{{item.custom_date_start}}</td>
                                 <td class="row-mobile">{{item.custom_date_stop}}</td>
-                                <td class="row-mobile">{{item.impact}}</td>
-                                <td class="row-mobile">{{item.desc}}</td>
+                                <td class="">{{item.impact}}</td>
+                                <td class="">{{item.desc}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -412,6 +420,7 @@
                 }).format('YYYY-MM-DDTHH:mm:ss');
             },
             resetForm() {
+                this.hiddenForm = true;
                 this.form = initialState();
             },
             activeRow(index) {
