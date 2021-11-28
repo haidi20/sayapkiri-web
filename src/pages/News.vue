@@ -4,11 +4,12 @@
             <!-- Start form -->
             <div class="col-span-1 ">
                 <form class=" bg-white shadow-md rounded py-8 px-2 md:mr-6 " @submit.prevent="handleSubmit">
-                    <p class="mb-5 text-3xl inline-flex ">Form News</p>
+                    <p class="md:mb-5 sm:mb-5 md:text-3xl sm:text-3xl inline-flex ">Form News</p>
                     <button 
                         v-if="!hiddenBtnForm"
                         type="button" 
-                        class="bg-blue-500 text-white border-2 font-bold pb-1 px-2 mt-1 rounded-lg hover:bg-blue-700 hover:text-white float-right ">
+                        class="bg-blue-500 text-white
+                                px-2 mt-1 rounded-md float-right ">
                         <p v-if="!hiddenForm" @click="hiddenForm = !hiddenForm" >-</p>
                         <p v-if="hiddenForm" @click="hiddenForm = !hiddenForm" >+</p>
                     </button>
@@ -140,6 +141,7 @@
                         style="font-size: 9px">
                         <thead>
                             <tr>
+                                <th class=" bg-blue-450 py-1 px-1 text-white ">Action</th>
                                 <th class=" bg-blue-450 py-1 px-1 text-white ">Pair</th>
                                 <th class=" bg-blue-450 py-1 px-1 text-white ">Date News</th>
                                 <th class=" bg-blue-450 py-1 px-1 text-white ">Date Start</th>
@@ -158,6 +160,10 @@
                                 class=" border-b-2 border-gray-300 "
                                 v-for="(item, index) in table"  
                                 :key="index">
+                                <td class="row-mobile">
+                                    <img @click="edit(item.pid_news)" width="15" class=" mb-2 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                    <img @click="remove(item.pid_news)" width="15" class=" "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                </td>
                                 <td class="row-mobile">{{item.pair}}</td>
                                 <td class="row-mobile">{{item.custom_date_news}}</td>
                                 <td class="row-mobile">{{item.custom_date_start}}</td>
@@ -206,6 +212,7 @@
             return {
                 hiddenBtnForm: true,
                 hiddenForm: true,
+                dropdownAction: false,
                 token: localStorage.getItem('token'),
                 loading: false,
                 indexSelected: null,
