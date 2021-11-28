@@ -5,11 +5,16 @@
             <div class="col-span-1 ">
                 <form class=" bg-white shadow-md rounded py-8 px-2 md:mr-6 " @submit.prevent="handleSubmit">
                     <p class="mb-5 text-3xl inline-flex ">Form News</p>
-                    <button type="button" class="bg-blue-500 text-white border-2 font-bold py-0 px-2 rounded-lg hover:bg-blue-700 hover:text-white float-right ">
+                    <button 
+                        v-if="!hiddenBtnForm"
+                        type="button" 
+                        class="bg-blue-500 text-white border-2 font-bold pb-1 px-2 mt-1 rounded-lg hover:bg-blue-700 hover:text-white float-right ">
                         <p v-if="!hiddenForm" @click="hiddenForm = !hiddenForm" >-</p>
                         <p v-if="hiddenForm" @click="hiddenForm = !hiddenForm" >+</p>
                     </button>
-                    <div :class="showHideForm" class=" transition-all duration-1000 overflow-y-auto ">
+                    <div
+                        v-if="!hiddenForm" 
+                        class=" transition-all duration-1000 overflow-y-auto ">
                         <div class="mb-4">
                             <label class="label-custom">
                                 Pair
@@ -89,9 +94,9 @@
             <!-- Start table Desktop -->
             <div class=" h-screen hidden-mobile col-span-3 ">
                 <div                    
-                    class=" bg-white shadow-md rounded py-8 px-4 overflow-x-auto  ">
+                    class=" bg-white shadow-md rounded py-6 px-4 overflow-x-auto  ">
                     <div class="mb-5">
-                        <p class=" text-3xl">Data News</p>
+                        <p class="text-3xl">Data News</p>
                         <!-- <div class=" float-right ">
                             <input type="text" class="input-custom" placeholder="search" >
                         </div> -->
@@ -127,41 +132,40 @@
             </div>
             <!-- End table Desktop -->
             <!-- Start tabe mobile -->
-            <div class=" sm:mt-9 mt-2 block sm:block md:hidden lg:hidden col-span-3">
-                <div class="bg-white shadow-md rounded pt-8 overflow-x-auto" >
-                    <p class="mb-5 text-3xl ml-5">Data News</p>
+            <div class=" mt-2 bg-white rounded show-mobile ">
+                <div class="bg-white shadow-md rounded pt-2 " >
+                    <p class=" mb-2 ml-2 text-md">Data News</p>
                     <table 
-                        class=" shadow-lg bg-white w-full ">
-                        <tr 
-                            v-for="(item, index) in table" 
-                            :key="index">
-                            <td class="text-xs ">
-                                <div class=" ">
-                                    <div class=" flex flex-col text-sm ">                                        
-                                        <div class="flex flex-row ">
-                                            <div class="  label-custom-mobile "> Pair </div>
-                                            <div class="w-full pl-2 py-1 "> {{item.pair}} </div>
-                                        </div>
-                                        <div class="flex flex-row justify-between ">
-                                            <div class=" label-custom-mobile "> Date News </div>
-                                            <div class="w-full pl-2 py-1 "> {{item.custom_date_news}} </div>
-                                        </div>
-                                        <div class="flex flex-row w-full justify-between ">
-                                            <div class=" label-custom-mobile "> Start Stop </div>
-                                            <div class="w-full pl-2 py-1 "> {{item.custom_date_start}} / <br > {{item.custom_date_stop}} </div>
-                                        </div>
-                                        <div class="flex flex-row w-full justify-between ">
-                                            <div class=" label-custom-mobile "> Impact </div>
-                                            <div class="w-full pl-2 py-1 "> {{item.impact}} </div>
-                                        </div>
-                                        <div class="flex flex-row w-full justify-between ">
-                                            <div class=" label-custom-mobile "> Description </div>
-                                            <div class="w-full pl-2 py-1 "> {{item.desc}} </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        class=" shadow-lg bg-white w-full " 
+                        style="font-size: 9px">
+                        <thead>
+                            <tr>
+                                <th class=" bg-blue-450 py-1 px-1 text-white ">Pair</th>
+                                <th class=" bg-blue-450 py-1 px-1 text-white ">Date News</th>
+                                <th class=" bg-blue-450 py-1 px-1 text-white ">Date Start</th>
+                                <th class=" bg-blue-450 py-1 px-1 text-white ">Date Stop</th>
+                                <th class=" bg-blue-450 py-1 px-1 text-white ">Impact</th>
+                                <th class=" bg-blue-450 py-1 px-1 text-white ">Desc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-if="loading">
+                                <td  class=" text-center " colspan="7">Loading</td>
+                            </tr>
+                            <tr 
+                                @click="activeRow(index)"
+                                :class="classActiveRow(index)"
+                                class=" border-b-2 border-gray-300 "
+                                v-for="(item, index) in table"  
+                                :key="index">
+                                <td class="row-mobile">{{item.pair}}</td>
+                                <td class="row-mobile">{{item.custom_date_news}}</td>
+                                <td class="row-mobile">{{item.custom_date_start}}</td>
+                                <td class="row-mobile">{{item.custom_date_stop}}</td>
+                                <td class="row-mobile">{{item.impact}}</td>
+                                <td class="row-mobile">{{item.desc}}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -171,7 +175,12 @@
 </template>
 
 <style lang="postcss" scoped>
-    
+    .active {
+        @apply bg-blue-100
+    }
+    .row-mobile {
+        @apply py-1 px-2
+    }
 </style>
 
 <script>
@@ -195,9 +204,11 @@
     export default {
         data() {
             return {
+                hiddenBtnForm: true,
                 hiddenForm: true,
                 token: localStorage.getItem('token'),
                 loading: false,
+                indexSelected: null,
                 form: initialState(),
                 table: [],
             };
@@ -206,14 +217,16 @@
             MainLayout
         },
         mounted() {
+            if(window.innerWidth <= 760) {
+                this.hiddenBtnForm = false;
+            }else {
+                this.hiddenForm = false;
+            }
+
             this.getData();
         },
         computed: {
-            showHideForm() {
-                return {
-                    'hidden': this.hiddenForm,
-                }
-            }
+
         },
         methods: {
             async getData() {
@@ -392,9 +405,15 @@
             resetForm() {
                 this.form = initialState();
             },
+            activeRow(index) {
+                this.indexSelected = index;
+            },
+            classActiveRow(index){
+                return {
+                    'active': this.indexSelected == index ? true : false
+                };
+            }
         }
 
     }
 </script>
-
-// ketika set date_news // maka date_start = date_news - 5 // date_stop = date_news + 2 // impact => low, medium, high // description type = "textarea"
