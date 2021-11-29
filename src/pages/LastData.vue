@@ -209,18 +209,19 @@
                             </td>
                             <td class=" row-mobile text-right ">{{customNumber(item.equity)}}</td>
                             <td class=" row-mobile text-right ">
+                                {{item.trade}}
                                 <span class="text-red-500" >
                                     {{customNumber(item.floating)}}    
                                 </span> 
-                                {{item.trade}}
+                                
                                 <br>
-                                <span class=" text-blue-450 ">
-                                    ({{item.trade_buy}}
+                                (<span class=" text-blue-450 ">
+                                    {{item.trade_buy}}
                                 </span>
                                 <span class="text-black"> / </span>
                                 <span class="text-red-500">
-                                    {{item.trade_sell}})
-                                </span>
+                                    {{item.trade_sell}}
+                                </span>)
                                 <span class=" text-black "> 
                                     {{item.dd}}% 
                                 </span>
