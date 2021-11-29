@@ -209,7 +209,7 @@
                             </td>
                             <td class=" row-mobile text-right ">{{customNumber(item.equity)}}</td>
                             <td class=" row-mobile text-right ">
-                                {{item.trade}}
+                                ({{item.trade}})
                                 <span class="text-red-500" >
                                     {{customNumber(item.floating)}}    
                                 </span> 
