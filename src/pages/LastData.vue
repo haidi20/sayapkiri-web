@@ -208,17 +208,19 @@
                                 </span>
                             </td>
                             <td class=" row-mobile text-right ">{{customNumber(item.equity)}}</td>
-                            <td class=" row-mobile text-red-500 text-right ">
-                                {{customNumber(item.floating)}} <br>
-                                <span class="text-black">(</span>
+                            <td class=" row-mobile text-right ">
+                                <span class="text-red-500" >
+                                    {{customNumber(item.floating)}}    
+                                </span> 
+                                {{item.trade}}
+                                <br>
                                 <span class=" text-blue-450 ">
-                                    {{item.trade_buy}}
+                                    ({{item.trade_buy}}
                                 </span>
-                                <span class="text-black">/</span>
+                                <span class="text-black"> / </span>
                                 <span class="text-red-500">
-                                    {{item.trade_sell}}
+                                    {{item.trade_sell}})
                                 </span>
-                                <span class="text-black mr-1">)</span>
                                 <span class=" text-black "> 
                                     {{item.dd}}% 
                                 </span>
