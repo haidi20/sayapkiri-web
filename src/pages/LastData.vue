@@ -1,6 +1,7 @@
 <template>
     <main-layout>
         <div class="grid md:mt-28 mt-10 md:mx-6 ">
+            <!-- start table desktop -->
             <div class=" bg-white shadow-md rounded pt-4 hidden-mobile px-2 ">
                 <p class="text-3xl mb-5 ">Last Data</p>
                 <!-- <hr class="border-1 border-gray-400 mb-5 " > -->
@@ -47,12 +48,12 @@
                                 <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
                             </svg>
                         </button>
-                        <p v-if="loading" class="inline-block mt-3 ml-1 " >Loading...</p>
+                        <!-- <p v-if="loading" class="inline-block mt-3 ml-1 " >Loading...</p> -->
                     </div>
                 </div>
                 <table class=" w-full bg-white mt-2 ">
-                    <thead>
-                        <tr>
+                    <thead class="">
+                        <tr class="m">
                             <th class=" th-desktop " >Location</th>
                             <th class=" th-desktop " >Account</th>
                             <th class=" th-desktop " >Account Name</th>
@@ -74,9 +75,9 @@
                             <th class=" th-desktop " >DD</th>
                         </tr>
                     </thead>
-                    <tbody class="">
-                        <tr class="" v-if="loading">
-                            <td  class=" text-center " colspan="20">Loading</td>
+                    <tbody class="overflow-y-auto">
+                        <tr class="" v-if="loading" >
+                            <td class=" text-center " colspan="20" >Loading...</td>
                         </tr>
                         <tr class="" v-if="table.length <= 0 && !loading" >
                             <td class=" text-center " colspan="20" >Data Empty</td>
@@ -119,6 +120,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- start table mobile -->
             <div class=" h-screen overflow-auto bg-white rounded pt-2 show-mobile ">
                 <p class="mb-1 pl-2 text-md ">Last Data</p>
                 <div class=" flex flex-row mx-1 " style="font-size: 9px" >
@@ -208,10 +210,16 @@
                             <td class=" row-mobile text-right ">{{customNumber(item.equity)}}</td>
                             <td class=" row-mobile text-red-500 text-right ">
                                 {{customNumber(item.floating)}} <br>
-                                <span class=" text-black ">
-                                    ({{item.trade}})
+                                <span class="text-black">(</span>
+                                <span class=" text-blue-450 ">
+                                    {{item.trade_buy}}
                                 </span>
-                                <span class=" text-blue-450 "> 
+                                <span class="text-black">/</span>
+                                <span class="text-red-500">
+                                    {{item.trade_sell}}
+                                </span>
+                                <span class="text-black mr-1">)</span>
+                                <span class=" text-black "> 
                                     {{item.dd}}% 
                                 </span>
                             </td>
@@ -238,6 +246,9 @@
     }
     .row-desktop {
         @apply py-3
+    }
+    .fixed-custom { 
+        position: sticky;
     }
 </style>
 
@@ -287,11 +298,15 @@ import MainLayout from '@/pages/MainLayout';
                             });
             },
             customEquity(number) {
-                return Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USC' }).format(number);
+                if(number !== null || number !== undefined) {
+                    return Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USC' }).format(number);
+                }
             },
             customNumber(number) {
                 // return Intl.NumberFormat(2).format(number);
-                return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                if(number !== null || number !== undefined) {
+                    return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+                }
             },
             activeRow(index) {
                 this.indexSelected = index;
@@ -304,10 +319,3 @@ import MainLayout from '@/pages/MainLayout';
         },
     }
 </script>
-
-// version mobile
-// location ea enable (hijau bundar)
-// account account_name
-// profit and pnlday %
-// equity
-// floating and dd %

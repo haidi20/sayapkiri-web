@@ -33,7 +33,7 @@
             class="col-span-1  " > 
             <aside
               style="position: fixed"
-              class=" z-10 md:pt-10 pt-4 h-full transition-all duration-300 overflow-y-auto overflow-hidden shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
+              class=" z-10 md:pt-10 pt-4 h-full transition-all duration-300  overflow-hidden shadow-md bg-white dark:bg-gray-800 md:block flex-shrink-0"
               :class="actionLeftBar"
             >
               <div class="py-6 text-gray-500 dark:text-gray-400 ">
