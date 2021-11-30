@@ -76,6 +76,7 @@
                             <tr>
                                 <th class="text-white border text-center md:px-0 px-5 py-4" width="100" style="background-color: #4680FE">Action</th>
                                 <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Account</th>
+                                <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Name User</th>
                                 <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Perode</th>
                                 <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Account Balance</th>
                             </tr>
@@ -92,6 +93,7 @@
                                     <img @click="remove(item.pid_saldo)" width="20" style="display: inline;" class=" cursor-pointer"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                                 </td>
                                 <td class="border px-5 py-4 text-xs">{{item.account_number}}</td>
+                                <td class="border px-5 py-4 text-xs">{{item.name_user}}</td>
                                 <td class="border px-5 py-4 text-xs">{{item.periode}}</td>
                                 <td class="border px-5 py-4 text-xs">{{customNumber(item.balance)}}</td>
                             </tr>
