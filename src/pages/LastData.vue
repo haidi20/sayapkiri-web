@@ -69,7 +69,8 @@
                             <!-- <th class=" th-desktop " >Created Date</th> -->
                             <th class=" th-desktop " >Float Max</th>
                             <th class=" th-desktop " >Float Trade</th>
-                            <th class=" th-desktop " >Float Date</th>
+                            <th class=" th-desktop " >WD</th>
+                            <th class=" th-desktop " >Depo</th>
                             <th class=" th-desktop " >Day</th>
                             <!-- <th class=" th-desktop " >Row num</th> -->
                             <th class=" th-desktop " >DD</th>
@@ -104,15 +105,16 @@
                             <td class=" row-desktop text-right ">{{customNumber(item.balance)}}</td>
                             <td class=" row-desktop text-right ">{{customNumber(item.equity)}}</td>
                             <td class=" row-desktop text-right ">{{item.floating}}</td>
-                            <!-- <td class=" row-desktop text-center ">
-                                
-                            </td> -->
-                            <td class=" row-desktop text-center ">{{item.trade}}</td>
+                            <td class=" row-desktop text-center ">
+                                {{item.trade}}
+                                (<span class="text-blue-450">{{item.trade_buy}}</span>/<span class="text-red-500">{{item.trade_sell}}</span>)
+                            </td>
                             <td class=" row-desktop text-center ">{{item.broker_time}}</td>
                             <!-- <td class=" row-desktop ">{{item.created_date}}</td> -->
                             <td class=" row-desktop text-right ">{{customNumber(item.float_max)}}</td>
                             <td class=" row-desktop text-center ">{{item.float_trade}}</td>
-                            <td class=" row-desktop text-center ">{{item.float_date}}</td>
+                            <td class=" row-desktop text-center ">{{customNumber(item.wd)}}</td>
+                            <td class=" row-desktop text-center ">{{customNumber(item.depo)}}</td>
                             <td class=" row-desktop text-center ">{{item.day}}</td>
                             <!-- <td class=" row-desktop ">{{item.rownum}}</td> -->
                             <td class=" row-desktop text-center ">{{item.dd}}%</td>
