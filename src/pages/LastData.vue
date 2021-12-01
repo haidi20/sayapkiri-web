@@ -54,6 +54,7 @@
                 <table class=" w-full bg-white mt-2 ">
                     <thead class="">
                         <tr class="m">
+                            <th class=" th-desktop " >No</th>
                             <th class=" th-desktop " >Location</th>
                             <th class=" th-desktop " >Account</th>
                             <th class=" th-desktop " >Account Name</th>
@@ -84,6 +85,7 @@
                             <td class=" text-center " colspan="20" >Data Empty</td>
                         </tr>
                         <tr class="border-b-2 border-gray-300 hover:bg-blue-200 cursor-pointer  " v-for="(item, index) in table"  :key="index" >
+                            <td class=" row-desktop text-center ">{{index + 1}}</td>
                             <td class=" row-desktop text-center ">
                                 {{item.location}} 
                                 <img 
@@ -140,6 +142,7 @@
                             <option value="pnlday">pnlday</option>
                             <option value="pnlmnt">pnlmonth</option>
                             <option value="equity">equity</option>
+                            <option value="equity">W/D</option>
                             <option value="floating">floating</option>
                             <option value="trade">trade</option>
                             <option value="dd">dd</option>
@@ -164,6 +167,7 @@
                             <th class=" th-mobile " >Account</th>
                             <th class=" th-mobile " >Profit</th>
                             <th class=" th-mobile " >Equity</th>
+                            <th class=" th-mobile " >W/D</th>
                             <th class=" th-mobile " >Floating</th>
                         </tr>
                     </thead>
@@ -210,6 +214,9 @@
                                 </span>
                             </td>
                             <td class=" row-mobile text-right ">{{customNumber(item.equity)}}</td>
+                            <td class=" row-mobile text-center ">
+                                <span class="text-red-500 " >{{item.wd}}</span>/<span class="text-green-500" >{{item.depo}}</span>
+                            </td>
                             <td class=" row-mobile text-right ">
                                 ({{item.trade}})
                                 <span class="text-red-500" >
