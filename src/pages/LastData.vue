@@ -255,7 +255,7 @@
         @apply bg-gray-500 
     }
     .row-mobile {
-        @apply py-2 px-2
+        @apply py-2 px-1
     }
     .row-desktop {
         @apply py-3
