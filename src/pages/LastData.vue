@@ -215,7 +215,8 @@
                             </td>
                             <td class=" row-mobile text-right ">{{customNumber(item.equity)}}</td>
                             <td class=" row-mobile text-center ">
-                                <span class="text-red-500 " >{{item.wd}}</span>/<span class="text-green-500" >{{item.depo}}</span>
+                                <span class="text-red-500 " >{{item.wd}}</span> <br>
+                                <span class="text-green-500" >{{item.depo}}</span>
                             </td>
                             <td class=" row-mobile text-right ">
                                 ({{item.trade}})
