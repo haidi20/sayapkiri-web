@@ -27,4 +27,4 @@ button:disabled {
 }
 </style>
 
-<script src="./LastData.js"></script>
+<script src="./LastDataController.js"></script>
