@@ -1,8 +1,8 @@
 <template>
     <main-layout>
-        <div class="grid md:mt-28 mt-10 md:mx-6">
+        <div class="grid md:mt-28 mt-10 md:mx-6 overflow-x-scroll">
             <!-- start table desktop -->
-            <div class="bg-white shadow-md rounded pt-4 hidden-mobile px-2">
+            <div class="bg-white shadow-md rounded pt-4 px-2 ">
                 <p class="text-3xl mb-5">Transaction Detail</p>
                 <div class="flex flex-row">
                     <div class="mb-4">
@@ -66,21 +66,7 @@
 </template>
 
 <style lang="postcss" scoped>
-    /* Vue Good Table OVERRIDES */
-    /* ################################################################# */
-    table.vgt-table.vgt-fixed-header {
-        position: fixed !important;
-    }
-
-    table.vgt-table.vgt-fixed-header th:last-child {
-        /* Offset for the scrollbar, you may have to adjust this */
-        width: calc(100% + 17px) !important;
-    }
-
-    table.vgt-table:not(.vgt-fixed-header) > thead {
-        /* Collapse the first row which is the un-fixed table header */
-        visibility: collapse !important;
-    }
+    
 </style>
 
 <script>
