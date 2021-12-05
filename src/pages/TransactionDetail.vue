@@ -96,7 +96,7 @@ export default {
                 perPage: 15,
                 enabled: true,
                 mode: 'pages',
-                perPageDropdown: [15, 20, 50, 100],
+                perPageDropdown: [100, 200, 500, 1000],
             },
             columns: [
                 {
