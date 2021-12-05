@@ -3,7 +3,7 @@
         <div class="grid md:mt-28 mt-10 md:mx-6">
             <!-- start table desktop -->
             <div class="bg-white shadow-md rounded pt-4 hidden-mobile px-2">
-                <p class="text-3xl mb-5">Transaction RN</p>
+                <p class="text-3xl mb-5">Transaction Detail</p>
                 <div class="flex flex-row">
                     <div class="mb-4">
                         <label class="label-custom">Name</label>
