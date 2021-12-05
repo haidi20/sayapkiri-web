@@ -54,8 +54,10 @@
                 </div>
                 
                 <vue-good-table  
+                    fixed-header
                     :rows="rows"
                     :columns="columns"
+                    max-height="600px"
                     :pagination-options="paginationOptions">
                 </vue-good-table>
             </div>
@@ -64,7 +66,21 @@
 </template>
 
 <style lang="postcss" scoped>
+    /* Vue Good Table OVERRIDES */
+    /* ################################################################# */
+    table.vgt-table.vgt-fixed-header {
+        position: fixed !important;
+    }
 
+    table.vgt-table.vgt-fixed-header th:last-child {
+        /* Offset for the scrollbar, you may have to adjust this */
+        width: calc(100% + 17px) !important;
+    }
+
+    table.vgt-table:not(.vgt-fixed-header) > thead {
+        /* Collapse the first row which is the un-fixed table header */
+        visibility: collapse !important;
+    }
 </style>
 
 <script>
