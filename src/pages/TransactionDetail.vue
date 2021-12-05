@@ -7,11 +7,28 @@
                 <div class="flex flex-row">
                     <div class="mb-4">
                         <label class="label-custom">Name</label>
-                        <input class=" input-custom " type="text" v-model="request.user" >
+                        <account-input-user
+                            :data="listUser"
+                            :nameUser="nameUser"
+                            @update:nameUser="nameUser = $event"
+                            :chooseUser="chooseUser"
+                        />
                     </div>
                     <div class=" ml-2 ">
                         <label class="label-custom">Account</label>
-                        <input class=" input-custom " type="text" v-model="request.account" >
+                        <select
+                            name="account" 
+                            v-if="accountsByUser.length > 0"
+                            v-model="request.account"
+                            class=" input-custom ">
+                            <option v-for="(item, index) in accountsByUser" :value="item.account" :key="index">{{item.account}}</option>
+                        </select>
+                        <select 
+                            name="account"
+                            v-if="accountsByUser.length <= 0"
+                            class=" input-custom ">
+                            <option value="null">Empty Accounts</option>
+                        </select>
                     </div>
                     <div class=" ml-2 ">
                         <label class="label-custom">Tgl</label>
@@ -29,6 +46,10 @@
                             @click="getTransactionRn">
                             Apply
                         </button>
+                    </div>
+                    <div class="ml-2">
+                        <div class="mb-12" ></div>
+                        <p v-if="loading">loading...</p>
                     </div>
                 </div>
                 
@@ -51,12 +72,18 @@ import axios from "axios";
 import moment from 'moment';
 import MainLayout from "@/pages/MainLayout";
 import { VueGoodTable } from 'vue-good-table-next';
+import AccountInputUser from '@/components/AccountInputUser';
 
 export default {
     data(){
         return {
             token: localStorage.getItem("token"),
             rows: [],
+            listUser: [], 
+            loading: false,
+            pidUser: null,
+            nameUser: null,
+            accountsByUser: [],
             request: {
                 user: null,
                 account: null,
@@ -66,6 +93,7 @@ export default {
             paginationOptions: {
                 perPage: 15,
                 enabled: true,
+                mode: 'pages',
                 perPageDropdown: [15, 20, 50, 100],
             },
             columns: [
@@ -129,17 +157,20 @@ export default {
     components: {
         MainLayout,
         VueGoodTable,
+        AccountInputUser,
     },
     mounted() {
         this.getTransactionRn();
+        this.getAllUser();
     },
     methods: {
         async getTransactionRn() {
             let that = this;
+            this.loading = true;
 
             await axios
                 .post(
-                    process.env.VUE_APP_BASE_URL + "api/transaction-rn",
+                    process.env.VUE_APP_BASE_URL + "api/transaction-detail",
                     this.request,
                     { headers: { Authorization: `Bearer ` + that.token } }
                 )
@@ -150,10 +181,50 @@ export default {
                     if (status) {
                         this.rows = data;
                     }
+
+                    this.loading = false;
                 })
                 .catch((error) => {
                     console.log(error);
+
+                    this.loading = false;
                 });
+        },
+        async getAllUser() {
+            let that = this;
+
+            await axios.post(process.env.VUE_APP_BASE_URL + "api/user/getAllUser",
+                           this.request,
+                            {headers: { Authorization: `Bearer `+ that.token}})
+                        .then(responses => {
+                            let status = responses.data.status;
+                            let data = responses.data.data;
+
+                            if(status) {
+                                that.listUser = data;
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+        },
+        async getDataAccount() {
+            let that = this;
+
+            await axios.post(process.env.VUE_APP_BASE_URL + "api/account/findByUser",
+                            {"pid_user": that.pidUser},
+                            {headers: { Authorization: `Bearer `+ that.token}})
+                        .then(responses => {
+                            let status = responses.data.status;
+                            let data = responses.data.data;
+
+                            if(status) {
+                                that.accountsByUser = data;
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
         },
         fnProfit(row){
             return this.customNumber(row.profit);
@@ -172,6 +243,11 @@ export default {
         },
         fnDepo(row){
             return this.customNumber(row.depo);
+        },
+        chooseUser(user) {
+            this.pidUser = user.pid_user;
+
+            this.getDataAccount();
         },
         customNumber(number) {
             // return Intl.NumberFormat(2).format(number);

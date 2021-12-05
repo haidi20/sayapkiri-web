@@ -9,7 +9,7 @@ import Account from '@/pages/Account'
 import LastData from '@/pages/LastData'
 import NotFound from '@/pages/NotFound'
 import Dashboard from '@/pages/Dashboard'
-import TransactionRn from '@/pages/TransactionRn'
+import TransactionDetail from '@/pages/TransactionDetail'
 import AccountBalance from '@/pages/AccountBalance'
 
 const routes = [{
@@ -27,9 +27,9 @@ const routes = [{
         component: LastData
     },
     {
-        path: '/transaction-rn',
-        name: 'transactionRn',
-        component: TransactionRn
+        path: '/transaction-detail',
+        name: 'transactionDetail',
+        component: TransactionDetail
     },
     {
         path: '/news',
