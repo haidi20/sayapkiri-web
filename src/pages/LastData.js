@@ -53,12 +53,6 @@ export default {
                 }).format(number);
             }
         },
-        customNumber(number) {
-            // return Intl.NumberFormat(2).format(number);
-            if (number !== null || number !== undefined) {
-                return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-            }
-        },
         activeRow(index) {
             this.indexSelected = index;
         },

@@ -156,15 +156,15 @@
               <td class="row-desktop text-center">{{ item.account }}</td>
               <td class="row-desktop">{{ item.account_name }}</td>
               <td class="row-desktop text-right">
-                {{ customNumber(item.profit) }}
+                {{ item.custom_profit }}
               </td>
               <td class="row-desktop text-right">{{ item.pnlday }}%</td>
               <td class="row-desktop text-right">{{ item.pnlmnt }}%</td>
               <td class="row-desktop text-right">
-                {{ customNumber(item.balance) }}
+                {{ item.custom_balance }}
               </td>
               <td class="row-desktop text-right">
-                {{ customNumber(item.equity) }}
+                {{ item.custom_equity }}
               </td>
               <td class="row-desktop text-right">{{ item.floating }}</td>
               <td class="row-desktop text-center">
@@ -176,18 +176,18 @@
               <td class="row-desktop text-center">{{ item.broker_time }}</td>
               <!-- <td class=" row-desktop ">{{item.created_date}}</td> -->
               <td class="row-desktop text-right">
-                {{ customNumber(item.float_max) }}
+                {{ item.custom_float_max }}
               </td>
               <td class="row-desktop text-center">{{ item.float_trade }}</td>
               <td
                 :class="item.wd < 0 ? 'text-red-500' : ''"
                 class="row-desktop text-center">
-                {{ customNumber(item.wd) }}
+                {{ item.custom_wd }}
               </td>
               <td
                 :class="item.depo > 0 ? 'text-green-500' : ''"
                 class="row-desktop text-center">
-                {{ customNumber(item.depo) }}
+                {{ item.custom_depo }}
               </td>
               <td class="row-desktop text-center">{{ item.day }}</td>
               <!-- <td class=" row-desktop ">{{item.rownum}}</td> -->
@@ -311,7 +311,7 @@
                 </span>
               </td>
               <td class="row-mobile text-right">
-                {{ customNumber(item.equity) }}
+                {{ item.custom_equity }}
               </td>
               <td class="row-mobile text-center">
                 <span class="text-red-500">{{ item.wd }}</span> <br />
@@ -320,7 +320,7 @@
               <td class="row-mobile text-right">
                 ({{ item.trade }})
                 <span class="text-red-500">
-                  {{ customNumber(item.floating) }}
+                  {{ item.custom_floating }}
                 </span>
 
                 <br />
