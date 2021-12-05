@@ -93,7 +93,7 @@ export default {
                 start_date: moment().startOf('month').format('YYYY-MM-DD'),
             },
             paginationOptions: {
-                perPage: 15,
+                perPage: 100,
                 enabled: true,
                 mode: 'pages',
                 perPageDropdown: [100, 200, 500, 1000],
