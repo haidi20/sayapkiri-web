@@ -172,7 +172,7 @@ export default {
 
             await axios
                 .post(
-                    process.env.VUE_APP_BASE_URL + "api/transaction-detail",
+                    process.env.VUE_APP_BASE_URL + "api/transaction/detail",
                     this.request,
                     { headers: { Authorization: `Bearer ` + that.token } }
                 )
