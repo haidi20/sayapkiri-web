@@ -10,6 +10,7 @@ import LastData from '@/pages/LastData'
 import NotFound from '@/pages/NotFound'
 import Dashboard from '@/pages/Dashboard'
 import AccountBalance from '@/pages/AccountBalance'
+import TransactionDaily from '@/pages/TransactionDaily'
 import TransactionDetail from '@/pages/TransactionDetail'
 
 const routes = [{
@@ -30,6 +31,11 @@ const routes = [{
         path: '/last-data',
         name: 'lastData',
         component: LastData
+    },
+    {
+        path: '/transaction-daily',
+        name: 'transactionDaily',
+        component: TransactionDaily
     },
     {
         path: '/transaction-detail',

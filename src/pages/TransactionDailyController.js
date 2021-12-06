@@ -37,16 +37,16 @@ export default {
                 },
                 {
                     label: 'Profit',
-                    field: this.fnProfit,
+                    field: 'custom_profit',
                     // type: 'double',
                 },
                 {
                     label: 'Equity',
-                    field: this.fnEquity,
+                    field: 'custom_equity',
                 },
                 {
                     label: 'Free Margin',
-                    field: this.fnFreeMargin,
+                    field: 'custom_free_margin',
                 },
                 {
                     label: 'Trade',
@@ -65,7 +65,7 @@ export default {
                 },
                 {
                     label: 'Float Max',
-                    field: this.fnFloatMax,
+                    field: 'custom_float_max',
                 },
                 {
                     label: 'Float Trade',
@@ -74,11 +74,11 @@ export default {
                 },
                 {
                     label: 'WD',
-                    field: this.fnWd,
+                    field: 'custom_wd',
                 },
                 {
                     label: 'Depo',
-                    field: this.fnDepo,
+                    field: 'custom_depo',
                 },
             ],
         }
@@ -89,14 +89,14 @@ export default {
         AccountInputUser,
     },
     mounted() {
-        this.getTransactionDetail();
+        this.getTransactionDaily();
         this.getAllUser();
     },
     methods: {
-        async getTransactionDetail() {
+        async getTransactionDaily() {
             this.loading = true;
 
-            await http("api/transaction/detail", this.request)
+            await http("api/transaction/daily", this.request)
                 .then(responses => {
                     let status = responses.data.status;
                     let data = responses.data.data;
@@ -145,34 +145,10 @@ export default {
                     console.log(error);
                 });
         },
-        fnProfit(row) {
-            return this.customNumber(row.profit);
-        },
-        fnEquity(row) {
-            return this.customNumber(row.equity);
-        },
-        fnFreeMargin(row) {
-            return this.customNumber(row.free_margin);
-        },
-        fnFloatMax(row) {
-            return this.customNumber(row.float_max);
-        },
-        fnWd(row) {
-            return this.customNumber(row.wd);
-        },
-        fnDepo(row) {
-            return this.customNumber(row.depo);
-        },
         onChooseUser(user) {
             this.pidUser = user.pid_user;
 
             this.getDataAccount();
-        },
-        customNumber(number) {
-            // return Intl.NumberFormat(2).format(number);
-            if (number !== null || number !== undefined) {
-                return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-            }
         },
     }
 }
