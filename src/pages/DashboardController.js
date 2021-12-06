@@ -35,6 +35,7 @@ export default {
             let that = this;
             this.loading = true;
 
+            // fix type url 
             await http("api/dashboard/last-data", this.request)
                 .then(function(responses) {
                     if (responses.data.status) {
