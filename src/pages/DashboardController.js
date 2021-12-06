@@ -35,7 +35,7 @@ export default {
             let that = this;
             this.loading = true;
 
-            await http("api/dasboard/last-data", this.request)
+            await http("api/dashboard/last-data", this.request)
                 .then(function(responses) {
                     if (responses.data.status) {
                         that.list = responses.data.data;
