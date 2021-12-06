@@ -70,7 +70,8 @@
 </style>
 
 <script>
-import axios from "axios";
+import { http } from '@/http.js';
+
 import moment from 'moment';
 import MainLayout from "@/pages/MainLayout";
 import { VueGoodTable } from 'vue-good-table-next';
@@ -79,7 +80,6 @@ import AccountInputUser from '@/components/AccountInputUser';
 export default {
     data(){
         return {
-            token: localStorage.getItem("token"),
             rows: [],
             listUser: [], 
             loading: false,
@@ -167,15 +167,9 @@ export default {
     },
     methods: {
         async getTransactionRn() {
-            let that = this;
             this.loading = true;
 
-            await axios
-                .post(
-                    process.env.VUE_APP_BASE_URL + "api/transaction/detail",
-                    this.request,
-                    { headers: { Authorization: `Bearer ` + that.token } }
-                )
+            await http("api/transaction/detail", this.request)
                 .then((responses) => {
                     let status = responses.data.status;
                     let data = responses.data.data;
@@ -195,38 +189,34 @@ export default {
         async getAllUser() {
             let that = this;
 
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/user/getAllUser",
-                           this.request,
-                            {headers: { Authorization: `Bearer `+ that.token}})
-                        .then(responses => {
-                            let status = responses.data.status;
-                            let data = responses.data.data;
+            await http("api/user/getAllUser", this.request)
+                    .then(responses => {
+                        let status = responses.data.status;
+                        let data = responses.data.data;
 
-                            if(status) {
-                                that.listUser = data;
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                        if(status) {
+                            that.listUser = data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
         },
         async getDataAccount() {
             let that = this;
 
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/account/findByUser",
-                            {"pid_user": that.pidUser},
-                            {headers: { Authorization: `Bearer `+ that.token}})
-                        .then(responses => {
-                            let status = responses.data.status;
-                            let data = responses.data.data;
+            await http("api/account/findByUser", this.request)
+                    .then(responses => {
+                        let status = responses.data.status;
+                        let data = responses.data.data;
 
-                            if(status) {
-                                that.accountsByUser = data;
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                        if(status) {
+                            that.accountsByUser = data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
         },
         fnProfit(row){
             return this.customNumber(row.profit);

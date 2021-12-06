@@ -2,7 +2,7 @@
     <main-layout>
         <div class="w-full md:grid md:grid-cols-4 md:mt-28 mt-5 ">
             <div class="col-span-1 md:ml-6">
-                <form class="bg-white shadow-md rounded py-8 px-4 md:mr-6" @submit.prevent="handleSubmit">
+                <form class="bg-white shadow-md rounded py-8 px-4 md:mr-6" @submit.prevent="onSubmit">
                     <p class="mb-5 text-3xl">Form Balance</p>
                     <div class="mb-4">
                         <label class="label-custom">
@@ -12,7 +12,7 @@
                             :data="listUser"
                             :nameUser="nameUser"
                             @update:nameUser="nameUser = $event"
-                            :chooseUser="chooseUser"
+                            :onChooseUser="onChooseUser"
                         />
                         <!-- <input class="input-custom" type="text" > -->
                     </div>
@@ -90,7 +90,7 @@
                             <tr v-for="(item, index) in table.data"  :key="index">
                                 <td class="border px-5 py-4 text-xs " style="text-align: center">
                                     <!-- <img @click="edit(item.pid_saldo)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/> -->
-                                    <img @click="remove(item.pid_saldo)" width="20" style="display: inline;" class=" cursor-pointer"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                    <img @click="onRemove(item.pid_saldo)" width="20" style="display: inline;" class=" cursor-pointer"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                                 </td>
                                 <td class="border px-5 py-4 text-xs">{{item.account_number}}</td>
                                 <td class="border px-5 py-4 text-xs">{{item.name_user}}</td>
@@ -110,7 +110,7 @@
 </style>
 
 <script>
-import axios from 'axios';
+import { http } from '@/http.js';
 import MainLayout from '@/pages/MainLayout';
 import AccountInputUser from '@/components/AccountInputUser';
 
@@ -126,7 +126,6 @@ const initialState = () => (
 export default {
     data(){
         return {
-            token: localStorage.getItem('token'),
             loading: false,
             form: initialState(),
             table: {},
@@ -156,106 +155,98 @@ export default {
             let that = this;
             this.loading = true;
 
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/account-balance",
-                           this.request,
-                            {headers: { Authorization: `Bearer `+ that.token}})
-                        .then(responses => {
-                            let status = responses.data.status;
-                            let data = responses.data.data;
+            await http("api/account-balance", this.request)
+                    .then(responses => {
+                        let status = responses.data.status;
+                        let data = responses.data.data;
 
-                            if(status){
-                                that.table = data;
-                                that.loading = false;
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                        if(status){
+                            that.table = data;
+                            that.loading = false;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
         },
         async getAllUser() {
             let that = this;
 
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/user/getAllUser",
-                           this.request,
-                            {headers: { Authorization: `Bearer `+ that.token}})
-                        .then(responses => {
-                            let status = responses.data.status;
-                            let data = responses.data.data;
+            await http("api/user/getAllUser", this.request)
+                    .then(responses => {
+                        let status = responses.data.status;
+                        let data = responses.data.data;
 
-                            if(status) {
-                                that.listUser = data;
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                        if(status) {
+                            that.listUser = data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
         },
         async getDataAccount() {
             let that = this;
 
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/account/findByUser",
-                           {"pid_user": that.form.pid_user},
-                            {headers: { Authorization: `Bearer `+ that.token}})
-                        .then(responses => {
-                            let status = responses.data.status;
-                            let data = responses.data.data;
+            await http("api/account/findByUser", {"pid_user": that.form.pid_user})
+                    .then(responses => {
+                        let status = responses.data.status;
+                        let data = responses.data.data;
 
-                            if(status) {
-                                that.accountsByUser = data;
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                        if(status) {
+                            that.accountsByUser = data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
         },
-        async handleSubmit() {
+        async onSubmit() {
             let that = this;
             this.loading = true;
 
             this.checkForm();
 
-            await axios.post(process.env.VUE_APP_BASE_URL + "api/account-balance/store", 
-                            this.form, 
-                            {headers: { Authorization: `Bearer ${that.token}`}})
-                        .then(function ({data}) {
-                            if(data.status != undefined && data.status) {
-                                that.$swal.mixin({
-                                    toast: true,
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timerProgressBar: true,
-                                    timer: 2000,
-                                })
-                                .fire({
-                                    icon: "success",
-                                    title: data.remark
-                                });
-                            }else if(data.status != undefined && !data.status) {
-                                that.$swal.mixin({
-                                    toast: true,
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timerProgressBar: true,
-                                    timer: 2000,
-                                })
-                                .fire({
-                                    icon: "warning",
-                                    title: data.remark
-                                });
+            await http("api/account-balance/store", this.form)
+                    .then(function ({data}) {
+                        if(data.status != undefined && data.status) {
+                            that.$swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timerProgressBar: true,
+                                timer: 2000,
+                            })
+                            .fire({
+                                icon: "success",
+                                title: data.remark
+                            });
+                        }else if(data.status != undefined && !data.status) {
+                            that.$swal.mixin({
+                                toast: true,
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timerProgressBar: true,
+                                timer: 2000,
+                            })
+                            .fire({
+                                icon: "warning",
+                                title: data.remark
+                            });
 
-                                console.log(data.remark);
-                            }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
-                        .finally(() => {
-                            this.resetForm();
-                            this.loading = false;
-                            this.getDataAccountsBalance();
-                        });
+                            console.log(data.remark);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+                    .finally(() => {
+                        this.resetForm();
+                        this.loading = false;
+                        this.getDataAccountsBalance();
+                    });
         },
-        async remove(pid_saldo) {    
+        async onRemove(pid_saldo) {    
             let that = this;        
             let foundData = this.table.data.filter(item => item.pid_saldo == pid_saldo)[0];
 
@@ -268,10 +259,10 @@ export default {
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    axios.post(process.env.VUE_APP_BASE_URL + "api/account-balance/delete", 
-                            foundData, 
-                            {headers: { Authorization: `Bearer ${that.token}`}})
-                        .then(function ({data}) {
+                    http("api/account-balance/delete", this.request)
+                        .then(responses => {
+                            let data = responses.data;
+
                             if(data.status != undefined && data.status) {
                                 that.$swal.mixin({
                                     toast: true,
@@ -330,7 +321,7 @@ export default {
                 return false;
             }
         },
-        chooseUser(user) {
+        onChooseUser(user) {
             this.form.pid_user = user.pid_user;
 
             this.getDataAccount();

@@ -9,12 +9,17 @@ import Account from '@/pages/Account'
 import LastData from '@/pages/LastData'
 import NotFound from '@/pages/NotFound'
 import Dashboard from '@/pages/Dashboard'
-import TransactionDetail from '@/pages/TransactionDetail'
 import AccountBalance from '@/pages/AccountBalance'
+import TransactionDetail from '@/pages/TransactionDetail'
 
 const routes = [{
         path: '/',
         redirect: { name: 'dashboard' }
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
     },
     {
         path: '/dashboard',
@@ -35,11 +40,6 @@ const routes = [{
         path: '/news',
         name: 'news',
         component: News
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login,
     },
     {
         path: '/user',

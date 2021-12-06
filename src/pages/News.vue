@@ -3,7 +3,7 @@
         <div class=" md:grid md:grid-cols-4 md:mt-28 mt-5 md:mx-6 ">
             <!-- Start form -->
             <div class="col-span-1 ">
-                <form class=" bg-white shadow-md rounded py-8 px-2 md:mr-6 " @submit.prevent="handleSubmit">
+                <form class=" bg-white shadow-md rounded py-8 px-2 md:mr-6 " @submit.prevent="onSubmit">
                     <p class="md:mb-5 sm:mb-5 md:text-3xl sm:text-3xl inline-flex ">Form News</p>
                     <button 
                         v-if="!hiddenBtnForm"
@@ -118,8 +118,8 @@
                         </tr>
                         <tr v-for="(item, index) in table"  :key="index">
                             <td class="border px-5 py-4 text-xs">
-                                <img @click="edit(item.pid_news)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
-                                <img @click="remove(item.pid_news)" width="20" style="display: inline" class="float-right cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                <img @click="onEdit(item.pid_news)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                <img @click="onRemove(item.pid_news)" width="20" style="display: inline" class="float-right cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                             </td>
                             <td class="border px-5 py-4 text-xs">{{item.pair}}</td>
                             <td class="border px-5 py-4 text-xs">{{item.custom_date_news}}</td>
@@ -161,8 +161,8 @@
                                 v-for="(item, index) in table"  
                                 :key="index">
                                 <td class="pl-1">
-                                    <img @click="edit(item.pid_news)" width="15" class=" my-1 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
-                                    <img @click="remove(item.pid_news)" width="15" class=" my-1 "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                                    <img @click="onEdit(item.pid_news)" width="15" class=" my-1 " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                    <img @click="onRemove(item.pid_news)" width="15" class=" my-1 "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
                                     <!-- <button 
                                         class=" mb-1 bg-blue-450 text-white p-1 rounded-md" style="font-size: 9px">
                                         edit
@@ -198,108 +198,99 @@
 </style>
 
 <script>
-    import axios from 'axios';
-    import moment from 'moment';
-    // import {baseUrl} from '@/helpers';
-    import MainLayout from '@/pages/MainLayout';
+import moment from 'moment';
+import { http } from '@/http.js';
+// import {baseUrl} from '@/helpers';
+import MainLayout from '@/pages/MainLayout';
 
-    const initialState = () => {
+const initialState = () => {
+    return {
+        pid_news: null,
+        pair: 'USD',
+        date_news: null,
+        date_start: null,
+        date_stop: null,
+        impact: null,
+        desc: null,
+    };
+}
+
+export default {
+    data() {
         return {
-            pid_news: null,
-            pair: 'USD',
-            date_news: null,
-            date_start: null,
-            date_stop: null,
-            impact: null,
-            desc: null,
+            table: [],
+            loading: false,
+            hiddenForm: true,
+            indexSelected: null,
+            hiddenBtnForm: true,
+            form: initialState(),
+            dropdownAction: false,
         };
-    }
+    },
+    components: {
+        MainLayout
+    },
+    mounted() {
+        if(window.innerWidth <= 760) {
+            this.hiddenBtnForm = false;
+        }else {
+            this.hiddenForm = false;
+        }
 
-    export default {
-        data() {
-            return {
-                hiddenBtnForm: true,
-                hiddenForm: true,
-                dropdownAction: false,
-                token: localStorage.getItem('token'),
-                loading: false,
-                indexSelected: null,
-                form: initialState(),
-                table: [],
-            };
+        this.getData();
+    },
+    computed: {
+
+    },
+    methods: {
+        async getData() {
+            let that = this;
+            this.loading = true;
+
+            await http("api/news/getData", {})
+                .then(function({
+                    data
+                }) {
+                    if (data.status) {
+                        that.table = data.data;
+                        that.loading = false;
+                    } else if (!data.status) {
+                        this.$router.push({
+                            name: "login"
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
-        components: {
-            MainLayout
-        },
-        mounted() {
-            if(window.innerWidth <= 760) {
-                this.hiddenBtnForm = false;
-            }else {
-                this.hiddenForm = false;
+        async onSubmit() {
+            let that = this;
+            this.loading = true;
+
+            if (this.form.pair == null || this.form.impact == null) {
+                console.log('form kosong');
+
+                this.loading = false;
+                this.$swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timerProgressBar: true,
+                        timer: 2000,
+                    })
+                    .fire({
+                        icon: "warning",
+                        title: "Maaf, form todak boleh kosong",
+                    });
+                    
+                return false;
             }
 
-            this.getData();
-        },
-        computed: {
+            await http("api/news/store", this.form)
+                    .then(function(responses) {
+                        let data = responses.data;
 
-        },
-        methods: {
-            async getData() {
-                let that = this;
-                this.loading = true;
-
-                await axios.post(process.env.VUE_APP_BASE_URL + "api/news/getData", {}, {
-                        headers: {
-                            Authorization: `Bearer ` + that.token
-                        }
-                    })
-                    .then(function({
-                        data
-                    }) {
-                        if (data.status) {
-                            that.table = data.data;
-                            that.loading = false;
-                        } else if (!data.status) {
-                            this.$router.push({
-                                name: "login"
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
-            },
-            async handleSubmit() {
-                let that = this;
-                this.loading = true;
-
-                if (this.form.pair == null || this.form.impact == null) {
-                    console.log('form kosong');
-
-                    this.loading = false;
-                    this.$swal.mixin({
-                            toast: true,
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timerProgressBar: true,
-                            timer: 2000,
-                        })
-                        .fire({
-                            icon: "warning",
-                            title: "Maaf, form todak boleh kosong",
-                        });
-                    return false;
-                }
-
-                await axios.post(process.env.VUE_APP_BASE_URL + "api/news/store",
-                        this.form, {
-                            headers: {
-                                Authorization: `Bearer ${that.token}`
-                            }
-                        })
-                    .then(function({
-                        data
-                    }) {
                         if (data.status != undefined && data.status) {
                             that.$swal.mixin({
                                     toast: true,
@@ -336,102 +327,97 @@
                         this.loading = false;
                         this.getData();
                     });
-            },
-            async remove(pid_news) {
-                let that = this;
-                let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
+        },
+        async onRemove(pid_news) {
+            let that = this;
+            let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
 
-                return await this.$swal.fire({
-                    icon: 'question',
-                    title: 'Do you want to delete this data ?',
-                    showDenyButton: true,
-                    confirmButtonText: 'Yes',
-                    denyButtonText: `No`,
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        axios.post(process.env.VUE_APP_BASE_URL + "api/news/delete",
-                                foundData, {
-                                    headers: {
-                                        Authorization: `Bearer ${that.token}`
-                                    }
-                                })
-                            .then(function({
-                                data
-                            }) {
-                                if (data.status != undefined && data.status) {
-                                    that.$swal.mixin({
-                                            toast: true,
-                                            position: "top-end",
-                                            showConfirmButton: false,
-                                            timerProgressBar: true,
-                                            timer: 2000,
-                                        })
-                                        .fire({
-                                            icon: "success",
-                                            title: data.remark
-                                        });
+            return await this.$swal.fire({
+                icon: 'question',
+                title: 'Do you want to delete this data ?',
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                   http("api/news/delete", foundData)
+                        .then(function(responses) {
+                            let data = responses.data;
 
-                                    that.getData();
-                                } else if (data.status != undefined && !data.status) {
-                                    that.$swal.mixin({
-                                            toast: true,
-                                            position: "top-end",
-                                            showConfirmButton: false,
-                                            timerProgressBar: true,
-                                            timer: 2000,
-                                        })
-                                        .fire({
-                                            icon: "warning",
-                                            title: data.remark
-                                        });
+                            if (data.status != undefined && data.status) {
+                                that.$swal.mixin({
+                                        toast: true,
+                                        position: "top-end",
+                                        showConfirmButton: false,
+                                        timerProgressBar: true,
+                                        timer: 2000,
+                                    })
+                                    .fire({
+                                        icon: "success",
+                                        title: data.remark
+                                    });
 
-                                    console.log(data.remark);
-                                }
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            })
-                    } else if (result.isDenied) {
-                        this.$swal.fire('Changes are not saved', '', 'info');
-                    }
-                })
-            },
-            edit(pid_news) {
-                // let that = this; 
-                //show form for edit
-                this.hiddenForm = false;       
-                let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
+                                that.getData();
+                            } else if (data.status != undefined && !data.status) {
+                                that.$swal.mixin({
+                                        toast: true,
+                                        position: "top-end",
+                                        showConfirmButton: false,
+                                        timerProgressBar: true,
+                                        timer: 2000,
+                                    })
+                                    .fire({
+                                        icon: "warning",
+                                        title: data.remark
+                                    });
 
-                this.form.pid_news = foundData.pid_news;
-                this.form.pair = foundData.pair;
-                this.form.impact = foundData.impact;
-                this.form.desc = foundData.desc;
-                this.form.date_news = moment(foundData.date_news).format('YYYY-MM-DDTHH:mm:ss');
-                this.form.date_start = moment(foundData.date_start).format('YYYY-MM-DDTHH:mm:ss');
-                this.form.date_stop = moment(foundData.date_stop).format('YYYY-MM-DDTHH:mm:ss');
-            },
-            eventDateNews() {
-                this.form.date_start = moment(this.form.date_news).subtract({
-                    hours: 5
-                }).format('YYYY-MM-DDTHH:mm:ss');
-                this.form.date_stop = moment(this.form.date_news).add({
-                    hours: 2
-                }).format('YYYY-MM-DDTHH:mm:ss');
-            },
-            resetForm() {
-                this.hiddenForm = true;
-                this.form = initialState();
-            },
-            activeRow(index) {
-                this.indexSelected = index;
-            },
-            classActiveRow(index){
-                return {
-                    'active': this.indexSelected == index ? true : false
-                };
-            }
+                                console.log(data.remark);
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                } else if (result.isDenied) {
+                    this.$swal.fire('Changes are not saved', '', 'info');
+                }
+            })
+        },
+        onEdit(pid_news) {
+            // let that = this; 
+            //show form for edit
+            this.hiddenForm = false;       
+            let foundData = this.table.filter(item => item.pid_news == pid_news)[0];
+
+            this.form.pair = foundData.pair;
+            this.form.desc = foundData.desc;
+            this.form.impact = foundData.impact;
+            this.form.pid_news = foundData.pid_news;
+            this.form.date_news = moment(foundData.date_news).format('YYYY-MM-DDTHH:mm:ss');
+            this.form.date_start = moment(foundData.date_start).format('YYYY-MM-DDTHH:mm:ss');
+            this.form.date_stop = moment(foundData.date_stop).format('YYYY-MM-DDTHH:mm:ss');
+        },
+        eventDateNews() {
+            this.form.date_start = moment(this.form.date_news).subtract({
+                hours: 5
+            }).format('YYYY-MM-DDTHH:mm:ss');
+            this.form.date_stop = moment(this.form.date_news).add({
+                hours: 2
+            }).format('YYYY-MM-DDTHH:mm:ss');
+        },
+        resetForm() {
+            this.hiddenForm = true;
+            this.form = initialState();
+        },
+        activeRow(index) {
+            this.indexSelected = index;
+        },
+        classActiveRow(index){
+            return {
+                'active': this.indexSelected == index ? true : false
+            };
         }
-
     }
+
+}
 </script>

@@ -1,8 +1,10 @@
 import moment from "moment";
-import axios from "axios";
-import MainLayout from "@/pages/MainLayout";
-import Modal from "@/pages/DashboardModal";
 import html2canvas from "html2canvas";
+import Modal from "@/pages/DashboardModal";
+import MainLayout from "@/pages/MainLayout";
+
+import { http } from '@/http.js';
+
 const { ClipboardItem } = window;
 
 export default {
@@ -11,7 +13,6 @@ export default {
             copyCard: false,
             loading: false,
             hiddenName: false,
-            token: localStorage.getItem("token"),
             list: [],
             request: {
                 sorted_by: "trade_desc",
@@ -34,15 +35,7 @@ export default {
             let that = this;
             this.loading = true;
 
-            await axios
-                .post(
-                    process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
-                    this.request, {
-                        headers: {
-                            Authorization: `Bearer ` + that.token,
-                        },
-                    }
-                )
+            await http("api/dasboard/last-data", this.request)
                 .then(function(responses) {
                     if (responses.data.status) {
                         that.list = responses.data.data;
@@ -76,11 +69,8 @@ export default {
         sortName(name) {
             return name.substring(0, 18);
         },
-        toggleModal() {
+        onToggleModal() {
             this.open = !this.open;
-        },
-        customNumber(number) {
-            return Intl.NumberFormat().format(number);
         },
         capture(index) {
             this.copyCard = true;

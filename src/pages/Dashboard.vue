@@ -127,7 +127,7 @@
           <div class="flex-1">
             <div class="grid">
               <div class="text-lg font-bold">
-                {{ customNumber(item.equity) }}
+                {{ item.custom_equity }}
               </div>
               <div class="text-sm">Equity USC</div>
             </div>
@@ -135,7 +135,7 @@
           <div class="flex-1">
             <div class="grid">
               <div class="text-lg font-bold">
-                {{ customNumber(item.pnlmnt) }}%
+                {{ item.custom_pnlmnt }}%
               </div>
               <div class="text-sm">PnL Month</div>
             </div>
@@ -191,7 +191,7 @@
     </button>
     <button
       type="button"
-      @click="toggleModal"
+      @click="onToggleModal"
       class="
         bg-white
         border-4 border-green-300

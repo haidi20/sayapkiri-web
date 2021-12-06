@@ -1,10 +1,10 @@
-import axios from "axios";
 import MainLayout from "@/pages/MainLayout";
+
+import { http } from '@/http.js';
 
 export default {
     data() {
         return {
-            token: localStorage.getItem("token"),
             table: [],
             loading: false,
             indexSelected: null,
@@ -26,11 +26,7 @@ export default {
             this.table = [];
             this.loading = true;
 
-            await axios
-                .post(
-                    process.env.VUE_APP_BASE_URL + "api/dashboard/last-data",
-                    this.request, { headers: { Authorization: `Bearer ` + that.token } }
-                )
+            await http("api/dasboard/last-data", this.request)
                 .then((responses) => {
                     let status = responses.data.status;
                     let data = responses.data.data;
