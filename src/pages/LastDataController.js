@@ -22,12 +22,11 @@ export default {
     },
     methods: {
         async getLastData() {
-            let that = this;
             this.table = [];
             this.loading = true;
 
-            await http("api/dasboard/last-data", this.request)
-                .then((responses) => {
+            await http("api/dashboard/last-data", this.request)
+                .then(responses => {
                     let status = responses.data.status;
                     let data = responses.data.data;
 

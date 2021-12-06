@@ -45,7 +45,7 @@ export default {
   props: {
     data: Array,
     nameUser: String,
-    chooseUser: Function,
+    onChooseUser: Function,
   },
   emits: ['update:nameUser'],
   computed: {
@@ -63,7 +63,7 @@ export default {
         this.$emit('update:nameUser', value.nama);
         this.showOptions = false;
 
-        this.chooseUser(value);
+        this.onChooseUser(value);
     },
     resultQuery() {
       if (this.nameUser) {

@@ -11,7 +11,7 @@
                             :data="listUser"
                             :nameUser="nameUser"
                             @update:nameUser="nameUser = $event"
-                            :chooseUser="chooseUser"
+                            :onChooseUser="onChooseUser"
                         />
                     </div>
                     <div class=" ml-2 ">
@@ -43,7 +43,7 @@
                         <button 
                             type="submit" 
                             class=" ml-8 bg-green-500 text-white rounded-md p-2 "
-                            @click="getTransactionRn">
+                            @click="getTransactionDetail">
                             Apply
                         </button>
                     </div>
@@ -162,11 +162,11 @@ export default {
         AccountInputUser,
     },
     mounted() {
-        this.getTransactionRn();
+        this.getTransactionDetail();
         this.getAllUser();
     },
     methods: {
-        async getTransactionRn() {
+        async getTransactionDetail() {
             this.loading = true;
 
             await http("api/transaction/detail", this.request)
@@ -205,7 +205,7 @@ export default {
         async getDataAccount() {
             let that = this;
 
-            await http("api/account/findByUser", this.request)
+            await http("api/account/findByUser", {"pid_user": that.pidUser})
                     .then(responses => {
                         let status = responses.data.status;
                         let data = responses.data.data;
@@ -236,7 +236,7 @@ export default {
         fnDepo(row){
             return this.customNumber(row.depo);
         },
-        chooseUser(user) {
+        onChooseUser(user) {
             this.pidUser = user.pid_user;
 
             this.getDataAccount();

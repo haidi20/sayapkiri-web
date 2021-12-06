@@ -12,7 +12,7 @@
                             :data="listUser"
                             :nameUser="nameUser"
                             @update:nameUser="nameUser = $event"
-                            :chooseUser="chooseUser"
+                            :onChooseUser="onChooseUser"
                         />
                         <!-- <input class="input-custom" type="text" > -->
                     </div>
@@ -298,7 +298,7 @@ export default {
             this.form = initialState();
             this.nameUser = null;
         },
-        chooseUser(user) {
+        onChooseUser(user) {
             this.form.pid_user = user.pid_user;
         },
     }
