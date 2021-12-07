@@ -73,7 +73,7 @@ export default {
             .split(" ")
             .every(v => item.nama?.toLowerCase().includes(v));
         });
-
+  
         // let data = this.data.filter(item => 
         //   this.nameUser == item.nama
         // )
