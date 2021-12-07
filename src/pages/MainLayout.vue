@@ -194,7 +194,7 @@
 <style lang="postcss">
   .router-link {
       @apply inline-flex items-center text-gray-700 font-semibold
-      transition-colors duration-150 px-4 py-2 rounded-sm ml-2 my-1 w-52
+      transition-colors duration-150 px-4 py-2 rounded-md ml-2 my-1 w-52
       hover:bg-blue-450 hover:text-white 
   }
   .router-link-active {
