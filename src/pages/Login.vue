@@ -199,7 +199,6 @@
         },
         methods: {
             async onSubmit() {
-                console.log('submit');
                 let that = this;
                 await axios.post(process.env.VUE_APP_BASE_URL + "login", this.form)
                     .then(responses => {

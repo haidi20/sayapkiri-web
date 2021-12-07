@@ -7,13 +7,13 @@ export default (to, from, next) => {
 
     if (to.path != '/login') {
         if (dateNow >= expiredAt && token != null) {
-            next({ name: 'login' }).catch(() => {});
+            next({ name: 'login' });
         } else {
             next();
         }
     } else if (to.path == '/login') {
         if (dateNow <= expiredAt && token != null) {
-            next({ name: 'dashboard' }).catch(() => {});
+            next({ name: 'dashboard' });
         } else {
             next();
         }

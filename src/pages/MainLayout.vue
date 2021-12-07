@@ -267,6 +267,7 @@
             },
             logout() {
               localStorage.removeItem('token');
+              localStorage.removeItem('expiredAt');
 
               this.$router.push({name: "login"});
             },
