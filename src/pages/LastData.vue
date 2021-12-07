@@ -2,7 +2,7 @@
   <main-layout>
     <div class="grid md:mt-28 mt-10 md:mx-6">
       <!-- start table desktop -->
-      <div class="bg-white shadow-md rounded pt-4 hidden-mobile px-2">
+      <div class="bg-white shadow-md rounded-2xl pt-4 hidden-mobile px-2">
         <p class="text-3xl mb-5">Last Data</p>
         <!-- <hr class="border-1 border-gray-400 mb-5 " > -->
         <div class="flex flex-row">

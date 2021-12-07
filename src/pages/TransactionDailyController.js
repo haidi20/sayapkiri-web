@@ -27,8 +27,8 @@ export default {
                 perPageDropdown: [100, 200, 500, 1000],
             },
             columns: [{
-                    label: 'Broker Time',
-                    field: 'broker_time',
+                    label: 'Day',
+                    field: 'day',
                 },
                 {
                     label: 'Floating',
