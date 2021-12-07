@@ -320,7 +320,7 @@
               <td class="row-mobile text-right">
                 ({{ item.trade }})
                 <span class="text-red-500">
-                  {{ item.custom_floating }}
+                  {{ item.floating }}
                 </span>
 
                 <br />
