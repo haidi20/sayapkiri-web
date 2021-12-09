@@ -46,8 +46,42 @@
                             </span>
                         </div>
                     </div>
-                    <div v-if="activetab === 2" class="tabcontent">
-                        Content for tab two
+                    <div v-if="activetab === 2" class="tabcontent  p-6 justify-between">
+                        <div>
+                            <label class="label-custom">
+                                Date
+                            </label>
+                            <input 
+                                type="date" 
+                                @input="getCountEquityNow"
+                                class="input-custom w-1/3 p-2" 
+                                v-model="request.date_now" >
+                            <p class="inline-block ml-3" v-if="loading">loading...</p>
+                        </div>
+                        <div class="mt-6 shadow-md w-1/4 p-4 rounded-lg inline-block ">
+                            <span>
+                                USC
+                            </span>
+                            <span class="float-right">
+                                {{equityNow.usc}}
+                            </span>
+                        </div>
+                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
+                            <span>
+                                USD
+                            </span>
+                            <span class="float-right">
+                                {{equityNow.usd}}
+                            </span>
+                        </div>
+                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
+                            <span>
+                                IDR
+                            </span>
+                            <span class="float-right">
+                                {{equityNow.idr}}
+                            </span>
+                        </div>
                     </div>
                 </div>
             
@@ -67,21 +101,48 @@ export default {
             activetab: 1,
             request: {
                 date_month: null,
+                date_now: null,
+            },
+            equityNow: {
+                usd: 0,
+                usc: 0,
+                idr: 0,
             },
             balanceBeginMonth: {
                 usd: 0,
                 usc: 0,
                 idr: 0,
-            }
+            },
         }
     },
     components: {
         MainLayout
     },
     mounted() {
+        this.getCountEquityNow();
         this.getCountBalanceBeginMonth();
     },
     methods: {
+        async getCountEquityNow() {
+            this.loading = true;
+
+            await http("api/dashboard/equity-now", {date: this.request.date_now})
+                .then(responses => {
+                     let status = responses.data.status;
+                    let data = responses.data.data;
+
+                    if(status){
+                        this.equityNow.usd = data.totalUSD;
+                        this.equityNow.usc = data.totalUSC;
+                        this.equityNow.idr = data.totalIDR;
+                    }
+
+                    this.loading = false;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
         async getCountBalanceBeginMonth() {
             this.loading = true;
 
