@@ -1,23 +1,53 @@
 <template>
     <main-layout>
         <div class="grid md:mt-28 mt-10 md:mx-6">
-            <div id="tabs" class="container">
+            <div id="tabs" class="container w-1/2">
   
                 <div class="tabs">
-                    <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Tab 1</a>
-                    <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Tab 2</a>
-                    <a v-on:click="activetab=3" v-bind:class="[ activetab === 3 ? 'active' : '' ]">Tab 3</a>
+                    <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Balance Begin of the Month</a>
+                    <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Equity Now</a>
                 </div>
 
-                <div class="content">
-                    <div v-if="activetab === 1" class="tabcontent">
-                        Content for tab one
+                <div class="content bg-white">
+                    <div v-if="activetab === 1" class="tabcontent p-6 justify-between ">
+                        <div>
+                            <label class="label-custom">
+                                Date
+                            </label>
+                            <input 
+                                type="month" 
+                                @input="getCountBalanceBeginMonth"
+                                class="input-custom w-1/3 p-2" 
+                                v-model="request.date_month" >
+                            <p class="inline-block ml-3" v-if="loading">loading...</p>
+                        </div>
+                        <div class="mt-6 shadow-md w-1/4 p-4 rounded-lg inline-block ">
+                            <span>
+                                USC
+                            </span>
+                            <span class="float-right">
+                                {{balanceBeginMonth.usc}}
+                            </span>
+                        </div>
+                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
+                            <span>
+                                USD
+                            </span>
+                            <span class="float-right">
+                                {{balanceBeginMonth.usd}}
+                            </span>
+                        </div>
+                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
+                            <span>
+                                IDR
+                            </span>
+                            <span class="float-right">
+                                {{balanceBeginMonth.idr}}
+                            </span>
+                        </div>
                     </div>
                     <div v-if="activetab === 2" class="tabcontent">
                         Content for tab two
-                    </div>
-                    <div v-if="activetab === 3" class="tabcontent">
-                        Content for tab three
                     </div>
                 </div>
             
@@ -33,25 +63,52 @@ import { http } from '@/http.js';
 export default {
     data() {
         return {
+            loading: false,
             activetab: 1,
+            request: {
+                date_month: null,
+            },
+            balanceBeginMonth: {
+                usd: 0,
+                usc: 0,
+                idr: 0,
+            }
         }
     },
     components: {
         MainLayout
     },
+    mounted() {
+        this.getCountBalanceBeginMonth();
+    },
+    methods: {
+        async getCountBalanceBeginMonth() {
+            this.loading = true;
+
+            await http("api/dashboard/begin-month", {date: this.request.date_month})
+                .then(responses => {
+                     let status = responses.data.status;
+                    let data = responses.data.data;
+
+                    if(status){
+                        this.balanceBeginMonth.usd = data.totalUSD;
+                        this.balanceBeginMonth.usc = data.totalUSC;
+                        this.balanceBeginMonth.idr = data.totalIDR;
+                    }
+
+                    this.loading = false;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+    },
 }
 </script>
 
 <style lang="postcss" scoped>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
 
-    .container {  
-        max-width: 620px; 
-        min-width: 420px;
+    .container { 
         margin: 40px auto;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 0.9em;
@@ -77,7 +134,7 @@ export default {
         transition: background-color 0.2s;
         border: 1px solid #ccc;
         border-right: none;
-        background-color: #f1f1f1;
+        background-color: white;
         border-radius: 10px 10px 0 0;
         font-weight: bold;
     }
@@ -101,7 +158,6 @@ export default {
 
     /* Style the tab content */
     .tabcontent {
-        padding: 30px;
         border: 1px solid #ccc;
         border-radius: 10px;
         box-shadow: 3px 3px 6px #e1e1e1
