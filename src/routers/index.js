@@ -8,6 +8,7 @@ import Login from '@/pages/Login'
 import Account from '@/pages/Account'
 import LastData from '@/pages/LastData'
 import NotFound from '@/pages/NotFound'
+import Counting from '@/pages/Counting'
 import Dashboard from '@/pages/Dashboard'
 import AccountBalance from '@/pages/AccountBalance'
 import TransactionDaily from '@/pages/TransactionDaily'
@@ -41,6 +42,11 @@ const routes = [{
         path: '/transaction-detail',
         name: 'transactionDetail',
         component: TransactionDetail
+    },
+    {
+        path: '/counting-balance-equity',
+        name: 'contingBalanceEquity',
+        component: Counting,
     },
     {
         path: '/news',
