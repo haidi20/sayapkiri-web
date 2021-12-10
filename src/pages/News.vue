@@ -29,7 +29,7 @@
                                 Date News
                             </label>
                             <input 
-                                @input="eventDateNews($event.target.value)"
+                                @input="eventDateNews($event.target.value)" 
                                 class="input-custom" 
                                 v-model="form.date_news" 
                                 id="date_news" 

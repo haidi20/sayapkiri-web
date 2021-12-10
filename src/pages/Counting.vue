@@ -1,90 +1,94 @@
 <template>
     <main-layout>
         <div class="grid md:mt-28 mt-10 md:mx-6">
-            <div id="tabs" class="container w-1/2">
-  
-                <div class="tabs">
-                    <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Balance Begin of the Month</a>
-                    <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">Equity Now</a>
-                </div>
-
-                <div class="content bg-white">
-                    <div v-if="activetab === 1" class="tabcontent p-6 justify-between ">
-                        <div>
-                            <label class="label-custom">
-                                Date
-                            </label>
-                            <input 
-                                type="month" 
-                                @input="getCountBalanceBeginMonth"
-                                class="input-custom w-1/3 p-2" 
-                                v-model="request.date_month" >
-                            <p class="inline-block ml-3" v-if="loading">loading...</p>
-                        </div>
-                        <div class="mt-6 shadow-md w-1/4 p-4 rounded-lg inline-block ">
-                            <span>
-                                USC
-                            </span>
-                            <span class="float-right">
-                                {{balanceBeginMonth.usc}}
-                            </span>
-                        </div>
-                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
-                            <span>
-                                USD
-                            </span>
-                            <span class="float-right">
-                                {{balanceBeginMonth.usd}}
-                            </span>
-                        </div>
-                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
-                            <span>
-                                IDR
-                            </span>
-                            <span class="float-right">
-                                {{balanceBeginMonth.idr}}
-                            </span>
-                        </div>
+            <div class="bg-white shadow-md rounded-2xl md w-full md:w-1/4 pb-4 pt-4 px-2 md:mt-0 mt-4">
+                <label class="label-custom">
+                    Date
+                </label>
+                <input 
+                    type="date" 
+                    @input="onChooseDate"
+                    class="input-custom w-1/2 p-2" 
+                    v-model="request.date_now" >
+                <p class="inline-block ml-3" v-if="loading">loading...</p>
+            </div>
+            <div class="bg-white shadow-md rounded-2xl pt-4 px-2 pb-4 mt-4">
+                <p class="text-3xl mb-5">Balance Begin of the Month</p>
+                <div class="md:w-1/2">
+                    <div class="mt-6 shadow-md w-full md:w-1/4 p-4 rounded-lg inline-block ">
+                        <span>
+                            USC
+                        </span>
+                        <span class="float-right">
+                            {{balanceBeginMonth.usc}}
+                        </span>
                     </div>
-                    <div v-if="activetab === 2" class="tabcontent  p-6 justify-between">
-                        <div>
-                            <label class="label-custom">
-                                Date
-                            </label>
-                            <input 
-                                type="date" 
-                                @input="getCountEquityNow"
-                                class="input-custom w-1/3 p-2" 
-                                v-model="request.date_now" >
-                            <p class="inline-block ml-3" v-if="loading">loading...</p>
-                        </div>
-                        <div class="mt-6 shadow-md w-1/4 p-4 rounded-lg inline-block ">
-                            <span>
-                                USC
-                            </span>
-                            <span class="float-right">
-                                {{equityNow.usc}}
-                            </span>
-                        </div>
-                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
-                            <span>
-                                USD
-                            </span>
-                            <span class="float-right">
-                                {{equityNow.usd}}
-                            </span>
-                        </div>
-                        <div class="mt-4 shadow-md w-1/4 p-4 rounded-lg inline-block ml-4 ">
-                            <span>
-                                IDR
-                            </span>
-                            <span class="float-right">
-                                {{equityNow.idr}}
-                            </span>
-                        </div>
+                    <div class="mt-4 shadow-md w-full md:w-1/4 p-4 rounded-lg inline-block md:ml-4 ">
+                        <span>
+                            USD
+                        </span>
+                        <span class="float-right">
+                            {{balanceBeginMonth.usd}}
+                        </span>
+                    </div>
+                    <div class="mt-4 shadow-md w-full md:w-1/4 p-4 rounded-lg inline-block md:ml-4 ">
+                        <span>
+                            IDR
+                        </span>
+                        <span class="float-right">
+                            {{balanceBeginMonth.idr}}
+                        </span>
                     </div>
                 </div>
-            
+            </div>
+            <div class="bg-white shadow-md rounded-2xl pt-4 px-2 pb-4 mt-6">
+                <p class="text-3xl mb-5">Equity Now</p>
+                <div class="md:w-1/2">
+                    <div class="mt-6 shadow-md w-full md:w-1/4 p-4 rounded-lg inline-block ">
+                        <span>
+                            USC
+                        </span>
+                        <span class="float-right">
+                            {{equityNow.usc}}
+                        </span>
+                    </div>
+                    <div class="mt-4 shadow-md w-full md:w-1/4 p-4 rounded-lg inline-block md:ml-4 ">
+                        <span>
+                            USD
+                        </span>
+                        <span class="float-right">
+                            {{equityNow.usd}}
+                        </span>
+                    </div>
+                    <div class="mt-4 shadow-md w-full md:w-1/4 p-4 rounded-lg inline-block md:ml-4 ">
+                        <span>
+                            IDR
+                        </span>
+                        <span class="float-right">
+                            {{equityNow.idr}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-2xl pt-4 px-2 pb-4 mt-6">
+                <div class="md:w-1/2">
+                    <div class=" shadow-md w-full md:w-1/3 p-4 rounded-lg inline-block ">
+                        <span>
+                            Growth
+                        </span>
+                        <span class="float-right">
+                            {{growth}}
+                        </span>
+                    </div>
+                    <div class="mt-4 shadow-md w-full md:w-1/3 p-4 rounded-lg inline-block md:ml-4 ">
+                        <span>
+                            Average Daily
+                        </span>
+                        <span class="float-right">
+                            {{avgDaily}}
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </main-layout>
@@ -100,7 +104,6 @@ export default {
             loading: false,
             activetab: 1,
             request: {
-                date_month: null,
                 date_now: null,
             },
             equityNow: {
@@ -113,22 +116,48 @@ export default {
                 usc: 0,
                 idr: 0,
             },
+            growth: 0,
+            avgDaily: 0,
         }
     },
     components: {
         MainLayout
     },
     mounted() {
-        this.getCountEquityNow();
-        this.getCountBalanceBeginMonth();
+        // this.getGrowth();
+        // this.getCountEquityNow();
+        // this.getCountBalanceBeginMonth();
     },
     methods: {
+        onChooseDate() {
+            this.getGrowth();
+            this.getCountEquityNow();
+            this.getCountBalanceBeginMonth();
+        },
+        async getGrowth() {
+            this.loading = true;
+
+            await http("api/dashboard/growth", {date: this.request.date_now})
+                .then(responses => {
+                    let status = responses.data.status;
+                    let data = responses.data.data;
+
+                    if(status){
+                        this.growth = data.growthResult;
+                    }
+
+                    this.loading = false;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
         async getCountEquityNow() {
             this.loading = true;
 
             await http("api/dashboard/equity-now", {date: this.request.date_now})
                 .then(responses => {
-                     let status = responses.data.status;
+                    let status = responses.data.status;
                     let data = responses.data.data;
 
                     if(status){
@@ -146,9 +175,9 @@ export default {
         async getCountBalanceBeginMonth() {
             this.loading = true;
 
-            await http("api/dashboard/begin-month", {date: this.request.date_month})
+            await http("api/dashboard/begin-month", {date: this.request.date_now})
                 .then(responses => {
-                     let status = responses.data.status;
+                    let status = responses.data.status;
                     let data = responses.data.data;
 
                     if(status){
