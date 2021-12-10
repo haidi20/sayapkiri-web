@@ -39,6 +39,9 @@
                             {{balanceBeginMonth.idr}}
                         </span>
                     </div>
+                    <p v-if="loading.loadingBalance" class="inline-block ml-4">
+                        loading...
+                    </p>
                 </div>
             </div>
             <div class="bg-white shadow-md rounded-2xl pt-4 px-2 pb-4 mt-6">
@@ -68,6 +71,9 @@
                             {{equityNow.idr}}
                         </span>
                     </div>
+                    <p v-if="loading.loadingEquity" class="inline-block ml-4">
+                        loading...
+                    </p>
                 </div>
             </div>
             <div class="bg-white shadow-md rounded-2xl pt-4 px-2 pb-4 mt-6">
@@ -88,6 +94,9 @@
                             {{avgDaily}}
                         </span>
                     </div>
+                    <p v-if="loading.loadingGrowth" class="inline-block ml-4">
+                        loading...
+                    </p>
                 </div>
             </div>
         </div>
@@ -101,7 +110,11 @@ import { http } from '@/http.js';
 export default {
     data() {
         return {
-            loading: false,
+            loading: {
+                loadingEquity: false,
+                loadingGrowth: false,
+                loadingBalance: false,
+            },
             activetab: 1,
             request: {
                 date_now: null,
@@ -135,7 +148,7 @@ export default {
             this.getCountBalanceBeginMonth();
         },
         async getGrowth() {
-            this.loading = true;
+            this.loading.loadingGrowth = true;
 
             await http("api/dashboard/growth", {date: this.request.date_now})
                 .then(responses => {
@@ -146,14 +159,14 @@ export default {
                         this.growth = data.growthResult;
                     }
 
-                    this.loading = false;
+                    this.loading.loadingGrowth = false;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         },
         async getCountEquityNow() {
-            this.loading = true;
+            this.loading.loadingEquity = true;
 
             await http("api/dashboard/equity-now", {date: this.request.date_now})
                 .then(responses => {
@@ -166,14 +179,14 @@ export default {
                         this.equityNow.idr = data.totalIDR;
                     }
 
-                    this.loading = false;
+                    this.loading.loadingEquity = false;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         },
         async getCountBalanceBeginMonth() {
-            this.loading = true;
+            this.loading.loadingBalance = true;
 
             await http("api/dashboard/begin-month", {date: this.request.date_now})
                 .then(responses => {
@@ -186,7 +199,7 @@ export default {
                         this.balanceBeginMonth.idr = data.totalIDR;
                     }
 
-                    this.loading = false;
+                    this.loading.loadingBalance = false;
                 })
                 .catch((error) => {
                     console.log(error);
