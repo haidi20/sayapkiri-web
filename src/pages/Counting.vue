@@ -10,7 +10,6 @@
                     @input="onChooseDate"
                     class="input-custom w-1/2 p-2" 
                     v-model="request.date_now" >
-                <p class="inline-block ml-3" v-if="loading">loading...</p>
             </div>
             <div class="bg-white shadow-md rounded-2xl pt-4 px-2 pb-4 mt-4">
                 <p class="text-3xl mb-5">Balance Begin of the Month</p>
@@ -163,6 +162,8 @@ export default {
                 })
                 .catch((error) => {
                     console.log(error);
+
+                    this.loading.loadingGrowth = false;
                 });
         },
         async getCountEquityNow() {
@@ -183,6 +184,8 @@ export default {
                 })
                 .catch((error) => {
                     console.log(error);
+
+                    this.loading.loadingEquity = false;
                 });
         },
         async getCountBalanceBeginMonth() {
@@ -203,6 +206,8 @@ export default {
                 })
                 .catch((error) => {
                     console.log(error);
+
+                    this.loading.loadingBalance = false;
                 });
         },
     },
