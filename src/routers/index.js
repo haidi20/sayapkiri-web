@@ -10,6 +10,7 @@ import LastData from '@/pages/LastData'
 import NotFound from '@/pages/NotFound'
 import Counting from '@/pages/Counting'
 import Dashboard from '@/pages/Dashboard'
+import RewardReport from '@/pages/RewardReport'
 import AccountBalance from '@/pages/AccountBalance'
 import TransactionDaily from '@/pages/TransactionDaily'
 import TransactionDetail from '@/pages/TransactionDetail'
@@ -42,6 +43,11 @@ const routes = [{
         path: '/transaction-detail',
         name: 'transactionDetail',
         component: TransactionDetail
+    },
+    {
+        path: '/reward-report',
+        name: 'rewardReport',
+        component: RewardReport,
     },
     {
         path: '/counting-balance-equity',
