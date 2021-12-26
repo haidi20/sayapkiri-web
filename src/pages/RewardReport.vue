@@ -27,7 +27,7 @@
                                 m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
                                 type="file" 
-                                @change="onCsvToJson"
+                                @change="onInsertState"
                                 ref="myFiles"
                                 id="formFile">
                         </div>
@@ -69,16 +69,20 @@ export default {
     data() {
         return {
             file: {},
+            form: {
+
+            }
         }
     },
     components: {
         MainLayout,
     },
     methods: {
-        onCsvToJson(event) {
+        onInsertState(event) {
             this.file = this.$refs.myFiles.files[0];
         },
         onSubmit() {
+            let that = this;
             let reader = new FileReader();
             
             reader.readAsText(this.file);
@@ -89,22 +93,66 @@ export default {
                 let result = [];
                 let headers = lines[0].split(",");
 
-                console.log(headers);
-
                 for(var i=1;i<lines.length;i++){
                     let obj = {};
                     let currentline=lines[i].split(",");
 
                     for(let j=0;j<headers.length;j++){
-                        obj[headers[j]] = currentline[j];
+                        obj[headers[j].replace(/\s/g, '')] = currentline[j];
                     }
 
                     result.push(obj);
-                }  
-                    //return result; //JavaScript object
-                    // result= JSON.stringify(result); //JSON
-                    console.log(result);
+                }
+
+                result.map(item => {
+                    console.log(item);
+                });
+
+                // that.onSend(result);
             };
+        },
+        async onSend(result) {
+            await http("api/reward-report/store", {data: result})
+                    .then(function(responses) {
+                        let data = responses.data;
+
+                        console.log(responses);
+
+                        if (data.status != undefined && data.status) {
+                            this.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "success",
+                                    title: data.remark
+                                });
+                        } else if (data.status != undefined && !data.status) {
+                            this.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "warning",
+                                    title: data.remark
+                                });
+
+                            console.log(data.remark);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+                    .finally(() => {
+                        this.loading = false;
+                        // this.getData();
+                    });
         }
     }
 }

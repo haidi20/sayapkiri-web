@@ -1,9 +1,10 @@
 <template>
     <main-layout>
-        <div class="w-full md:grid md:grid-cols-4 md:mt-28 mt-5 ">
-            <div class="col-span-1 md:ml-6">
+        <div class=" md:grid md:grid-cols-4 md:mt-28 mt-5 md:mx-6 ">
+            <!-- Start form -->
+            <div class="col-span-1">
                 <form class="bg-white shadow-md rounded py-8 px-4 md:mr-6" @submit.prevent="onSubmit">
-                    <p class="mb-5 text-3xl">Form Account</p>
+                    <p class="mb-5 text-3xl">Form</p>
                     <div class="mb-4">
                         <label class="label-custom">
                             User
@@ -55,6 +56,28 @@
                         </label>
                         <input class="input-custom" type="text" v-model="form.location" >
                     </div>
+                     <div class="mb-4">
+                        <label class="label-custom">
+                            Type Account
+                        </label>
+                        <input class="input-custom" type="text" v-model="form.type_account" >
+                    </div>
+                    <div class="mb-4">
+                        <label class="label-custom">
+                            Status Account
+                        </label>
+                        <div class="inline-block relative w-full">
+                            <select 
+                                v-model="form.status_account"
+                                class="block appearance-none w-full bg-white border py-2 px-3 rounded shadow-sm border-gray-300 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="active">Active</option>
+                                <option value="inactive">In Active</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
                     <div class="">
                         <button 
                             type="submit" 
@@ -71,37 +94,34 @@
                     </div>
                 </form>
             </div>
-            <div class="w-full col-span-3 md:mr-5">
-                <div class="bg-white shadow-md rounded py-8 px-4 overflow-x-auto ">
-                    <p class="mb-5 text-3xl">Data Account</p>
-                    <table class="shadow-lg bg-white w-full table-auto">
-                        <tr>
-                            <th class="text-white border text-center md:px-0 px-5 py-4" width="100" style="background-color: #4680FE">Action</th>
-                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Nama</th>
-                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Account</th>
-                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Password</th>
-                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Server</th>
-                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Register Date</th>
-                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Investor Password</th>
-                            <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Location</th>
-                        </tr>
-                        <tr v-if="loading">
-                            <td  class=" text-center " colspan="8">Loading</td>
-                        </tr>
-                        <tr v-for="(item, index) in table.data"  :key="index">
-                            <td class="border px-5 py-4 text-xs">
-                                <img @click="onEdit(item.pid_account)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
-                                <img @click="onRemove(item.pid_account)" width="20" style="display: inline" class="float-right cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
-                            </td>
-                            <td class="border px-5 py-4 text-xs">{{item.name_user}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.account}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.password}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.server}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.register_date}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.investor_pass}}</td>
-                            <td class="border px-5 py-4 text-xs">{{item.location}}</td>
-                        </tr>
-                    </table>
+            <!-- End form -->
+            <!-- Start table Desktop -->
+            <div class=" h-screen hidden-mobile col-span-3 ">
+                <div                    
+                    class=" bg-white shadow-md rounded py-6 px-4 overflow-x-auto  ">
+                    <div class="mb-5">
+                        <p class="text-3xl">Account</p>
+                        <!-- <div class=" float-right ">
+                            <input type="text" class="input-custom" placeholder="search" >
+                        </div> -->
+                    </div>
+                    <vue-good-table  
+                        fixed-header
+                        :rows="rows"
+                        :columns="columns"
+                        max-height="600px"
+                        :pagination-options="paginationOptions">
+
+                        <template #table-row="props">
+                            <span v-if="props.column.field == 'action'">
+                                <img @click="onEdit(props.row.pid_account)" width="20" style="display: inline" class=" cursor-pointer " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABXklEQVRIie3VPU7DMBjG8b8DO2JF/WBh5BQggZyZA3CB0sIACyKVkICF5AaMsDCSihswcAIWSAoDI1On5mWAorRp0qbYnfpsiZ38/PHGgUXmFGXjpTqIW8Ap8EHCfnhYe7YOaz/yUOosJXyJcnY7jcqTNTiDpnD6bKdn7piEcyOs4HCTvmUUDlt1D5F2TvOaUVj7kaf9yJsCP09f/GuP03sqqKtOs3oyaHOD6FhQlz+K8sKD6tBgZobHFpJIO2zVvaE+/K7CSGaCc6uX7MzzUhouQsvgpYprGhRAKXoT+5hGxxXSzLBpdCrYBjoRtoUWwjbRXNgN4h2BW2C18OmRA6NMxn5OD83ao0I1bKG5MICQfNpCC2H6S5EtNAPr6+7m38F+VHnpJ2pDJNkSkT2gZwrNRAfdCx3Ekv6/DuL6b65Ja6iqdRC/AuuAsSXNy/LIKN4FBMUdiXNvC11krvkGRtWpyp1myeYAAAAASUVORK5CYII="/>
+                                <img @click="onRemove(props.row.pid_account)" width="20" style="display: inline" class="float-right cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                            </span>
+                            <span v-else>
+                                {{props.formattedRow[props.column.field]}}
+                            </span>
+                        </template>
+                    </vue-good-table>
                 </div>
             </div>
         </div>
@@ -115,6 +135,7 @@
 <script>
 import { http } from '@/http.js';
 import MainLayout from '@/pages/MainLayout';
+import { VueGoodTable } from 'vue-good-table-next';
 import AccountInputUser from '@/components/AccountInputUser';
 
 const initialState = () => (
@@ -127,6 +148,8 @@ const initialState = () => (
         register_date: null,
         investor_pass: null,
         location: null,
+        type_account: null,
+        status_account: null,
     }
 )
 
@@ -135,14 +158,60 @@ export default {
         return {
             loading: false,
             form: initialState(),
-            table: {},
+            rows: [],
             request: {
                 offset : 0,
                 limit: 100,
                 search: null
             },
+            paginationOptions: {
+                perPage: 100,
+                enabled: true,
+                mode: 'pages',
+                perPageDropdown: [100, 200, 500, 1000],
+            },
             listUser: [], 
-            nameUser: null,        
+            nameUser: null, 
+            columns: [
+                {
+                    label: 'Actions',
+                    field: 'action',
+                },
+                {
+                    label: 'Nama',
+                    field: 'name_user',
+                    // type: 'double',
+                },
+                {
+                    label: 'Account',
+                    field: 'account',
+                    // type: 'double',
+                },
+                {
+                    label: 'Password',
+                    field: 'password',
+                },
+                {
+                    label: 'Server',
+                    field: 'server',
+                },
+                {
+                    label: 'Register Date',
+                    field: 'register_date',
+                },
+                {
+                    label: 'Location',
+                    field: 'location',
+                },
+                {
+                    label: 'Type',
+                    field: 'type_account',
+                },
+                {
+                    label: 'Status',
+                    field: 'status_account',
+                },
+            ],         
         };
     },
     components: {
@@ -163,7 +232,7 @@ export default {
                         let data = responses.data.data;
 
                         if(status){
-                            this.table = data;
+                            this.rows = data.data;
                             this.loading = false;
                         }
                     })
@@ -289,7 +358,7 @@ export default {
         },
         onEdit(pid_account) {   
             // let that = this;       
-            let foundData = this.table.data.filter(item => item.pid_account == pid_account)[0];
+            let foundData = this.rows.filter(item => item.pid_account == pid_account)[0];
 
             this.form = {...foundData};
             this.nameUser = foundData.name_user;
