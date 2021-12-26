@@ -48,9 +48,21 @@
                     </div>
                     <div class="mb-4">
                         <label class="label-custom">
+                            Start Date
+                        </label>
+                        <input class="input-custom" type="date" v-model="form.start_date" >
+                    </div>
+                    <div class="mb-4">
+                        <label class="label-custom">
+                            Stop Date
+                        </label>
+                        <input class="input-custom" type="date" v-model="form.stop_date" >
+                    </div>
+                    <div class="mb-4">
+                        <label class="label-custom">
                             Account Balance
                         </label>
-                        <input class="input-custom" type="text" v-model="form.balance" >
+                        <input class="input-custom" inputmode="decimal" v-model="form.balance" >
                     </div>
                     <div class="">
                         <button 
@@ -78,6 +90,8 @@
                                 <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Account</th>
                                 <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Name User</th>
                                 <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Perode</th>
+                                <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Start Date</th>
+                                <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Stop Date</th>
                                 <th class="text-white border text-center px-8 py-4" style="background-color: #4680FE">Account Balance</th>
                             </tr>
                         </thead>
@@ -95,6 +109,8 @@
                                 <td class="border px-5 py-4 text-xs">{{item.account_number}}</td>
                                 <td class="border px-5 py-4 text-xs">{{item.name_user}}</td>
                                 <td class="border px-5 py-4 text-xs">{{item.periode}}</td>
+                                <td class="border px-5 py-4 text-xs">{{item.start_date}}</td>
+                                <td class="border px-5 py-4 text-xs">{{item.stop_date}}</td>
                                 <td class="border px-5 py-4 text-xs">{{customNumber(item.balance)}}</td>
                             </tr>
                         </tbody>
@@ -110,6 +126,7 @@
 </style>
 
 <script>
+import moment from 'moment';
 import { http } from '@/http.js';
 import MainLayout from '@/pages/MainLayout';
 import AccountInputUser from '@/components/AccountInputUser';
@@ -118,7 +135,9 @@ const initialState = () => (
     {
         pid_saldo: null,
         account_number: null,
-        periode: null,
+        periode: moment().format('YYYY-MM-DD'),
+        start_date: moment().format('YYYY-MM-DD'),
+        stop_date: moment().format('YYYY-MM-DD'),
         balance: null,
     }
 )
@@ -259,7 +278,7 @@ export default {
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    http("api/account-balance/delete", this.request)
+                    http("api/account-balance/delete", foundData)
                         .then(responses => {
                             let data = responses.data;
 
