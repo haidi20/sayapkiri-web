@@ -59,9 +59,7 @@
 </style>
 
 <script>
-import moment from 'moment';
 import { http } from '@/http.js';
-import csvToJson from 'convert-csv-to-json';
 // import {baseUrl} from '@/helpers';
 import MainLayout from '@/pages/MainLayout';
 
@@ -98,25 +96,26 @@ export default {
                     let currentline=lines[i].split(",");
 
                     for(let j=0;j<headers.length;j++){
-                        obj[headers[j].replace(/\s/g, '')] = currentline[j];
+                        let index = headers[j].replace(/\s/g, '');
+                        let value = currentline[j];
+
+                        if(value != undefined) {
+                            obj[index] = value;
+                        }
                     }
 
-                    result.push(obj);
+                    if(obj['id'] != '') {
+                        result.push(obj);
+                    }
                 }
 
-                result.map(item => {
-                    console.log(item);
-                });
-
-                // that.onSend(result);
+                that.onSend(result);
             };
         },
         async onSend(result) {
             await http("api/reward-report/store", {data: result})
                     .then(function(responses) {
                         let data = responses.data;
-
-                        console.log(responses);
 
                         if (data.status != undefined && data.status) {
                             this.$swal.mixin({
