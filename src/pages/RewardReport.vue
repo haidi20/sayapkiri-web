@@ -54,8 +54,29 @@
             <div class=" h-screen hidden-mobile col-span-3 ">
                 <div                    
                     class=" bg-white shadow-md rounded py-6 px-4 overflow-x-auto  ">
-                    <div class="mb-5">
-                        <p class="text-3xl">Reward Report</p>
+                    <p class="text-3xl mb-5">Reward Report</p>
+                    <div class="flex flex-row mb-2">
+                        <div class=" ml-2 ">
+                            <label class="label-custom">Tgl</label>
+                            <input class=" input-custom " type="date" v-model="request.start_date"  >
+                        </div>
+                        <div class="">
+                            <div class="mb-7" ></div>
+                            <input class=" ml-2 input-custom " type="date" v-model="request.stop_date"  >
+                        </div>
+                        <div>
+                            <div class="mb-7" ></div>
+                            <button 
+                                type="submit" 
+                                class=" ml-8 bg-green-500 text-white rounded-md p-2 "
+                                @click="getDataRewardReport">
+                                Apply
+                            </button>
+                        </div>
+                        <div class="ml-2">
+                            <div class="mb-12" ></div>
+                            <p v-if="loading">loading...</p>
+                        </div>
                     </div>
                     <vue-good-table  
                         fixed-header
@@ -86,6 +107,7 @@
 </style>
 
 <script>
+import moment from 'moment';
 import { http } from '@/http.js';
 import { VueGoodTable } from 'vue-good-table-next';
 import MainLayout from '@/pages/MainLayout';
@@ -95,10 +117,12 @@ export default {
         return {
             form: [],
             rows: [],
-             request: {
+            request: {
                 offset : 0,
                 limit: 100,
-                search: null
+                search: null,
+                stop_date: moment().format('YYYY-MM-DD'),
+                start_date: moment().startOf('month').format('YYYY-MM-DD'),
             },
             paginationOptions: {
                 perPage: 100,
@@ -108,11 +132,11 @@ export default {
             },
             columns: [
                 {
-                    label: 'R Order',
+                    label: 'Order',
                     field: 'reward_order',
                 },
                 {
-                    label: 'R Date',
+                    label: 'Date',
                     field: 'reward_date',
                     // type: 'double',
                 },
@@ -150,7 +174,7 @@ export default {
                     field: 'reward',
                 },
                 {
-                    label: 'R USD',
+                    label: 'USD',
                     field: 'reward_usd',
                 },
                 {
