@@ -101,9 +101,6 @@
                     class=" bg-white shadow-md rounded py-6 px-4 overflow-x-auto  ">
                     <div class="mb-5">
                         <p class="text-3xl">Account</p>
-                        <!-- <div class=" float-right ">
-                            <input type="text" class="input-custom" placeholder="search" >
-                        </div> -->
                     </div>
                     <vue-good-table  
                         fixed-header
@@ -138,6 +135,7 @@
                     </vue-good-table>
                 </div>
             </div>
+            <!-- End table Desktop -->
         </div>
     </main-layout>
 </template>
@@ -230,6 +228,7 @@ export default {
     },
     components: {
         MainLayout,
+        VueGoodTable,
         AccountInputUser,
     },
     mounted() {

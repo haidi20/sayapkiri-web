@@ -50,6 +50,33 @@
                 </form>
             </div>
             <!-- End form -->
+            <!-- Start table Desktop -->
+            <div class=" h-screen hidden-mobile col-span-3 ">
+                <div                    
+                    class=" bg-white shadow-md rounded py-6 px-4 overflow-x-auto  ">
+                    <div class="mb-5">
+                        <p class="text-3xl">Reward Report</p>
+                    </div>
+                    <vue-good-table  
+                        fixed-header
+                        :rows="rows"
+                        :columns="columns"
+                        max-height="600px"
+                        ref="table"
+                        :pagination-options="paginationOptions">
+
+                        <template #table-row="props">
+                            <span v-if="props.column.field == 'action'">
+                                <img @click="onRemove(props.row.pid_account)" width="20" style="display: inline" class="float-right cursor-pointer "  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAZElEQVRIiWNgGOqAkRhFP428Ghj/M9Qji/1n+N/Jfn57BckW/DL0+k+8+zAB2/ltKGYyUWLYyABYI5nceEAPfwYGOsQBQQvYzm9jxOYyXOIkW0ApGLVg1IJRC+hgwdAv7IY+AABHeRpR7gJWRgAAAABJRU5ErkJggg=="/>
+                            </span>
+                            <span v-else>
+                                {{props.formattedRow[props.column.field]}}
+                            </span>
+                        </template>
+                    </vue-good-table>
+                </div>
+            </div>
+            <!-- End table Desktop -->
         </div>
     </main-layout>
 </template>
@@ -60,23 +87,109 @@
 
 <script>
 import { http } from '@/http.js';
-// import {baseUrl} from '@/helpers';
+import { VueGoodTable } from 'vue-good-table-next';
 import MainLayout from '@/pages/MainLayout';
 
 export default {
     data() {
         return {
-            file: {},
-            form: {
-
-            }
+            form: [],
+            rows: [],
+             request: {
+                offset : 0,
+                limit: 100,
+                search: null
+            },
+            paginationOptions: {
+                perPage: 100,
+                enabled: true,
+                mode: 'pages',
+                perPageDropdown: [100, 200, 500, 1000],
+            },
+            columns: [
+                {
+                    label: 'R Order',
+                    field: 'reward_order',
+                },
+                {
+                    label: 'R Date',
+                    field: 'reward_date',
+                    // type: 'double',
+                },
+                {
+                    label: 'Partner Account',
+                    field: 'partner_account',
+                    // type: 'double',
+                },
+                {
+                    label: 'Type',
+                    field: 'client_account_type',
+                },
+                {
+                    label: 'Country',
+                    field: 'country',
+                },
+                {
+                    label: 'Client UID',
+                    field: 'client_uid',
+                },
+                {
+                    label: 'Currency',
+                    field: 'currency',
+                },
+                {
+                    label: 'Lots',
+                    field: 'volume_lots',
+                },
+                {
+                    label: 'MLN USD',
+                    field: 'volume_mln_usd',
+                },
+                {
+                    label: 'Reward',
+                    field: 'reward',
+                },
+                {
+                    label: 'R USD',
+                    field: 'reward_usd',
+                },
+                {
+                    label: 'Orders Count',
+                    field: 'orders_count',
+                },
+                {
+                    label: 'CA',
+                    field: 'client_account',
+                },
+            ], 
         }
     },
     components: {
         MainLayout,
+        VueGoodTable,
+    },
+    mounted() {
+        this.getDataRewardReport();
     },
     methods: {
-        onInsertState(event) {
+        async getDataRewardReport() {
+            this.loading = true;
+
+            await http("api/reward-report", this.request)
+                    .then(responses => {
+                        let status = responses.data.status;
+                        let data = responses.data.data;
+
+                        if(status){
+                            this.rows = data.data;
+                            this.loading = false;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+        },
+        onInsertState() {
             this.file = this.$refs.myFiles.files[0];
         },
         onSubmit() {
@@ -130,6 +243,8 @@ export default {
                                     icon: "success",
                                     title: data.remark
                                 });
+
+                            location.reload();
                         } else if (data.status != undefined && !data.status) {
                             that.$swal.mixin({
                                     toast: true,
@@ -153,7 +268,61 @@ export default {
                         this.loading = false;
                         // this.getData();
                     });
-        }
+        },
+        async onRemove(reward_order) {    
+            let that = this;
+
+            return await this.$swal.fire({
+                icon: 'question',
+                title: `Do you want to delete Reward Order = <b>${reward_order}</b> ?`,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: `No`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    http("api/rewardReport/delete", {reward_order: reward_order})
+                        .then(function (responses) {
+                            let data = responses;
+
+                            if(data.status != undefined && data.status) {
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "success",
+                                    title: data.remark
+                                });
+
+                                that.getDataAccounts();
+                            }else if(data.status != undefined && !data.status) {
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "warning",
+                                    title: data.remark
+                                });
+
+                                console.log(data.remark);
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                } else if (result.isDenied) {
+                    this.$swal.fire('Changes are not saved', '', 'info')
+                }
+            })
+        },
     }
 }
 </script>
