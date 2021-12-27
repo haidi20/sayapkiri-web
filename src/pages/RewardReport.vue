@@ -56,8 +56,8 @@
                     class=" bg-white shadow-md rounded py-6 px-4 overflow-x-auto  ">
                     <p class="text-3xl mb-5">Reward Report</p>
                     <div class="flex flex-row mb-2">
-                        <div class=" ml-2 ">
-                            <label class="label-custom">Tgl</label>
+                        <div class=" ">
+                            <div class="mb-7" ></div>
                             <input class=" input-custom " type="date" v-model="request.start_date"  >
                         </div>
                         <div class="">
