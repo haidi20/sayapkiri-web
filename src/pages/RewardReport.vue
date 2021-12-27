@@ -113,12 +113,13 @@ export default {
             };
         },
         async onSend(result) {
+            let that = this;
             await http("api/reward-report/store", {data: result})
                     .then(function(responses) {
                         let data = responses.data;
 
                         if (data.status != undefined && data.status) {
-                            this.$swal.mixin({
+                            that.$swal.mixin({
                                     toast: true,
                                     position: "top-end",
                                     showConfirmButton: false,
@@ -130,7 +131,7 @@ export default {
                                     title: data.remark
                                 });
                         } else if (data.status != undefined && !data.status) {
-                            this.$swal.mixin({
+                            that.$swal.mixin({
                                     toast: true,
                                     position: "top-end",
                                     showConfirmButton: false,
