@@ -232,6 +232,7 @@ export default {
                     label: 'Reg Date',
                     field: 'register_date',
                     width: '120px',
+                    sortable: true,
                 },
                 {
                     label: 'Location',
