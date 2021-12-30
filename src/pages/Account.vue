@@ -56,11 +56,27 @@
                         </label>
                         <input class="input-custom" type="text" v-model="form.location" >
                     </div>
+                    <div class="mb-4">
+                        <label class="label-custom">
+                            Group Name
+                        </label>
+                        <input class="input-custom" type="text" v-model="form.group_name" >
+                    </div>
                      <div class="mb-4">
                         <label class="label-custom">
                             Type Account
                         </label>
-                        <input class="input-custom" type="text" v-model="form.type_account" >
+                        <div class="inline-block relative w-full">
+                            <select 
+                                v-model="form.type_account"
+                                class="block appearance-none w-full bg-white border py-2 px-3 rounded shadow-sm border-gray-300 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="invesment">Invesment</option>
+                                <option value="trading">Trading</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-4">
                         <label class="label-custom">
@@ -161,6 +177,7 @@ const initialState = () => (
         investor_pass: null,
         location: null,
         type_account: null,
+        group_name: null,
         status_account: null,
     }
 )
@@ -204,12 +221,17 @@ export default {
                     field: 'password',
                 },
                 {
+                    label: 'Investor Pass',
+                    field: 'investor_pass',
+                },
+                {
                     label: 'Server',
                     field: 'server',
                 },
                 {
-                    label: 'Register Date',
+                    label: 'Reg Date',
                     field: 'register_date',
+                    width: '120px',
                 },
                 {
                     label: 'Location',
@@ -218,6 +240,10 @@ export default {
                 {
                     label: 'Type',
                     field: 'type_account',
+                },
+                {
+                    label: 'Group',
+                    field: 'group_name',
                 },
                 {
                     label: 'Status',
