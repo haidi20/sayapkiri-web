@@ -152,7 +152,7 @@
           <div class="flex-1">
             <div class="grid">
               <div class="text-lg font-bold">
-                {{ item.pnlmnt }}%
+                {{ item.pnlmonth }}%
               </div>
               <div class="text-sm">PnL Month</div>
             </div>

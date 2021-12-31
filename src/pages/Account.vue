@@ -168,7 +168,8 @@ import AccountInputUser from '@/components/AccountInputUser';
 
 const initialState = () => (
     {
-        pid_user: "f3e843bf-2f14-11ec-beb4-2cea7f9be94f",
+        // pid_user: "f3e843bf-2f14-11ec-beb4-2cea7f9be94f",
+        pid_user: null,
         pid_account: null,
         account: null,
         password: null,
@@ -317,6 +318,7 @@ export default {
                                 title: data.remark
                             });
                         }else if(data.status != undefined && !data.status) {
+                            console.log(data);
                             that.$swal.mixin({
                                 toast: true,
                                 position: "top-end",
@@ -397,6 +399,8 @@ export default {
             })
         },
         onEdit(pid_account) {   
+
+            console.log(pid_account);
             // let that = this;       
             let foundData = this.rows.filter(item => item.pid_account == pid_account)[0];
 

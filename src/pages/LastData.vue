@@ -159,7 +159,7 @@
                 {{ item.custom_profit }}
               </td>
               <td class="row-desktop text-right">{{ item.pnlday }}%</td>
-              <td class="row-desktop text-right">{{ item.pnlmnt }}%</td>
+              <td class="row-desktop text-right">{{ item.pnlmonth }}%</td>
               <td class="row-desktop text-right">
                 {{ item.custom_balance }}
               </td>
