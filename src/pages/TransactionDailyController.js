@@ -18,7 +18,7 @@ export default {
                 user: null,
                 account: null,
                 stop_date: moment().format('YYYY-MM-DD'),
-                start_date: moment().format('YYYY-MM-DD'),
+                start_date: moment().startOf('month').format('YYYY-MM-DD'),
             },
             paginationOptions: {
                 perPage: 100,
