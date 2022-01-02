@@ -277,8 +277,6 @@ export default {
           if (status) {
             this.sumData = data;
             this.loadingSumData = false;
-
-            console.log(data);
           }
         })
         .catch((error) => {

@@ -135,9 +135,9 @@ const initialState = () => (
     {
         pid_saldo: null,
         account_number: null,
-        periode: moment().format('YYYY-MM-DD'),
-        start_date: moment().format('YYYY-MM-DD'),
-        stop_date: moment().format('YYYY-MM-DD'),
+        periode: moment().startOf("month").format('YYYY-MM-DD'),
+        start_date: moment().startOf("month").format('YYYY-MM-DD'),
+        stop_date: moment().endOf("month").format('YYYY-MM-DD'),
         balance: null,
     }
 )
