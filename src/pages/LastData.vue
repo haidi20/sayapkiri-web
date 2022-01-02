@@ -307,7 +307,7 @@
                 {{ item.profit }} <br />
                 <span class="text-blue-450"> {{ item.pnlday }}% / </span>
                 <span class="text-green-400" style="display: inline">
-                  {{ item.pnlmnt }}%
+                  {{ item.pnlmonth }}%
                 </span>
               </td>
               <td class="row-mobile text-right">
