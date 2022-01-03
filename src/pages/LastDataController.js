@@ -51,9 +51,10 @@ export default {
         activeRow(index) {
             this.indexSelected = index;
         },
-        classActiveRow(index) {
+        classActiveRow(index, typeAccount) {
             return {
                 active: this.indexSelected == index ? true : false,
+                'bg-green-100': typeAccount == 'invesment'
             };
         },
     },

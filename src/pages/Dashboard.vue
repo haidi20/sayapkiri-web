@@ -130,9 +130,8 @@
           </div>
         </div>
         <div
-          :class="bgFooter(item.ea_enable)"
-          class="flex text-center text-white py-2"
-        >
+          :class="bgFooter(item.ea_enable, item.type_account)"
+          class="flex text-center text-white py-2">
           <div class="flex-1">
             <div class="grid">
               <div class="text-lg font-bold">

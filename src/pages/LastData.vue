@@ -95,7 +95,7 @@
             <!-- <p v-if="loading" class="inline-block mt-3 ml-1 " >Loading...</p> -->
           </div>
         </div>
-        <table class="w-full bg-white mt-2">
+        <table class="w-full bg-white mt-2 mb-4 " >
           <thead class="">
             <tr class="m">
               <th class="th-desktop">No</th>
@@ -134,6 +134,7 @@
                 hover:bg-blue-200
                 cursor-pointer
               "
+              :class="{'bg-green-100': item.type_account == 'invesment'}"
               v-for="(item, index) in table"
               :key="index"
             >
@@ -274,7 +275,7 @@
             </tr>
             <tr
               @click="activeRow(index)"
-              :class="classActiveRow(index)"
+              :class="classActiveRow(index, item.type_account)"
               class="border-b-2 border-gray-300"
               v-for="(item, index) in table"
               :key="index"
