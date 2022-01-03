@@ -41,6 +41,18 @@ export default {
                     // type: 'double',
                 },
                 {
+                    label: 'pnl Day',
+                    field: 'pnlday',
+                },
+                {
+                    label: 'pnl Month',
+                    field: 'pnlmonth',
+                },
+                {
+                    label: 'DD',
+                    field: 'dd',
+                },
+                {
                     label: 'Equity',
                     field: 'custom_equity',
                 },
