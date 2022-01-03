@@ -434,8 +434,9 @@ export default {
         },
         checkForm(){
             if(this.form.register_date == null) console.log('register_date kosong');
-            if(this.form.investor_pass == null) console.log('investor_pass kosong');
-            if(this.form.location == null) console.log('location kosong');
+            else if(this.form.investor_pass == null) console.log('investor_pass kosong');
+            else if(this.form.location == null) console.log('location kosong');
+            else return true;
         },
     }
 }
