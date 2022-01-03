@@ -299,49 +299,67 @@ export default {
         },
         async onSubmit() {
             let that = this;
-            this.loading = true;
 
-            await http("api/account/store", this.form)
-                    .then(function (responses) {
-                        let data = responses.data;
+            let checkForm = this.checkForm();
 
-                        if(data.status != undefined && data.status) {
-                            that.$swal.mixin({
-                                toast: true,
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                timer: 2000,
-                            })
-                            .fire({
-                                icon: "success",
-                                title: data.remark
-                            });
-                        }else if(data.status != undefined && !data.status) {
-                            console.log(data);
-                            that.$swal.mixin({
-                                toast: true,
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timerProgressBar: true,
-                                timer: 2000,
-                            })
-                            .fire({
-                                icon: "warning",
-                                title: data.remark
-                            });
+            if (!checkForm){
+                that.$swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timerProgressBar: true,
+                    timer: 2000,
+                })
+                .fire({
+                    icon: "warning",
+                    title: "ada form yg kosong. cek console",
+                });
+                return false;
+            }else {
+                this.loading = true;
 
-                            console.log(data.remark);
-                        }
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        this.onResetForm();
-                        this.loading = false;
-                        this.getDataAccounts();
-                    });
+                await http("api/account/store", this.form)
+                        .then(function (responses) {
+                            let data = responses.data;
+
+                            if(data.status != undefined && data.status) {
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "success",
+                                    title: data.remark
+                                });
+                            }else if(data.status != undefined && !data.status) {
+                                console.log(data);
+                                that.$swal.mixin({
+                                    toast: true,
+                                    position: "top-end",
+                                    showConfirmButton: false,
+                                    timerProgressBar: true,
+                                    timer: 2000,
+                                })
+                                .fire({
+                                    icon: "warning",
+                                    title: data.remark
+                                });
+
+                                console.log(data.remark);
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                        .finally(() => {
+                            this.onResetForm();
+                            this.loading = false;
+                            this.getDataAccounts();
+                        });
+            }
         },
         async onRemove(pid_account) {    
             let that = this;        
@@ -413,6 +431,11 @@ export default {
         },
         onChooseUser(user) {
             this.form.pid_user = user.pid_user;
+        },
+        checkForm(){
+            if(this.form.register_date == null) console.log('register_date kosong');
+            if(this.form.investor_pass == null) console.log('investor_pass kosong');
+            if(this.form.location == null) console.log('location kosong');
         },
     }
 }
