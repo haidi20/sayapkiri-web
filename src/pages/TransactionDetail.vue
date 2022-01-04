@@ -2,7 +2,7 @@
     <main-layout>
         <div class="grid md:mt-28 mt-10 md:mx-6 overflow-x-scroll">
             <!-- start table desktop -->
-            <div class="bg-white shadow-md rounded-2xl pt-4 px-2 ">
+            <div class="bg-white shadow-md rounded-2xl pt-4 px-2">
                 <p class="text-3xl mb-5">Transaction Detail</p>
                 <div class="flex flex-row">
                     <div class="mb-4">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 
-                <vue-good-table  
+                <vue-good-table 
                     fixed-header
                     :rows="rows"
                     :columns="columns"

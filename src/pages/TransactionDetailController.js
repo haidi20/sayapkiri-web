@@ -36,22 +36,30 @@ export default {
                     // type: 'double',
                 },
                 {
+                    label: 'DD',
+                    field: 'dd',
+                },
+                {
                     label: 'Profit',
                     field: this.fnProfit,
                     // type: 'double',
                 },
                 {
+                    label: 'pnl Day',
+                    field: 'pnlday',
+                },
+                {
+                    label: 'pnl Month',
+                    field: 'pnlmonth',
+                },
+                {
+                    label: 'Balance',
+                    field: 'custom_initial_balance',
+                    // type: 'double',
+                },
+                {
                     label: 'Equity',
                     field: this.fnEquity,
-                },
-                {
-                    label: 'Free Margin',
-                    field: this.fnFreeMargin,
-                },
-                {
-                    label: 'Trade',
-                    field: 'trade',
-                    type: 'number',
                 },
                 {
                     label: 'Trade Buy',
@@ -68,11 +76,6 @@ export default {
                     field: this.fnFloatMax,
                 },
                 {
-                    label: 'Float Trade',
-                    field: 'float_trade',
-                    type: 'number',
-                },
-                {
                     label: 'WD',
                     field: this.fnWd,
                 },
@@ -80,6 +83,21 @@ export default {
                     label: 'Depo',
                     field: this.fnDepo,
                 },
+                // {
+                //     label: 'Free Margin',
+                //     field: this.fnFreeMargin,
+                // },
+                // {
+                //     label: 'Trade',
+                //     field: 'trade',
+                //     type: 'number',
+                // },
+
+                // {
+                //     label: 'Float Trade',
+                //     field: 'float_trade',
+                //     type: 'number',
+                // },
             ],
         }
     },

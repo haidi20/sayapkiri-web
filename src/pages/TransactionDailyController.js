@@ -31,11 +31,6 @@ export default {
                     field: 'day',
                 },
                 {
-                    label: 'Floating',
-                    field: 'floating',
-                    // type: 'double',
-                },
-                {
                     label: 'Profit',
                     field: 'custom_profit',
                     // type: 'double',
@@ -49,40 +44,18 @@ export default {
                     field: 'pnlmonth',
                 },
                 {
-                    label: 'DD',
-                    field: 'dd',
+                    label: 'Profit',
+                    field: 'custom_profit',
+                    // type: 'double',
+                },
+                {
+                    label: 'Balance',
+                    field: 'custom_initial_balance',
+                    // type: 'double',
                 },
                 {
                     label: 'Equity',
                     field: 'custom_equity',
-                },
-                {
-                    label: 'Free Margin',
-                    field: 'custom_free_margin',
-                },
-                {
-                    label: 'Trade',
-                    field: 'trade',
-                    type: 'number',
-                },
-                {
-                    label: 'Trade Buy',
-                    field: 'trade_buy',
-                    type: 'number',
-                },
-                {
-                    label: 'Trade Sell',
-                    field: 'trade_sell',
-                    type: 'number',
-                },
-                {
-                    label: 'Float Max',
-                    field: 'custom_float_max',
-                },
-                {
-                    label: 'Float Trade',
-                    field: 'float_trade',
-                    type: 'number',
                 },
                 {
                     label: 'WD',
@@ -92,6 +65,40 @@ export default {
                     label: 'Depo',
                     field: 'custom_depo',
                 },
+                // {
+                //     label: 'DD',
+                //     field: 'dd',
+                // },
+
+                // {
+                //     label: 'Free Margin',
+                //     field: 'custom_free_margin',
+                // },
+                // {
+                //     label: 'Trade',
+                //     field: 'trade',
+                //     type: 'number',
+                // },
+                // {
+                //     label: 'Trade Buy',
+                //     field: 'trade_buy',
+                //     type: 'number',
+                // },
+                // {
+                //     label: 'Trade Sell',
+                //     field: 'trade_sell',
+                //     type: 'number',
+                // },
+                // {
+                //     label: 'Float Max',
+                //     field: 'custom_float_max',
+                // },
+                // {
+                //     label: 'Float Trade',
+                //     field: 'float_trade',
+                //     type: 'number',
+                // },
+
             ],
         }
     },
