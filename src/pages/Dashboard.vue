@@ -130,7 +130,7 @@
           </div>
         </div>
         <div
-          :class="bgFooter(item.ea_enable, item.type_account)"
+          :class="bgFooter(item.ea_enable, item.type_account, item.broker_time)"
           class="flex text-center text-white py-2">
           <div class="flex-1">
             <div class="grid">

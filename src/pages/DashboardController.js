@@ -64,11 +64,15 @@ export default {
         colorProfit(profit) {
             return profit <= 0 ? "text-red-500" : "text-green-500";
         },
-        bgFooter(eaEnable, typeAccount) {
+        bgFooter(eaEnable, typeAccount, brokerTime) {
             // return eaEnable == 1 ? "bg-green-500" : "bg-gray-500";
 
+            let diffDays = moment(moment()).diff(brokerTime, 'hours');
+
             if (eaEnable == 1) {
-                if (typeAccount == "trading") {
+                if (diffDays > 24) {
+                    return "bg-gray-500";
+                } else if (typeAccount == "trading") {
                     return "bg-green-500";
                 } else if (typeAccount == "invesment") {
                     return "bg-blue-450";
