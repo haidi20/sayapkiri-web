@@ -1,3 +1,4 @@
+import moment from "moment";
 import MainLayout from "@/pages/MainLayout";
 
 import { http } from '@/http.js';
@@ -51,10 +52,21 @@ export default {
         activeRow(index) {
             this.indexSelected = index;
         },
-        classActiveRow(index, typeAccount) {
+        classActiveRow(index, typeAccount, brokerTime) {
+            let isInvesment = false;
+            let isNonActive = false;
+            let diffDays = moment(moment()).diff(brokerTime, 'hours');
+
+            if (diffDays > 24) {
+                isNonActive = true;
+            } else {
+                isInvesment = typeAccount == 'invesment';
+            }
+
             return {
                 active: this.indexSelected == index ? true : false,
-                'bg-green-100': typeAccount == 'invesment'
+                'bg-green-100': isInvesment,
+                "bg-gray-300": isNonActive,
             };
         },
     },

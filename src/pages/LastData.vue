@@ -134,7 +134,7 @@
                 hover:bg-blue-200
                 cursor-pointer
               "
-              :class="{'bg-green-100': item.type_account == 'invesment'}"
+              :class="classActiveRow(index, item.type_account, item.broker_time)"
               v-for="(item, index) in table"
               :key="index"
             >
@@ -275,7 +275,7 @@
             </tr>
             <tr
               @click="activeRow(index)"
-              :class="classActiveRow(index, item.type_account)"
+              :class="classActiveRow(index, item.type_account, item.broker_time)"
               class="border-b-2 border-gray-300"
               v-for="(item, index) in table"
               :key="index"
