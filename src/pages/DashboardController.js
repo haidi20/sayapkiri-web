@@ -15,7 +15,7 @@ export default {
             hiddenName: false,
             list: [],
             request: {
-                sorted_by: "drawdown_asc",
+                sorted_by: "drawdown_desc",
             },
             open: false,
         };
