@@ -76,6 +76,8 @@ export default {
                     return "bg-green-500";
                 } else if (typeAccount == "invesment") {
                     return "bg-blue-450";
+                } else {
+                    return "bg-green-400";
                 }
             } else {
                 return "bg-gray-500";

@@ -203,17 +203,15 @@ import { http } from '@/http.js';
 // import {baseUrl} from '@/helpers';
 import MainLayout from '@/pages/MainLayout';
 
-const initialState = () => {
-    return {
-        pid_news: null,
-        pair: 'USD',
-        date_news: null,
-        date_start: null,
-        date_stop: null,
-        impact: null,
-        desc: null,
-    };
-}
+const initialState = () => ({
+    pid_news: null,
+    pair: 'USD',
+    date_news: null,
+    date_start: null,
+    date_stop: null,
+    impact: null,
+    desc: null,
+});
 
 export default {
     data() {
