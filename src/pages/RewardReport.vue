@@ -127,6 +127,33 @@
                     {{item.sum_reward_usd}}
                   </td>
                 </tr>
+                <tr>
+                  <td
+                    class="p-2 font-mono text-xs text-black whitespace-no-wrap"
+                  >
+                    {{sumAllGroup.group_name}}
+                  </td>
+                  <td
+                    class="p-2 font-mono text-xs text-black whitespace-no-wrap"
+                  >
+                    {{sumAllGroup.sum_volume_lots}}
+                  </td>
+                  <td
+                    class="p-2 font-mono text-xs text-black whitespace-no-wrap"
+                  >
+                    {{sumAllGroup.sum_volume_mln_usd}}
+                  </td>
+                  <td
+                    class="p-2 font-mono text-xs text-black whitespace-no-wrap"
+                  >
+                    {{sumAllGroup.sum_orders_count}}
+                  </td>
+                  <td
+                    class="p-2 font-mono text-xs text-black whitespace-no-wrap"
+                  >
+                    {{sumAllGroup.sum_reward_usd}}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -177,6 +204,7 @@ export default {
         form: [],
         rows: [],
         sumData: [],
+        sumAllGroup: {},
         request: {
             offset: 0,
             limit: 100,
@@ -275,7 +303,8 @@ export default {
           let data = responses.data.data;
 
           if (status) {
-            this.sumData = data;
+            this.sumData = data.sumData;
+            this.sumAllGroup = data.sumAllGroup;
             this.loadingSumData = false;
           }
         })
