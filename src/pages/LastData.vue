@@ -155,7 +155,7 @@
                 />
               </td>
               <td class="row-desktop text-center">{{ item.account }}</td>
-              <td class="row-desktop">{{ item.account_name }}</td>
+              <td class="row-desktop">{{ item.account_name.substring(0, 19) }}</td>
               <td class="row-desktop text-right">
                 {{ item.custom_profit }}
               </td>
@@ -301,7 +301,7 @@
                 </span>
                 <br />
                 <span class="">
-                  {{ item.account_name }}
+                  {{ item.account_name.substring(0, 19) }}
                 </span>
               </td>
               <td class="row-mobile text-center">
