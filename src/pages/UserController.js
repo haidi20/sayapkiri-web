@@ -187,8 +187,8 @@ export default {
                 }
             })
         },
-        onEdit(data) {
-            console.log(data);
+        onEdit(params) {
+            console.log(params);
             // let that = this;        
             // let foundData = this.table.data.filter(item => item.pid_user == pid_user)[0];
 
