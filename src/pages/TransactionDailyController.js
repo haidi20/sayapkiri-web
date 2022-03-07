@@ -44,11 +44,6 @@ export default {
                     field: 'pnlmonth',
                 },
                 {
-                    label: 'Profit',
-                    field: 'custom_profit',
-                    // type: 'double',
-                },
-                {
                     label: 'Balance',
                     field: 'custom_initial_balance',
                     // type: 'double',
