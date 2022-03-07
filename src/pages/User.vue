@@ -49,7 +49,7 @@
                     <p class="mb-5 text-3xl">Data User</p>
                     <vue-good-table  
                         fixed-header
-                        :rows="rows"
+                        :rows="dataRows"
                         :columns="columns"
                         max-height="600px"
                         :pagination-options="paginationOptions">
