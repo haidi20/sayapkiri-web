@@ -31,7 +31,7 @@ export default {
             columns: [{
                 label: 'Action',
                 field: 'btnAction',
-                width: '20px',
+                width: '100px',
                 html: true,
             }, {
                 label: 'Nama',
