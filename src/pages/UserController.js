@@ -29,15 +29,29 @@ export default {
                 perPageDropdown: [15, 20, 50, 100],
             },
             columns: [{
-                label: 'Action',
-                field: 'btnAction',
-                width: '100px',
-                sortable: false,
-                html: true,
-            }, {
-                label: 'Nama',
-                field: 'nama',
-            }, ],
+                    label: 'Action',
+                    field: 'btnAction',
+                    width: '100px',
+                    sortable: false,
+                    html: true,
+                },
+                {
+                    label: 'Nama',
+                    field: 'nama',
+                },
+                {
+                    label: 'Email',
+                    field: 'email',
+                },
+                {
+                    label: 'No Telp',
+                    field: 'no_telp',
+                },
+                {
+                    label: 'Register Date',
+                    field: 'register_date',
+                }
+            ],
         };
     },
     components: {
