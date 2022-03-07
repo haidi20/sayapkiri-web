@@ -50,6 +50,7 @@
                     <vue-good-table  
                         fixed-header
                         :rows="dataRows"
+                        @on-row-click="onEdit"
                         :columns="columns"
                         max-height="600px"
                         :pagination-options="paginationOptions">

@@ -32,6 +32,7 @@ export default {
                 label: 'Action',
                 field: 'btnAction',
                 width: '100px',
+                sortable: false,
                 html: true,
             }, {
                 label: 'Nama',
