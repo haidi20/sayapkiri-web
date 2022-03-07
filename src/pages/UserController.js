@@ -187,15 +187,16 @@ export default {
                 }
             })
         },
-        onEdit(pid_user) {
+        onEdit(data) {
+            console.log(data);
             // let that = this;        
-            let foundData = this.table.data.filter(item => item.pid_user == pid_user)[0];
+            // let foundData = this.table.data.filter(item => item.pid_user == pid_user)[0];
 
-            this.form.pid_user = foundData.pid_user;
-            this.form.nama = foundData.nama;
-            this.form.email = foundData.email;
-            this.form.no_telp = foundData.no_telp;
-            this.form.register_date = moment(foundData.register_date).format('YYYY-MM-DD');
+            // this.form.pid_user = foundData.pid_user;
+            // this.form.nama = foundData.nama;
+            // this.form.email = foundData.email;
+            // this.form.no_telp = foundData.no_telp;
+            // this.form.register_date = moment(foundData.register_date).format('YYYY-MM-DD');
         },
         resetForm() {
             this.form = initialState();
