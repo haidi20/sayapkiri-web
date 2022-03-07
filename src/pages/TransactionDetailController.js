@@ -17,6 +17,7 @@ export default {
             request: {
                 user: null,
                 account: null,
+                active: true,
                 stop_date: moment().format('YYYY-MM-DD'),
                 start_date: moment().format('YYYY-MM-DD'),
             },

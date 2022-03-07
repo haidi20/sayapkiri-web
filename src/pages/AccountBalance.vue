@@ -151,7 +151,8 @@ export default {
             request: {
                 offset : 0,
                 limit: 50,
-                search: null
+                search: null,
+                active: true,
             },
             listUser: [], 
             nameUser: null,
