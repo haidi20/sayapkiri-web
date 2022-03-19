@@ -53,6 +53,7 @@ export default {
             this.indexSelected = index;
         },
         classActiveRow(index, typeAccount, brokerTime) {
+            let isRebate = false;
             let isInvesment = false;
             let isNonActive = false;
             let diffDays = moment(moment()).diff(brokerTime, 'hours');
@@ -61,12 +62,14 @@ export default {
                 isNonActive = true;
             } else {
                 isInvesment = typeAccount == 'invesment';
+                isRebate = typeAccount == 'rebate';
             }
 
             return {
                 active: this.indexSelected == index ? true : false,
                 'bg-green-100': isInvesment,
                 "bg-gray-300": isNonActive,
+                "bg-red-300": isRebate,
             };
         },
     },
